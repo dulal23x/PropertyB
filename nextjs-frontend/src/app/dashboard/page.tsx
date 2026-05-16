@@ -7,11 +7,13 @@ import { fetchOwnerDashboardSummary } from "@/lib/property-api";
 import { listingStatusLabel, nextActionLabel } from "@/utils/listing-status";
 
 export default function DashboardOverview() {
-  const { user } = useAuthSession();
+  const { user, loading: authLoading } = useAuthSession();
   const [summary, setSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (authLoading) return;
+    
     const load = async () => {
       try {
         const data = await fetchOwnerDashboardSummary();
@@ -23,9 +25,9 @@ export default function DashboardOverview() {
       }
     };
     load();
-  }, []);
+  }, [authLoading]);
 
-  if (loading) return <div className="p-8">Loading dashboard...</div>;
+  if (authLoading || loading) return <div className="p-8">Loading dashboard...</div>;
 
   return (
     <div className="space-y-8">

@@ -44,11 +44,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link href="/dashboard/listings" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   My Properties
                 </Link>
+                <Link href="/dashboard/inquiries" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
+                  Inquiries
+                </Link>
                 <Link href="/dashboard/listings/new" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   Post New Property
                 </Link>
                 <Link href="/dashboard/profile" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   Profile Settings
+                </Link>
+                <Link href="/dashboard/settings" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
+                  Account Settings
                 </Link>
                 <button onClick={() => logout()} className="block w-full text-left px-4 py-2 rounded-md hover:bg-red-50 text-red-600 font-medium mt-4">
                   Logout

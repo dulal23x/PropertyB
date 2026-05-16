@@ -29,3 +29,15 @@
 - Added shared frontend API/auth helpers and began replacing hardcoded backend calls with contract-driven calls.
 - Normalized public search and detail pages to use canonical listing query names and backend-driven currency/contact fields.
 - Replaced mock owner dashboard/listing creation entry points with backend-backed draft creation and listing reads.
+- Implemented production-ready Customer Dashboard MVP:
+  - Added `useAuthSession` hook for centralized, role-aware auth state.
+  - Hardened `DashboardLayout` with robust route guards and navigation state.
+  - Built functional `/dashboard` overview with summary metrics and recent activity.
+  - Implemented `/dashboard/listings` with status filtering and basic pagination.
+  - Refactored property editor into a shared component for create/edit.
+  - Added `/dashboard/profile` (persisted), `/dashboard/settings`, and `/dashboard/inquiries` (listing-scoped).
+  - Added `GET /properties/me-summary`, `GET /properties/me/inquiries`, and `PATCH /auth/me` backend endpoints.
+  - Integrated "Get a Callback" global contact button with admin-configurable number.
+  - Hardened backend auth to reject inactive users (`is_active` check).
+  - Stabilized system after fixing routing collisions and multiple-admin startup crashes.
+  - Verified full E2E flow from registration to public publication via Chrome MCP.

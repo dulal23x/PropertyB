@@ -30,6 +30,17 @@ export default function ListingImageUploader({ listingId }: ListingImageUploader
     const file = e.target.files?.[0];
     if (!file || !listingId) return;
 
+    // Client-side validation (Page 14 of Production Plan)
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      setError("Only JPG, PNG, or WEBP images are supported.");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Image must be 5MB or smaller.");
+      return;
+    }
+
     setUploading(true);
     setError("");
     try {

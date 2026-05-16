@@ -24,6 +24,7 @@ from app.services.email_service import (
 
 router = APIRouter(prefix="/properties", tags=["properties"])
 
+PROPERTY_IMAGE_DIR = Path("userdata/property-images")
 
 def slugify(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
@@ -107,6 +108,71 @@ async def _require_submission_ready(db: AsyncSession, listing: PropertyListing) 
             raise HTTPException(status_code=400, detail="At least one image is required before submission")
 
 
+@router.get("/global-contact")
+async def get_global_contact(db: AsyncSession = Depends(get_db)):
+    res = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == "global_contact_number"))
+    setting = res.scalar_one_or_none()
+    number = setting.setting_value if setting else settings.real_estate_public_phone
+    return {"contact_number": number}
+
+
+@router.get("/me-summary")
+async def my_listing_summary(current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
+    rows = await db.execute(
+        select(PropertyListing.status, func.count(PropertyListing.id))
+        .where(PropertyListing.owner_user_id == current_user.id)
+        .group_by(PropertyListing.status)
+    )
+    counts = {status: count for status, count in rows.all()}
+    recent_rows = await db.execute(
+        select(PropertyListing)
+        .where(PropertyListing.owner_user_id == current_user.id)
+        .order_by(PropertyListing.updated_at.desc())
+        .limit(5)
+    )
+    recent = []
+    for listing in recent_rows.scalars().all():
+        item = owner_shape(listing)
+        item["next_action"] = _next_action(listing.status)
+        recent.append(item)
+    return {
+        "total": sum(counts.values()),
+        "draft": counts.get("draft", 0),
+        "pending_review": counts.get("pending_review", 0),
+        "approved": counts.get("approved", 0),
+        "rejected": counts.get("rejected", 0),
+        "unpublished": counts.get("unpublished", 0),
+        "archived": counts.get("archived", 0),
+        "needs_action": counts.get("draft", 0) + counts.get("rejected", 0) + counts.get("unpublished", 0),
+        "recent": recent,
+    }
+
+
+@router.get("/me/inquiries")
+async def my_listings_inquiries(current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
+    result = await db.execute(
+        select(PropertyInquiry, PropertyListing.title, PropertyListing.slug)
+        .join(PropertyListing, PropertyListing.id == PropertyInquiry.listing_id)
+        .where(PropertyListing.owner_user_id == current_user.id)
+        .order_by(PropertyInquiry.created_at.desc())
+    )
+    items = []
+    for inquiry, title, slug in result.all():
+        items.append({
+            "id": inquiry.id,
+            "listing_id": inquiry.listing_id,
+            "listing_title": title,
+            "listing_slug": slug,
+            "name": inquiry.name,
+            "email": inquiry.email,
+            "phone": inquiry.phone,
+            "message": inquiry.message,
+            "status": inquiry.status,
+            "created_at": inquiry.created_at,
+        })
+    return {"items": items}
+
+
 @router.get("")
 async def list_public(
     keyword: str | None = None,
@@ -135,10 +201,7 @@ async def list_public(
     db: AsyncSession = Depends(get_db),
 ):
     filters = [PropertyListing.status == "approved"]
-    
-    # Handle purpose alias
     effective_purpose = listing_purpose or purpose
-
     if keyword:
         filters.append(or_(PropertyListing.title.ilike(f"%{keyword}%"), PropertyListing.description.ilike(f"%{keyword}%")))
     if effective_purpose:
@@ -190,47 +253,55 @@ async def list_public(
     total_q = await db.execute(select(func.count()).select_from(PropertyListing).where(and_(*filters)))
     total = total_q.scalar_one()
     offset = (page - 1) * page_size
-    
-    # Fetch properties with their cover images
     rows = await db.execute(
-        select(PropertyListing)
-        .where(and_(*filters))
-        .order_by(order_clause, desc(PropertyListing.created_at))
-        .offset(offset)
-        .limit(page_size)
+        select(PropertyListing).where(and_(*filters)).order_by(order_clause, desc(PropertyListing.created_at)).offset(offset).limit(page_size)
     )
-    
     items = []
     for l in rows.scalars().all():
         data = public_shape(l)
-        # Find cover image
         img_res = await db.execute(
-            select(PropertyImage)
-            .where(PropertyImage.listing_id == l.id)
-            .order_by(desc(PropertyImage.is_cover), asc(PropertyImage.sort_order))
-            .limit(1)
+            select(PropertyImage).where(PropertyImage.listing_id == l.id).order_by(desc(PropertyImage.is_cover), asc(PropertyImage.sort_order)).limit(1)
         )
         cover = img_res.scalar_one_or_none()
         data["cover_image_url"] = cover.public_url if cover else None
-        
-        # Count all images
         count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == l.id))
         data["image_count"] = count_res.scalar_one()
-        
         items.append(data)
-
     return {"items": items, "page": page, "page_size": page_size, "total": total}
 
 
 @router.get("/me")
-async def my_listings(current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(PropertyListing).where(PropertyListing.owner_user_id == current_user.id).order_by(PropertyListing.updated_at.desc()))
+async def my_listings(
+    status: str | None = None,
+    page: int = Query(default=1, ge=1),
+    page_size: int = Query(default=20, ge=1, le=100),
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    filters = [PropertyListing.owner_user_id == current_user.id]
+    if status:
+        filters.append(PropertyListing.status == status)
+
+    total_res = await db.execute(
+        select(func.count()).select_from(PropertyListing).where(and_(*filters))
+    )
+    total = total_res.scalar_one()
+
+    result = await db.execute(
+        select(PropertyListing)
+        .where(and_(*filters))
+        .order_by(PropertyListing.updated_at.desc())
+        .offset((page - 1) * page_size)
+        .limit(page_size)
+    )
+
     items = []
     for row in result.scalars().all():
         item = owner_shape(row)
         item["next_action"] = _next_action(row.status)
         items.append(item)
-    return {"items": items}
+
+    return {"items": items, "page": page, "page_size": page_size, "total": total}
 
 
 @router.post("")
@@ -293,40 +364,6 @@ async def submit_listing(listing_id: int, current_user: User = Depends(get_curre
     return {"id": listing.id, "status": listing.status}
 
 
-@router.post("/me/{listing_id}/images")
-async def add_image(listing_id: int, payload: ImageCreate, current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
-    res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id, PropertyListing.owner_user_id == current_user.id))
-    listing = res.scalar_one_or_none()
-    if not listing:
-        raise HTTPException(status_code=404, detail="Listing not found")
-    ext = _ext_from_url(payload.public_url)
-    allowed_exts = {x.strip().lower() for x in settings.property_image_allowed_extensions.split(",") if x.strip()}
-    if ext not in allowed_exts:
-        raise HTTPException(status_code=400, detail=f"Unsupported image extension: {ext or 'none'}")
-    if payload.byte_size is not None and payload.byte_size > settings.property_image_max_bytes:
-        raise HTTPException(status_code=400, detail="Image exceeds max allowed size")
-    count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
-    if count_res.scalar_one() >= settings.property_image_max_count:
-        raise HTTPException(status_code=400, detail="Image limit reached for this listing")
-    if payload.is_cover:
-        existing = await db.execute(select(PropertyImage).where(PropertyImage.listing_id == listing.id, PropertyImage.is_cover.is_(True)))
-        for item in existing.scalars().all():
-            item.is_cover = False
-    image = PropertyImage(
-        listing_id=listing.id,
-        storage_path=f"userdata/property-images/{listing.id}/{int(datetime.now(UTC).timestamp())}.{ext}",
-        public_url=payload.public_url,
-        alt_text=payload.alt_text,
-        is_cover=payload.is_cover,
-        uploaded_by_user_id=current_user.id,
-    )
-    db.add(image)
-    db.add(PropertyAuditLog(listing_id=listing.id, actor_user_id=current_user.id, action="image_added", from_status=listing.status, to_status=listing.status))
-    await db.commit()
-    await db.refresh(image)
-    return {"id": image.id, "listing_id": image.listing_id, "public_url": image.public_url, "alt_text": image.alt_text, "is_cover": image.is_cover}
-
-
 @router.get("/me/{listing_id}/images")
 async def get_listing_images(listing_id: int, current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
     res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id, PropertyListing.owner_user_id == current_user.id))
@@ -352,51 +389,28 @@ async def upload_image(
     listing = res.scalar_one_or_none()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
-    
-    # Check limits
     count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
     if count_res.scalar_one() >= settings.property_image_max_count:
         raise HTTPException(status_code=400, detail="Image limit reached")
-
-    # Extension check
     ext = file.filename.split(".")[-1].lower() if file.filename and "." in file.filename else ""
     allowed_exts = {x.strip().lower() for x in settings.property_image_allowed_extensions.split(",") if x.strip()}
     if ext not in allowed_exts:
         raise HTTPException(status_code=400, detail="Unsupported image extension")
-
-    # Storage path
     image_id = int(datetime.now(UTC).timestamp())
     filename = f"{image_id}.{ext}"
     rel_path = f"{listing.id}/{filename}"
     abs_dir = PROPERTY_IMAGE_DIR / str(listing.id)
     abs_dir.mkdir(parents=True, exist_ok=True)
     abs_path = abs_dir / filename
-
     content = await file.read()
     if len(content) > settings.property_image_max_bytes:
         raise HTTPException(status_code=400, detail="File too large")
-
     with open(abs_path, "wb") as f:
         f.write(content)
-
     public_url = f"/images/{rel_path}"
-
     if is_cover:
-        # Unset previous covers
-        await db.execute(
-            PropertyImage.__table__.update()
-            .where(PropertyImage.listing_id == listing.id)
-            .values(is_cover=False)
-        )
-
-    image = PropertyImage(
-        listing_id=listing.id,
-        storage_path=f"userdata/property-images/{rel_path}",
-        public_url=public_url,
-        alt_text=alt_text,
-        is_cover=is_cover,
-        uploaded_by_user_id=current_user.id,
-    )
+        await db.execute(PropertyImage.__table__.update().where(PropertyImage.listing_id == listing.id).values(is_cover=False))
+    image = PropertyImage(listing_id=listing.id, storage_path=f"userdata/property-images/{rel_path}", public_url=public_url, alt_text=alt_text, is_cover=is_cover, uploaded_by_user_id=current_user.id)
     db.add(image)
     db.add(PropertyAuditLog(listing_id=listing.id, actor_user_id=current_user.id, action="image_added"))
     await db.commit()
@@ -439,18 +453,12 @@ async def delete_listing(listing_id: int, current_user: User = Depends(get_curre
     raise HTTPException(status_code=400, detail="Listing cannot be deleted in current status")
 
 
-@router.get("/global-contact")
-async def get_global_contact(db: AsyncSession = Depends(get_db)):
-    res = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == "global_contact_number"))
-    setting = res.scalar_one_or_none()
-    number = setting.setting_value if setting else settings.real_estate_public_phone
-    return {"contact_number": number}
-
-
 @router.get("/{slug}")
 async def detail_public(slug: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(PropertyListing).where(PropertyListing.slug == slug, PropertyListing.status == "approved"))
-    listing = ensure_publicly_visible(result.scalar_one_or_none())
+    listing = result.scalar_one_or_none()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
     images = await db.execute(
         select(PropertyImage).where(PropertyImage.listing_id == listing.id).order_by(desc(PropertyImage.is_cover), asc(PropertyImage.sort_order), desc(PropertyImage.created_at))
     )
@@ -482,12 +490,3 @@ async def create_inquiry(listing_id: int, payload: InquiryCreate, request: Reque
     if payload.email:
         await send_inquiry_confirmation_visitor(db, payload.email, listing.title)
     return {"id": inquiry.id, "status": inquiry.status, "message": "Inquiry submitted"}
-
-
-@router.get("/global-contact")
-async def get_global_contact(db: AsyncSession = Depends(get_db)):
-    res = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == "global_contact_number"))
-    setting = res.scalar_one_or_none()
-    number = setting.setting_value if setting else settings.real_estate_public_phone
-    return {"contact_number": number}
-

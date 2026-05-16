@@ -107,6 +107,20 @@ export async function fetchMyListings() {
   return res.json();
 }
 
+export async function fetchOwnerDashboardSummary() {
+  const res = await apiFetch("/properties/me-summary", {
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) {
+    return { total: 0, pending_review: 0, approved: 0, rejected: 0, recent: [] };
+  }
+  return res.json();
+}
+
 export async function fetchMyListing(listingId: number) {
   const res = await apiFetch(`/properties/me/${listingId}`, {
     cache: "no-store",
@@ -119,6 +133,18 @@ export async function fetchMyListing(listingId: number) {
     return null;
   }
   return res.json() as Promise<PropertyEditorItem>;
+}
+
+export async function fetchMyInquiries() {
+  const res = await apiFetch("/properties/me/inquiries", {
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) return { items: [] };
+  return res.json() as Promise<{ items: any[] }>;
 }
 
 export async function fetchListingImages(listingId: number) {

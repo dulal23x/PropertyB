@@ -24,6 +24,10 @@ class UserResponse(BaseModel):
     full_name: str | None = None
 
 
+class UserUpdateRequest(BaseModel):
+    full_name: str | None = Field(default=None, max_length=120)
+
+
 class PasswordResetRequest(BaseModel):
     email: EmailStr
 

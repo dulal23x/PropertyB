@@ -17,6 +17,7 @@ from app.schemas.auth import (
     RegisterRequest,
     TokenResponse,
     UserResponse,
+    UserUpdateRequest,
 )
 from app.services.email_service import send_password_reset_email, send_welcome_email
 
@@ -47,6 +48,15 @@ async def login(payload: LoginRequest, db: AsyncSession = Depends(get_db)):
 
 @router.get("/me", response_model=UserResponse)
 async def me(current_user: User = Depends(get_current_user)):
+    return UserResponse(id=current_user.id, email=current_user.email, role=current_user.role, full_name=current_user.full_name)
+
+
+@router.patch("/me", response_model=UserResponse)
+async def update_me(payload: UserUpdateRequest, current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
+    if payload.full_name is not None:
+        current_user.full_name = payload.full_name
+    await db.commit()
+    await db.refresh(current_user)
     return UserResponse(id=current_user.id, email=current_user.email, role=current_user.role, full_name=current_user.full_name)
 
 

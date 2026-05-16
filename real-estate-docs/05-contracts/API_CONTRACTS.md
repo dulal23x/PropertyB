@@ -14,6 +14,7 @@
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /auth/me`
+- `PATCH /auth/me`: update owner profile (full_name).
 - `POST /auth/password-reset/request`
 - `GET /auth/password-reset/validate`
 - `POST /auth/password-reset/confirm`
@@ -22,29 +23,43 @@
 - `GET /properties`: approved listing search.
 - `GET /properties/{slug}`: approved listing detail.
 - `POST /properties/{listing_id}/inquiries`: create inquiry for approved listing.
+- `GET /properties/global-contact`: fetch admin-configured contact number.
 - `GET /properties` supports filters for keyword, `listing_purpose` or `purpose`, `property_type` or `type`, location, price ranges, beds/baths, size/land-size, price visibility, sort, page, page_size.
 - Public property responses include business contact fields and `currency`, and must continue to exclude owner private fields.
 
 ## Owner Properties
-- `GET /properties/me`
+- `GET /properties/me`: paginated/filtered list of user's own listings.
+- `GET /properties/me-summary`: stats and recent activity for dashboard.
+- `GET /properties/me/inquiries`: inquiries received for owner's listings.
 - `POST /properties`
 - `GET /properties/me/{listing_id}`
 - `PUT /properties/me/{listing_id}`
 - `POST /properties/me/{listing_id}/submit`
 - `POST /properties/me/{listing_id}/images`
+- `GET /properties/me/{listing_id}/images`
+- `POST /properties/me/{listing_id}/upload-image`
 - `DELETE /properties/me/{listing_id}/images/{image_id}`
 - `DELETE /properties/me/{listing_id}`
 
 ## Admin Properties
 - `GET /admin/properties`
 - `GET /admin/properties/stats`
+- `GET /admin/properties/audit-logs/recent`
 - `GET /admin/properties/{listing_id}`
 - `PATCH /admin/properties/{listing_id}`
 - `POST /admin/properties/{listing_id}/approve`
 - `POST /admin/properties/{listing_id}/reject`
 - `POST /admin/properties/{listing_id}/unpublish`
 - `POST /admin/properties/{listing_id}/archive`
+- `POST /admin/properties/bulk-approve`
+- `POST /admin/properties/bulk-reject`
+- `POST /admin/properties/bulk-unpublish`
+- `POST /admin/properties/bulk-archive`
 - `GET /admin/properties` supports filters for status/type/purpose/city/area/owner_email/keyword and pagination.
+
+## Admin Settings (Global)
+- `GET /admin/settings`: list site configuration keys.
+- `PUT /admin/settings/{setting_key}`: update configuration value.
 
 ## Admin Inquiries
 - `GET /admin/inquiries`

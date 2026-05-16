@@ -22,3 +22,10 @@
 - Decision: Keep `realestate_mvp_v1.db` as the backend default runtime database and treat `bproperty_clone.db` as seed/demo input only.
 - Decision: Normalize frontend API usage around canonical backend query names while keeping compatibility aliases for `purpose` and `type`.
 - Decision: Keep frontend auth as JWT plus lightweight presence cookie in local storage/cookie storage for route guards during MVP.
+- Decision: Use a dedicated `useAuthSession` hook as the source of truth for client-side authentication to avoid stale localStorage reads.
+- Decision: Redirect admins attempting to access `/dashboard` routes to `/admin` to prevent accidental listing creation by administrative accounts.
+- Decision: Implement a "Get a Callback" reveal button to protect the global contact number from low-level scrapers while providing clear CTA.
+- Decision: Use `/me-summary` instead of `/me/summary` to avoid routing collision with `/me/{listing_id}` in FastAPI due to variable path precedence.
+- Decision: Harden `get_current_user` to strictly reject users where `is_active=false`, ensuring admin account-deactivation is enforced immediately at the API layer.
+- Decision: Extract listing form logic into `ListingEditorForm` to ensure create and edit flows stay in sync as new fields are added.
+- Decision: Limit owner-side inquiry visibility to listings they own, excluding sensitive buyer-internal data.

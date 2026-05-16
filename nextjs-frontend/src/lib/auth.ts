@@ -45,3 +45,19 @@ export function authHeaders(): HeadersInit {
   const token = getAuthToken();
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
+
+export async function updateProfile(payload: { full_name: string }) {
+  const res = await apiFetch("/auth/me", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to update profile");
+  }
+  return res.json() as Promise<AuthUser>;
+}
