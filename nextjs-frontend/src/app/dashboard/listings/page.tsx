@@ -116,13 +116,17 @@ export default function MyPropertiesPage() {
                   </td>
                   <td className="p-4 text-right text-sm">
                     <div className="flex justify-end gap-3">
-                      <Link href={`/dashboard/listings/new?id=${item.id}`} className="text-brand-green font-medium hover:underline">Edit</Link>
+                      <Link href={`/dashboard/listings/${item.id}/edit`} className="text-brand-green font-medium hover:underline">Edit</Link>
                       {item.status === 'approved' && item.slug ? (
                         <Link href={`/properties/${item.slug}`} className="text-brand-green font-medium hover:underline">
                           View Public
                         </Link>
                       ) : null}
-                      <button className="text-red-500 font-medium hover:underline" type="button" onClick={() => void removeListing(item.id)}>Delete</button>
+                      {item.status !== 'pending_review' && (
+                        <button className="text-red-500 font-medium hover:underline" type="button" onClick={() => void removeListing(item.id)}>
+                          {item.status === 'approved' || item.status === 'unpublished' ? 'Archive' : 'Delete'}
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
