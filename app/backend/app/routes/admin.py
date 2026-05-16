@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import and_, desc, func, or_, select
@@ -10,7 +10,7 @@ from app.core.deps import require_admin
 from app.db.session import engine, get_db
 from app.models.entities import EmailLog, EmailTemplate, PropertyAuditLog, PropertyImage, PropertyInquiry, PropertyListing, User
 from app.schemas.email import EmailSendRequest, EmailTemplateUpdate
-from app.schemas.admin import AdminUserUpdate
+from app.schemas.admin import AdminUserUpdate, BulkActionRequest
 from app.schemas.properties import AdminNoteRequest, InquiryStatusPatch
 from app.services.email_service import (
     email_server_stats,
@@ -309,6 +309,125 @@ async def admin_archive(listing_id: int, admin: User = Depends(require_admin), d
     add_audit(db, listing.id, admin.id, "archived", old, "archived")
     await db.commit()
     return {"id": listing.id, "status": listing.status}
+
+
+@router.post("/properties/bulk-approve")
+async def admin_bulk_approve(payload: BulkActionRequest, admin: User = Depends(require_admin), db: AsyncSession = Depends(get_db)):
+    if not settings.real_estate_public_phone.strip():
+        raise HTTPException(status_code=400, detail="REAL_ESTATE_PUBLIC_PHONE required")
+    count = 0
+    for listing_id in payload.ids:
+        listing_res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id))
+        listing = listing_res.scalar_one_or_none()
+        if not listing or listing.status == "approved":
+            continue
+        if settings.require_image_for_approval:
+            image_count_q = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
+            if image_count_q.scalar_one() < 1:
+                continue
+        old = listing.status
+        listing.status = "approved"
+        listing.approved_by_user_id = admin.id
+        listing.approved_at = datetime.now(UTC)
+        listing.published_at = datetime.now(UTC)
+        add_audit(db, listing.id, admin.id, "bulk_approved", old, "approved")
+        count += 1
+        owner_res = await db.execute(select(User).where(User.id == listing.owner_user_id))
+        owner = owner_res.scalar_one_or_none()
+        if owner:
+            await send_listing_approved_owner(db, owner.email, listing.title)
+    await db.commit()
+    return {"count": count}
+
+
+@router.post("/properties/bulk-reject")
+async def admin_bulk_reject(payload: BulkActionRequest, admin: User = Depends(require_admin), db: AsyncSession = Depends(get_db)):
+    if not payload.note:
+        raise HTTPException(status_code=400, detail="Rejection note required")
+    count = 0
+    for listing_id in payload.ids:
+        listing_res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id))
+        listing = listing_res.scalar_one_or_none()
+        if not listing or listing.status == "rejected":
+            continue
+        old = listing.status
+        listing.status = "rejected"
+        listing.admin_note = payload.note
+        listing.rejected_at = datetime.now(UTC)
+        add_audit(db, listing.id, admin.id, "bulk_rejected", old, "rejected", payload.note)
+        count += 1
+        owner_res = await db.execute(select(User).where(User.id == listing.owner_user_id))
+        owner = owner_res.scalar_one_or_none()
+        if owner:
+            await send_listing_rejected_owner(db, owner.email, listing.title, payload.note)
+    await db.commit()
+    return {"count": count}
+
+
+@router.post("/properties/bulk-unpublish")
+async def admin_bulk_unpublish(payload: BulkActionRequest, admin: User = Depends(require_admin), db: AsyncSession = Depends(get_db)):
+    count = 0
+    for listing_id in payload.ids:
+        listing_res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id))
+        listing = listing_res.scalar_one_or_none()
+        if not listing or listing.status == "unpublished":
+            continue
+        old = listing.status
+        listing.status = "unpublished"
+        listing.unpublished_at = datetime.now(UTC)
+        if payload.note:
+            listing.admin_note = payload.note
+        add_audit(db, listing.id, admin.id, "bulk_unpublished", old, "unpublished", payload.note)
+        count += 1
+        owner_res = await db.execute(select(User).where(User.id == listing.owner_user_id))
+        owner = owner_res.scalar_one_or_none()
+        if owner:
+            await send_listing_unpublished_owner(db, owner.email, listing.title, payload.note)
+    await db.commit()
+    return {"count": count}
+
+
+@router.post("/properties/bulk-archive")
+async def admin_bulk_archive(payload: BulkActionRequest, admin: User = Depends(require_admin), db: AsyncSession = Depends(get_db)):
+    count = 0
+    for listing_id in payload.ids:
+        listing_res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id))
+        listing = listing_res.scalar_one_or_none()
+        if not listing or listing.status == "archived":
+            continue
+        old = listing.status
+        listing.status = "archived"
+        add_audit(db, listing.id, admin.id, "bulk_archived", old, "archived")
+        count += 1
+    await db.commit()
+    return {"count": count}
+
+
+@router.get("/properties/audit-logs/recent")
+async def admin_recent_audit_logs(db: AsyncSession = Depends(get_db)):
+    since = datetime.now(UTC) - timedelta(hours=24)
+    result = await db.execute(
+        select(PropertyAuditLog, User.email, PropertyListing.title)
+        .join(User, User.id == PropertyAuditLog.actor_user_id)
+        .join(PropertyListing, PropertyListing.id == PropertyAuditLog.listing_id)
+        .where(PropertyAuditLog.created_at >= since)
+        .order_by(desc(PropertyAuditLog.created_at))
+        .limit(50)
+    )
+    return [
+        {
+            "id": log.id,
+            "action": log.action,
+            "listing_id": log.listing_id,
+            "listing_title": title,
+            "actor_email": email,
+            "from_status": log.from_status,
+            "to_status": log.to_status,
+            "note": log.note,
+            "created_at": log.created_at
+        }
+        for log, email, title in result.all()
+    ]
 
 
 @router.get("/inquiries")

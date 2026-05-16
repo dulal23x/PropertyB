@@ -32,7 +32,13 @@ export default function LoginPage() {
         });
         const user = meRes.ok ? await meRes.json() : null;
         setAuthSession({ ...tokenData, user });
-        window.location.href = '/dashboard';
+        
+        // Role-aware redirect
+        if (user?.role === 'admin') {
+          window.location.href = '/admin';
+        } else {
+          window.location.href = '/dashboard/listings';
+        }
       } else {
         const data = await res.json().catch(() => null);
         setError(data?.detail || 'Invalid credentials');

@@ -121,6 +121,52 @@ export async function fetchMyListing(listingId: number) {
   return res.json() as Promise<PropertyEditorItem>;
 }
 
+export async function fetchListingImages(listingId: number) {
+  const res = await apiFetch(`/properties/me/${listingId}/images`, {
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) return [];
+  return res.json() as Promise<any[]>;
+}
+
+export async function uploadListingImage(listingId: number, file: File, isCover: boolean = false) {
+  const formData = new FormData();
+  formData.append("file", file);
+  
+  const res = await apiFetch(`/properties/me/${listingId}/upload-image?is_cover=${isCover}`, {
+    method: "POST",
+    headers: {
+      ...authHeaders(),
+    },
+    body: formData,
+  });
+  
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to upload image");
+  }
+  return res.json();
+}
+
+export async function deleteListingImage(listingId: number, imageId: number) {
+  const res = await apiFetch(`/properties/me/${listingId}/images/${imageId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to delete image");
+  }
+  return res.json();
+}
+
 export async function createListing(payload: Record<string, unknown>) {
   const res = await apiFetch("/properties", {
     method: "POST",

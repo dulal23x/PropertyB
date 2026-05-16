@@ -10,6 +10,7 @@ import {
   updateMyListing,
   type PropertyEditorItem,
 } from "@/lib/property-api";
+import ListingImageUploader from "@/components/property/ListingImageUploader";
 
 type FormState = {
   title: string;
@@ -283,10 +284,7 @@ export default function NewListingPage() {
 
         <section>
           <h2 className="mb-4 border-b pb-2 text-lg font-bold text-gray-800">Images</h2>
-          <div className="cursor-pointer rounded-lg border-2 border-dashed border-gray-300 p-12 text-center transition-colors hover:bg-gray-50">
-            <p className="font-medium text-gray-600">Image upload will be wired in the next step</p>
-            <p className="mt-1 text-xs text-gray-500">PNG, JPG, WEBP up to 5MB each</p>
-          </div>
+          <ListingImageUploader listingId={existingId} />
         </section>
 
         <div className="flex justify-end gap-4 border-t pt-4">

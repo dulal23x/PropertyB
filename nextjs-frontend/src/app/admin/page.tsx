@@ -9,6 +9,7 @@ import {
   fetchAdminInquiries,
   fetchAdminListings,
   fetchAdminStats,
+  fetchRecentAuditLogs,
 } from "@/lib/admin-api";
 
 function StatCard({ label, value, tone = "emerald" }: { label: string; value: number; tone?: "emerald" | "amber" | "rose" | "sky" }) {
@@ -30,19 +31,22 @@ export default function AdminOverviewPage() {
   const [stats, setStats] = useState<AdminStats>({});
   const [pending, setPending] = useState<AdminListing[]>([]);
   const [inquiries, setInquiries] = useState<AdminInquiry[]>([]);
+  const [recentLogs, setRecentLogs] = useState<any[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const load = async () => {
       try {
-        const [statsData, pendingData, inquiryData] = await Promise.all([
+        const [statsData, pendingData, inquiryData, logsData] = await Promise.all([
           fetchAdminStats(),
           fetchAdminListings("status=pending_review&page_size=5"),
           fetchAdminInquiries("status=new&page_size=5"),
+          fetchRecentAuditLogs(),
         ]);
         setStats(statsData);
         setPending(pendingData.items || []);
         setInquiries(inquiryData.items || []);
+        setRecentLogs(logsData || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load admin dashboard");
       }
@@ -80,10 +84,10 @@ export default function AdminOverviewPage() {
         <StatCard label="Emails Today" value={stats.emails_sent_today || 0} tone="sky" />
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-2">
+      <section className="grid gap-6 xl:grid-cols-3">
         <div className="rounded-3xl border border-white/10 bg-white p-5 text-slate-900">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-black">Latest Pending Listings</h3>
+            <h3 className="text-lg font-black">Latest Pending</h3>
             <Link href="/admin/properties" className="text-sm font-bold text-emerald-700 hover:underline">View all</Link>
           </div>
           <div className="space-y-3">
@@ -91,10 +95,10 @@ export default function AdminOverviewPage() {
               <p className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500">No pending listings.</p>
             ) : (
               pending.map((item) => (
-                <Link key={item.id} href={`/admin/properties/${item.id}`} className="block rounded-2xl border border-slate-100 p-4 hover:border-emerald-300">
-                  <p className="font-black">{item.title}</p>
-                  <p className="mt-1 text-sm text-slate-500">
-                    {item.owner_email || "Unknown owner"} | {item.area_name || item.city || "Unknown area"}
+                <Link key={item.id} href={`/admin/properties/${item.id}`} className="block rounded-2xl border border-slate-100 p-3 hover:border-emerald-300">
+                  <p className="text-sm font-black">{item.title}</p>
+                  <p className="mt-0.5 text-[10px] text-slate-500 uppercase font-bold tracking-wider">
+                    {item.area_name || item.city}
                   </p>
                 </Link>
               ))
@@ -104,7 +108,7 @@ export default function AdminOverviewPage() {
 
         <div className="rounded-3xl border border-white/10 bg-white p-5 text-slate-900">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-black">Latest New Inquiries</h3>
+            <h3 className="text-lg font-black">Latest Inquiries</h3>
             <Link href="/admin/inquiries" className="text-sm font-bold text-emerald-700 hover:underline">View all</Link>
           </div>
           <div className="space-y-3">
@@ -112,9 +116,31 @@ export default function AdminOverviewPage() {
               <p className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500">No new inquiries.</p>
             ) : (
               inquiries.map((item) => (
-                <div key={item.id} className="rounded-2xl border border-slate-100 p-4">
-                  <p className="font-black">{item.name}</p>
-                  <p className="mt-1 text-sm text-slate-500">{item.phone} | {item.listing_title || `Listing #${item.listing_id}`}</p>
+                <div key={item.id} className="rounded-2xl border border-slate-100 p-3">
+                  <p className="text-sm font-black">{item.name}</p>
+                  <p className="mt-0.5 text-[10px] text-slate-500 uppercase font-bold tracking-wider">{item.listing_title || `Listing #${item.listing_id}`}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-white/10 bg-white p-5 text-slate-900">
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-lg font-black">24h Event Stream</h3>
+          </div>
+          <div className="max-h-[300px] space-y-3 overflow-y-auto pr-1">
+            {recentLogs.length === 0 ? (
+              <p className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500">No recent activity.</p>
+            ) : (
+              recentLogs.map((log) => (
+                <div key={log.id} className="rounded-2xl border border-slate-50 bg-slate-50/50 p-3 text-xs">
+                  <div className="flex justify-between">
+                    <span className="font-black uppercase text-emerald-700">{log.action.replace('_', ' ')}</span>
+                    <span className="text-slate-400">{new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
+                  <p className="mt-1 font-bold text-slate-700 truncate">{log.listing_title}</p>
+                  <p className="mt-0.5 text-[10px] text-slate-500 italic">By: {log.actor_email}</p>
                 </div>
               ))
             )}

@@ -2,9 +2,10 @@ import hashlib
 import re
 from datetime import UTC, datetime
 from decimal import Decimal
+from pathlib import Path
 from urllib.parse import urlparse
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, File, UploadFile
 from sqlalchemy import and_, asc, desc, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -324,6 +325,83 @@ async def add_image(listing_id: int, payload: ImageCreate, current_user: User = 
     await db.commit()
     await db.refresh(image)
     return {"id": image.id, "listing_id": image.listing_id, "public_url": image.public_url, "alt_text": image.alt_text, "is_cover": image.is_cover}
+
+
+@router.get("/me/{listing_id}/images")
+async def get_listing_images(listing_id: int, current_user: User = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
+    res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id, PropertyListing.owner_user_id == current_user.id))
+    listing = res.scalar_one_or_none()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    images = await db.execute(
+        select(PropertyImage).where(PropertyImage.listing_id == listing_id).order_by(desc(PropertyImage.is_cover), asc(PropertyImage.sort_order), desc(PropertyImage.created_at))
+    )
+    return [{"id": x.id, "public_url": x.public_url, "alt_text": x.alt_text, "is_cover": x.is_cover} for x in images.scalars().all()]
+
+
+@router.post("/me/{listing_id}/upload-image")
+async def upload_image(
+    listing_id: int,
+    file: UploadFile = File(...),
+    is_cover: bool = Query(default=False),
+    alt_text: str | None = Query(default=None),
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id, PropertyListing.owner_user_id == current_user.id))
+    listing = res.scalar_one_or_none()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    
+    # Check limits
+    count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
+    if count_res.scalar_one() >= settings.property_image_max_count:
+        raise HTTPException(status_code=400, detail="Image limit reached")
+
+    # Extension check
+    ext = file.filename.split(".")[-1].lower() if file.filename and "." in file.filename else ""
+    allowed_exts = {x.strip().lower() for x in settings.property_image_allowed_extensions.split(",") if x.strip()}
+    if ext not in allowed_exts:
+        raise HTTPException(status_code=400, detail="Unsupported image extension")
+
+    # Storage path
+    image_id = int(datetime.now(UTC).timestamp())
+    filename = f"{image_id}.{ext}"
+    rel_path = f"{listing.id}/{filename}"
+    abs_dir = PROPERTY_IMAGE_DIR / str(listing.id)
+    abs_dir.mkdir(parents=True, exist_ok=True)
+    abs_path = abs_dir / filename
+
+    content = await file.read()
+    if len(content) > settings.property_image_max_bytes:
+        raise HTTPException(status_code=400, detail="File too large")
+
+    with open(abs_path, "wb") as f:
+        f.write(content)
+
+    public_url = f"/images/{rel_path}"
+
+    if is_cover:
+        # Unset previous covers
+        await db.execute(
+            PropertyImage.__table__.update()
+            .where(PropertyImage.listing_id == listing.id)
+            .values(is_cover=False)
+        )
+
+    image = PropertyImage(
+        listing_id=listing.id,
+        storage_path=f"userdata/property-images/{rel_path}",
+        public_url=public_url,
+        alt_text=alt_text,
+        is_cover=is_cover,
+        uploaded_by_user_id=current_user.id,
+    )
+    db.add(image)
+    db.add(PropertyAuditLog(listing_id=listing.id, actor_user_id=current_user.id, action="image_added"))
+    await db.commit()
+    await db.refresh(image)
+    return {"id": image.id, "public_url": image.public_url, "is_cover": image.is_cover}
 
 
 @router.delete("/me/{listing_id}/images/{image_id}")

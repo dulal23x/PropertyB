@@ -131,6 +131,10 @@ export function fetchAdminStats() {
   return adminJson<AdminStats>("/admin/properties/stats");
 }
 
+export function fetchRecentAuditLogs() {
+  return adminJson<any[]>("/admin/properties/audit-logs/recent");
+}
+
 export function fetchAdminListings(query = "status=pending_review") {
   return adminJson<AdminListResponse<AdminListing>>(`/admin/properties?${query}`);
 }
@@ -159,6 +163,34 @@ export function unpublishListing(id: number, note?: string) {
 
 export function archiveListing(id: number) {
   return adminJson<{ id: number; status: string }>(`/admin/properties/${id}/archive`, { method: "POST" });
+}
+
+export function bulkApproveListings(ids: number[]) {
+  return adminJson<{ count: number }>("/admin/properties/bulk-approve", {
+    method: "POST",
+    body: JSON.stringify({ ids }),
+  });
+}
+
+export function bulkRejectListings(ids: number[], note: string) {
+  return adminJson<{ count: number }>("/admin/properties/bulk-reject", {
+    method: "POST",
+    body: JSON.stringify({ ids, note }),
+  });
+}
+
+export function bulkUnpublishListings(ids: number[], note?: string) {
+  return adminJson<{ count: number }>("/admin/properties/bulk-unpublish", {
+    method: "POST",
+    body: JSON.stringify({ ids, note: note || null }),
+  });
+}
+
+export function bulkArchiveListings(ids: number[]) {
+  return adminJson<{ count: number }>("/admin/properties/bulk-archive", {
+    method: "POST",
+    body: JSON.stringify({ ids }),
+  });
 }
 
 export function fetchAdminInquiries(query = "status=new") {
