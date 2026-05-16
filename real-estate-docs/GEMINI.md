@@ -24,3 +24,4 @@ Read this file first only as a tool-specific entrypoint. Canonical rules live in
 - Admin approval is required before publication.
 - The project DB is `realestate_mvp_v1.db`.
 - `C:\ClearlyHired` is source/reference only; do not mutate it.
+- Do not commit or push anything without the user's explicit permission.

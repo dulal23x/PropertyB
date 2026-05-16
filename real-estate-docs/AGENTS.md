@@ -26,6 +26,7 @@ Root operating guide for agents working on the future real estate marketplace pr
 - Admin dashboard owns approval, rejection, unpublish, inquiry review, user management, and email operations.
 - Email secrets stay in backend runtime environment only. Never write them to docs, frontend files, logs, or commits.
 - Update contracts whenever API/schema/storage/routes change.
+- Do not commit or push anything without the user's explicit permission.
 
 ## Editable Zones After Clone
 - `backend/app/**`

@@ -17,6 +17,7 @@ Build a Bangladesh-style real estate MVP similar in scope to the essential listi
 8. Secrets stay in backend runtime env and are never committed.
 9. Contract docs must be updated with any API/schema/storage/route change.
 10. Do not restore resume/job/parser/team job-search logic as product surface.
+11. Do not commit or push anything without the user's explicit permission.
 
 ## Tiered Discovery
 ### Tier 1 - Every Session

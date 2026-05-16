@@ -25,3 +25,5 @@
 ## Rule
 If a file appears safe by folder but is generated, secret-bearing, or reference-only, the more restrictive rule wins.
 
+## Git Publishing Rule
+- Do not commit or push anything without the user's explicit permission.
