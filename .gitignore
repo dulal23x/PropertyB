@@ -1,0 +1,49 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+next-env.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local runtime / databases
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.log
+
+# Build / cache
+.cache/
+.turbo/
+
+# Local backups / runtime data
+.repo-archive/
+app/backend/userdata/
