@@ -39,6 +39,42 @@ export type PropertyListResponse = {
   total: number;
 };
 
+export type PropertyEditorItem = {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  listing_purpose: string;
+  property_type: string;
+  division?: string | null;
+  district?: string | null;
+  city?: string | null;
+  area_name?: string | null;
+  display_address?: string | null;
+  price_amount?: number | null;
+  price_label?: string | null;
+  price_visibility?: string;
+  price_period?: string | null;
+  bedrooms?: number | null;
+  bathrooms?: number | null;
+  balconies?: number | null;
+  parking_spaces?: number | null;
+  floor_number?: number | null;
+  total_floors?: number | null;
+  size_value?: number | null;
+  size_unit?: string | null;
+  land_size_value?: number | null;
+  land_size_unit?: string | null;
+  plot_type?: string | null;
+  facing?: string | null;
+  handover_status?: string | null;
+  handover_date?: string | null;
+  furnishing_status?: string | null;
+  owner_note?: string | null;
+  admin_note?: string | null;
+  status?: string;
+};
+
 export async function fetchProperties(query: string) {
   const res = await apiFetch(`/properties?${query}`, {
     cache: "no-store",
@@ -69,6 +105,82 @@ export async function fetchMyListings() {
     return { items: [] };
   }
   return res.json();
+}
+
+export async function fetchMyListing(listingId: number) {
+  const res = await apiFetch(`/properties/me/${listingId}`, {
+    cache: "no-store",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) {
+    return null;
+  }
+  return res.json() as Promise<PropertyEditorItem>;
+}
+
+export async function createListing(payload: Record<string, unknown>) {
+  const res = await apiFetch("/properties", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to create listing");
+  }
+  return res.json() as Promise<PropertyEditorItem>;
+}
+
+export async function updateMyListing(listingId: number, payload: Record<string, unknown>) {
+  const res = await apiFetch(`/properties/me/${listingId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to update listing");
+  }
+  return res.json() as Promise<PropertyEditorItem>;
+}
+
+export async function submitMyListing(listingId: number) {
+  const res = await apiFetch(`/properties/me/${listingId}/submit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to submit listing");
+  }
+  return res.json() as Promise<{ id: number; status: string }>;
+}
+
+export async function deleteMyListing(listingId: number) {
+  const res = await apiFetch(`/properties/me/${listingId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders(),
+    },
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(data?.detail || "Failed to delete listing");
+  }
+  return res.json() as Promise<{ deleted?: boolean; archived?: boolean }>;
 }
 
 export function propertyImageUrl(path: string) {

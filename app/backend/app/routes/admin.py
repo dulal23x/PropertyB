@@ -27,20 +27,48 @@ def add_audit(db: AsyncSession, listing_id: int, actor_user_id: int, action: str
     db.add(PropertyAuditLog(listing_id=listing_id, actor_user_id=actor_user_id, action=action, from_status=from_status, to_status=to_status, note=note))
 
 
-def listing_shape(l: PropertyListing) -> dict:
+def listing_shape(
+    l: PropertyListing,
+    owner_email: str | None = None,
+    cover_image_url: str | None = None,
+    image_count: int | None = None,
+) -> dict:
     return {
         "id": l.id,
         "owner_user_id": l.owner_user_id,
+        "owner_email": owner_email,
         "title": l.title,
         "slug": l.slug,
+        "description": l.description,
         "status": l.status,
         "listing_purpose": l.listing_purpose,
         "property_type": l.property_type,
+        "property_subtype": l.property_subtype,
+        "division": l.division,
+        "district": l.district,
         "city": l.city,
         "area_name": l.area_name,
+        "display_address": l.display_address,
+        "address_line": l.address_line,
         "price_amount": l.price_amount,
+        "price_label": l.price_label,
         "price_visibility": l.price_visibility,
+        "currency": l.currency,
+        "price_period": l.price_period,
+        "bedrooms": l.bedrooms,
+        "bathrooms": l.bathrooms,
+        "balconies": l.balconies,
+        "parking_spaces": l.parking_spaces,
+        "floor_number": l.floor_number,
+        "total_floors": l.total_floors,
+        "size_value": l.size_value,
+        "size_unit": l.size_unit,
+        "land_size_value": l.land_size_value,
+        "land_size_unit": l.land_size_unit,
+        "featured": l.featured,
         "admin_note": l.admin_note,
+        "cover_image_url": cover_image_url,
+        "image_count": image_count,
         "created_at": l.created_at,
         "updated_at": l.updated_at,
     }
@@ -99,7 +127,26 @@ async def admin_properties(
     rows = await db.execute(
         select(PropertyListing).where(where).order_by(desc(PropertyListing.updated_at)).offset((page - 1) * page_size).limit(page_size)
     )
-    return {"items": [listing_shape(x) for x in rows.scalars().all()], "page": page, "page_size": page_size, "total": total}
+    items = []
+    for listing in rows.scalars().all():
+        owner_res = await db.execute(select(User.email).where(User.id == listing.owner_user_id))
+        image_res = await db.execute(
+            select(PropertyImage)
+            .where(PropertyImage.listing_id == listing.id)
+            .order_by(desc(PropertyImage.is_cover), desc(PropertyImage.created_at))
+            .limit(1)
+        )
+        count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
+        cover = image_res.scalar_one_or_none()
+        items.append(
+            listing_shape(
+                listing,
+                owner_email=owner_res.scalar_one_or_none(),
+                cover_image_url=cover.public_url if cover else None,
+                image_count=count_res.scalar_one(),
+            )
+        )
+    return {"items": items, "page": page, "page_size": page_size, "total": total}
 
 
 @router.get("/users")
@@ -135,12 +182,15 @@ async def admin_update_user(user_id: int, payload: AdminUserUpdate, db: AsyncSes
 async def admin_property_stats(db: AsyncSession = Depends(get_db)):
     counts = {}
     for s in ["pending_review", "approved", "rejected", "unpublished", "archived", "draft"]:
-        q = await db.execute(select(func.count()).where(PropertyListing.status == s))
+        q = await db.execute(select(func.count()).select_from(PropertyListing).where(PropertyListing.status == s))
         counts[s] = q.scalar_one()
-    inq = await db.execute(select(func.count()).where(PropertyInquiry.status == "new"))
+    inq = await db.execute(select(func.count()).select_from(PropertyInquiry).where(PropertyInquiry.status == "new"))
     users = await db.execute(select(func.count()).select_from(User))
+    today_start = datetime.now(UTC).replace(hour=0, minute=0, second=0, microsecond=0)
+    emails = await db.execute(select(func.count()).select_from(EmailLog).where(EmailLog.created_at >= today_start))
     counts["new_inquiries"] = inq.scalar_one()
     counts["total_users"] = users.scalar_one()
+    counts["emails_sent_today"] = emails.scalar_one()
     return counts
 
 
@@ -154,10 +204,17 @@ async def admin_property_detail(listing_id: int, db: AsyncSession = Depends(get_
     owner = owner_res.scalar_one_or_none()
     image_res = await db.execute(select(PropertyImage).where(PropertyImage.listing_id == listing.id).order_by(desc(PropertyImage.is_cover), desc(PropertyImage.created_at)))
     audit_res = await db.execute(select(PropertyAuditLog).where(PropertyAuditLog.listing_id == listing.id).order_by(desc(PropertyAuditLog.created_at)))
+    images = image_res.scalars().all()
+    cover = images[0] if images else None
     return {
-        "listing": listing_shape(listing),
+        "listing": listing_shape(
+            listing,
+            owner_email=owner.email if owner else None,
+            cover_image_url=cover.public_url if cover else None,
+            image_count=len(images),
+        ),
         "owner": {"id": owner.id, "email": owner.email, "full_name": owner.full_name} if owner else None,
-        "images": [{"id": x.id, "public_url": x.public_url, "is_cover": x.is_cover} for x in image_res.scalars().all()],
+        "images": [{"id": x.id, "public_url": x.public_url, "is_cover": x.is_cover} for x in images],
         "audit_logs": [{"id": x.id, "action": x.action, "from_status": x.from_status, "to_status": x.to_status, "note": x.note, "created_at": x.created_at} for x in audit_res.scalars().all()],
     }
 

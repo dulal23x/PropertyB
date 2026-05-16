@@ -1,6 +1,7 @@
 import uuid
 from contextlib import asynccontextmanager
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -19,6 +20,7 @@ from app.core.security import hash_password
 from sqlalchemy import select
 
 logger = logging.getLogger("realestate.backend")
+PROPERTY_IMAGE_DIR = Path("userdata/property-images")
 
 
 @asynccontextmanager
@@ -66,4 +68,5 @@ app.include_router(properties.router)
 app.include_router(admin.router)
 
 # Static file serving for property images
-app.mount("/images", StaticFiles(directory="userdata/property-images"), name="images")
+PROPERTY_IMAGE_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/images", StaticFiles(directory=str(PROPERTY_IMAGE_DIR)), name="images")

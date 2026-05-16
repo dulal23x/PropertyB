@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { fetchMyListings } from '@/lib/property-api';
+import { deleteMyListing, fetchMyListings } from '@/lib/property-api';
 import { getAuthSession } from '@/lib/auth';
 
 type ListingRow = {
   id: number;
+  slug?: string;
   title: string;
   status: string;
   listing_purpose: string;
@@ -25,6 +26,18 @@ export default function MyPropertiesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  const loadListings = async () => {
+    setLoading(true);
+    const data = await fetchMyListings();
+    if ('items' in data) {
+      setListings(data.items || []);
+      setError('');
+    } else {
+      setError('Failed to load listings');
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     const session = getAuthSession();
     if (!session?.access_token) {
@@ -32,20 +45,18 @@ export default function MyPropertiesPage() {
       return;
     }
 
-    const load = async () => {
-      setLoading(true);
-      const data = await fetchMyListings();
-      if ('items' in data) {
-        setListings(data.items || []);
-        setError('');
-      } else {
-        setError('Failed to load listings');
-      }
-      setLoading(false);
-    };
-
-    load();
+    void loadListings();
   }, []);
+
+  const removeListing = async (id: number) => {
+    if (!window.confirm('Delete or archive this listing?')) return;
+    try {
+      await deleteMyListing(id);
+      await loadListings();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete listing');
+    }
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-brand-border p-6">
@@ -85,7 +96,7 @@ export default function MyPropertiesPage() {
                   <td className="p-4">
                     <p className="font-bold text-gray-800">{item.title}</p>
                     <p className="text-xs text-gray-500 capitalize">
-                      {item.listing_purpose} · {item.property_type} · {item.area_name || item.city || 'Unknown area'}
+                      {item.listing_purpose} | {item.property_type} | {item.area_name || item.city || 'Unknown area'}
                     </p>
                     <p className="text-xs text-gray-500">ID: {item.id}</p>
                   </td>
@@ -103,9 +114,16 @@ export default function MyPropertiesPage() {
                       {(item.status || 'draft').replace('_', ' ').toUpperCase()}
                     </span>
                   </td>
-                  <td className="p-4 text-right space-x-3 text-sm">
-                    <Link href={`/dashboard/listings/new?id=${item.id}`} className="text-brand-green font-medium hover:underline">Edit</Link>
-                    <button className="text-red-500 font-medium hover:underline" type="button">Delete</button>
+                  <td className="p-4 text-right text-sm">
+                    <div className="flex justify-end gap-3">
+                      <Link href={`/dashboard/listings/new?id=${item.id}`} className="text-brand-green font-medium hover:underline">Edit</Link>
+                      {item.status === 'approved' && item.slug ? (
+                        <Link href={`/properties/${item.slug}`} className="text-brand-green font-medium hover:underline">
+                          View Public
+                        </Link>
+                      ) : null}
+                      <button className="text-red-500 font-medium hover:underline" type="button" onClick={() => void removeListing(item.id)}>Delete</button>
+                    </div>
                   </td>
                 </tr>
               ))}
