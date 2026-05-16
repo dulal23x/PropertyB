@@ -232,3 +232,12 @@ export async function deleteMyListing(listingId: number) {
 export function propertyImageUrl(path: string) {
   return apiUrl(path);
 }
+
+export async function fetchGlobalContactNumber(): Promise<string> {
+  const res = await apiFetch("/properties/global-contact", { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Failed to fetch contact number");
+  }
+  const data = await res.json();
+  return data.contact_number;
+}

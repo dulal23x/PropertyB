@@ -241,3 +241,23 @@ export function sendAdminEmail(payload: { to_email: string; subject: string; bod
     body: JSON.stringify(payload),
   });
 }
+
+export type SiteSetting = {
+  id: number;
+  setting_key: string;
+  setting_value: string;
+  description: string | null;
+  updated_at: string;
+};
+
+export function fetchSiteSettings() {
+  return adminJson<{ items: SiteSetting[] }>("/admin/settings");
+}
+
+export function updateSiteSetting(key: string, value: string) {
+  return adminJson<SiteSetting>(`/admin/settings/${key}`, {
+    method: "PUT",
+    body: JSON.stringify({ value }),
+  });
+}
+

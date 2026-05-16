@@ -2,8 +2,26 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAuthSession } from "@/lib/use-auth-session";
 
 export default function Navbar() {
+  const { loading, isAuthenticated, isAdmin, dashboardHref } = useAuthSession();
+  
+  const accountLabel = loading
+    ? "Account"
+    : isAuthenticated
+      ? isAdmin
+        ? "Admin Dashboard"
+        : "Dashboard"
+      : "Sign In / Sign Up";
+  
+  const accountHref = isAuthenticated ? dashboardHref : "/auth/login";
+  const postPropertyHref = isAuthenticated
+    ? isAdmin
+      ? "/admin/properties"
+      : "/dashboard/listings/new"
+    : "/post-property";
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-brand-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,19 +51,18 @@ export default function Navbar() {
                <button className="hover:text-brand-green transition-colors">BN</button>
             </div>
 
-            <Link href="/dashboard/listings/new" className="hidden sm:inline-flex items-center justify-center px-6 py-2 bg-brand-green text-white text-[12px] font-black uppercase tracking-widest rounded shadow-lg shadow-brand-green/20 hover:bg-brand-greenHover transition-all">
+            <Link href={postPropertyHref} className="hidden sm:inline-flex items-center justify-center px-6 py-2 bg-brand-green text-white text-[12px] font-black uppercase tracking-widest rounded shadow-lg shadow-brand-green/20 hover:bg-brand-greenHover transition-all">
               Post Property
             </Link>
             
-            <Link href="/auth/login" className="flex items-center gap-2 text-brand-dark hover:text-brand-green transition-colors group">
+            <Link href={accountHref} className="flex items-center gap-2 text-brand-dark hover:text-brand-green transition-colors group">
               <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-brand-green">
-                {/* Inline SVG User Icon */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-brand-green">
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
               </div>
-              <span className="text-[12px] font-black uppercase tracking-widest hidden lg:inline">Sign In / Sign Up</span>
+              <span className="text-[12px] font-black uppercase tracking-widest hidden lg:inline">{accountLabel}</span>
             </Link>
           </div>
         </div>

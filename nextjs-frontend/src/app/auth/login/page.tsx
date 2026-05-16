@@ -37,7 +37,7 @@ export default function LoginPage() {
         if (user?.role === 'admin') {
           window.location.href = '/admin';
         } else {
-          window.location.href = '/dashboard/listings';
+          window.location.href = '/dashboard';
         }
       } else {
         const data = await res.json().catch(() => null);

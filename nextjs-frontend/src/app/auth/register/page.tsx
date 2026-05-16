@@ -28,7 +28,13 @@ export default function RegisterPage() {
       });
       if (res.ok) {
         const tokenData = await res.json();
-        setAuthSession({ ...tokenData, user: null });
+        const meRes = await apiFetch('/auth/me', {
+          headers: {
+            Authorization: `Bearer ${tokenData.access_token}`,
+          },
+        });
+        const user = meRes.ok ? await meRes.json() : null;
+        setAuthSession({ ...tokenData, user });
         setSuccess('Account created successfully! Redirecting to dashboard...');
         setTimeout(() => {
           window.location.href = '/dashboard';

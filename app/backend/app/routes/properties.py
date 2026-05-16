@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.deps import get_current_user
 from app.db.session import get_db
-from app.models.entities import PropertyAuditLog, PropertyImage, PropertyInquiry, PropertyListing, User
+from app.models.entities import PropertyAuditLog, PropertyImage, PropertyInquiry, PropertyListing, User, SiteSettings
 from app.schemas.properties import ImageCreate, InquiryCreate, PropertyCreate, PropertyUpdate
 from app.services.property_policies import can_owner_edit, ensure_publicly_visible, validate_listing_type_rules
 from app.services.email_service import (
@@ -439,6 +439,14 @@ async def delete_listing(listing_id: int, current_user: User = Depends(get_curre
     raise HTTPException(status_code=400, detail="Listing cannot be deleted in current status")
 
 
+@router.get("/global-contact")
+async def get_global_contact(db: AsyncSession = Depends(get_db)):
+    res = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == "global_contact_number"))
+    setting = res.scalar_one_or_none()
+    number = setting.setting_value if setting else settings.real_estate_public_phone
+    return {"contact_number": number}
+
+
 @router.get("/{slug}")
 async def detail_public(slug: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(PropertyListing).where(PropertyListing.slug == slug, PropertyListing.status == "approved"))
@@ -474,3 +482,12 @@ async def create_inquiry(listing_id: int, payload: InquiryCreate, request: Reque
     if payload.email:
         await send_inquiry_confirmation_visitor(db, payload.email, listing.title)
     return {"id": inquiry.id, "status": inquiry.status, "message": "Inquiry submitted"}
+
+
+@router.get("/global-contact")
+async def get_global_contact(db: AsyncSession = Depends(get_db)):
+    res = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == "global_contact_number"))
+    setting = res.scalar_one_or_none()
+    number = setting.setting_value if setting else settings.real_estate_public_phone
+    return {"contact_number": number}
+

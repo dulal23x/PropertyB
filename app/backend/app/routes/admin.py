@@ -8,9 +8,9 @@ from app.core.config import settings
 from app.db.bootstrap import find_legacy_candidate_tables, get_v2_drift_counts
 from app.core.deps import require_admin
 from app.db.session import engine, get_db
-from app.models.entities import EmailLog, EmailTemplate, PropertyAuditLog, PropertyImage, PropertyInquiry, PropertyListing, User
+from app.models.entities import EmailLog, EmailTemplate, PropertyAuditLog, PropertyImage, PropertyInquiry, PropertyListing, User, SiteSettings
 from app.schemas.email import EmailSendRequest, EmailTemplateUpdate
-from app.schemas.admin import AdminUserUpdate, BulkActionRequest
+from app.schemas.admin import AdminUserUpdate, BulkActionRequest, SettingUpdateSchema
 from app.schemas.properties import AdminNoteRequest, InquiryStatusPatch
 from app.services.email_service import (
     email_server_stats,
@@ -574,3 +574,20 @@ async def migration_v2_status():
 @router.get("/migration/legacy-candidates")
 async def legacy_candidates():
     return {"tables": await find_legacy_candidate_tables(engine)}
+
+
+@router.get("/settings")
+async def get_admin_settings(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(SiteSettings).order_by(SiteSettings.setting_key.asc()))
+    return {"items": [{"id": x.id, "setting_key": x.setting_key, "setting_value": x.setting_value, "description": x.description, "updated_at": x.updated_at} for x in result.scalars().all()]}
+
+
+@router.put("/settings/{setting_key}")
+async def update_admin_setting(setting_key: str, payload: SettingUpdateSchema, db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(SiteSettings).where(SiteSettings.setting_key == setting_key))
+    setting = result.scalar_one_or_none()
+    if not setting:
+        raise HTTPException(status_code=404, detail="Setting not found")
+    setting.setting_value = payload.value
+    await db.commit()
+    return {"id": setting.id, "setting_key": setting.setting_key, "setting_value": setting.setting_value, "description": setting.description, "updated_at": setting.updated_at}

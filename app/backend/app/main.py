@@ -31,7 +31,7 @@ async def lifespan(_: FastAPI):
     async with SessionLocal() as db:
         await ensure_default_templates(db)
         admin_exists = await db.execute(select(User).where(User.role == "admin"))
-        if not admin_exists.scalar_one_or_none():
+        if not admin_exists.first():
             db.add(User(email="admin@realestate.com", password_hash=hash_password("Admin12345!"), role="admin", full_name="Default Admin"))
             await db.commit()
     logger.info("startup_ok db=%s email_provider=%s port=%s", settings.database_url.split("/")[-1], settings.email_provider, settings.port)

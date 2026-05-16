@@ -1,16 +1,29 @@
 "use client";
 
 import Link from 'next/link';
-import { clearAuthSession, getAuthSession } from '@/lib/auth';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useAuthSession } from '@/lib/use-auth-session';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [name, setName] = useState('Property Owner');
+  const router = useRouter();
+  const { loading, user, isAuthenticated, isAdmin, logout } = useAuthSession();
 
   useEffect(() => {
-    const session = getAuthSession();
-    setName(session?.user?.full_name || session?.user?.email || 'Property Owner');
-  }, []);
+    if (!loading) {
+      if (!isAuthenticated) {
+        router.replace("/auth/login");
+      } else if (isAdmin) {
+        router.replace("/admin");
+      }
+    }
+  }, [loading, isAuthenticated, isAdmin, router]);
+
+  if (loading || !isAuthenticated || isAdmin) {
+    return <div className="min-h-screen bg-gray-50 p-8 text-sm text-gray-600">Accessing Dashboard...</div>;
+  }
+
+  const name = user?.full_name || user?.email || 'Property Owner';
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -28,7 +41,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link href="/dashboard" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   Dashboard Overview
                 </Link>
-                <Link href="/dashboard/listings" className="block px-4 py-2 rounded-md bg-green-50 text-brand-green font-bold">
+                <Link href="/dashboard/listings" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   My Properties
                 </Link>
                 <Link href="/dashboard/listings/new" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
@@ -37,9 +50,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <Link href="/dashboard/profile" className="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-700 font-medium">
                   Profile Settings
                 </Link>
-                <Link href="/auth/login" onClick={() => clearAuthSession()} className="block px-4 py-2 rounded-md hover:bg-red-50 text-red-600 font-medium mt-4">
+                <button onClick={() => logout()} className="block w-full text-left px-4 py-2 rounded-md hover:bg-red-50 text-red-600 font-medium mt-4">
                   Logout
-                </Link>
+                </button>
               </nav>
             </div>
           </aside>

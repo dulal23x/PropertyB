@@ -10,3 +10,6 @@ class AdminUserUpdate(BaseModel):
 class BulkActionRequest(BaseModel):
     ids: list[int]
     note: str | None = None
+
+class SettingUpdateSchema(BaseModel):
+    value: str
