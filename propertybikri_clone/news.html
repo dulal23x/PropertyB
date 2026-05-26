@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="bn"><head><style data-tag-name="trix-editor" type="text/css">trix-editor {
+  display: block;
+}
+
+trix-editor:empty:not(:focus)::before {
+  content: attr(placeholder);
+  color: graytext;
+  cursor: text;
+}
+
+trix-editor a[contenteditable=false] {
+  cursor: text;
+}
+
+trix-editor img {
+  max-width: 100%;
+  height: auto;
+}
+
+trix-editor [data-trix-attachment] figcaption textarea {
+  resize: none;
+}
+
+trix-editor [data-trix-attachment] figcaption textarea.trix-autoresize-clone {
+  position: absolute;
+  left: -9999px;
+  max-height: 0px;
+}
+
+trix-editor [data-trix-attachment] figcaption[data-trix-placeholder]:empty::before {
+  content: attr(data-trix-placeholder);
+  color: graytext;
+}
+
+trix-editor [data-trix-cursor-target] {
+  display: inline-block !important;
+  width: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+trix-editor [data-trix-cursor-target=left] {
+  vertical-align: top !important;
+  margin-left: -1px !important;
+}
+
+trix-editor [data-trix-cursor-target=right] {
+  vertical-align: bottom !important;
+  margin-right: -1px !important;
+}</style><style data-tag-name="trix-toolbar" type="text/css">trix-toolbar {
+  display: block;
+}
+
+trix-toolbar {
+  white-space: nowrap;
+}
+
+trix-toolbar [data-trix-dialog] {
+  display: none;
+}
+
+trix-toolbar [data-trix-dialog][data-trix-active] {
+  display: block;
+}
+
+trix-toolbar [data-trix-dialog] [data-trix-validate]:invalid {
+  background-color: #ffdddd;
+}</style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="PLfERF68HKd5eVMhN4w0FY4BQhLX9Ow4KktMBMEH" name="csrf-token"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.css" rel="stylesheet" type="text/css"/>
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.0/trix.js" type="text/javascript"></script>
+<script>
+
+addEventListener("trix-file-accept", function(event) {
+    var config = laravelTrixConfig(event);
+
+    if(
+        config.hideToolbar ||
+        (config.hideTools && config.hideTools.indexOf("file-tools") != -1) ||
+        (config.hideButtonIcons && config.hideButtonIcons.indexOf("attach") != -1)
+    ) {
+        return event.preventDefault();
+    }
+});
+
+addEventListener("trix-attachment-remove", function(event) {
+    var config = laravelTrixConfig(event);
+
+    var xhr = new XMLHttpRequest();
+
+    var attachment = event.attachment.attachment.attributes.values.url.split("/").pop();
+
+    xhr.open("DELETE", "https://propertybikri.com/laravel-trix/attachment/:attachment".replace(':attachment',attachment), true);
+
+    setAttachementUrlCollectorValue('attachment-' + config['id'], function(collector){
+        for( var i = 0; i < collector.length; i++){
+            if ( collector[i] === attachment) {
+                collector.splice(i, 1);
+            }
+        }
+
+        return collector;
+    });
+
+    xhr.send();
+});
+
+addEventListener("trix-attachment-add", function(event) {
+    var config = laravelTrixConfig(event);
+
+    if (event.attachment.file) {
+        var attachment = event.attachment;
+
+        config['attachment'] = attachment;
+
+         uploadFile(config, setProgress, setAttributes, errorCallback);
+
+        function setProgress(progress) {
+            attachment.setUploadProgress(progress);
+        }
+
+        function setAttributes(attributes) {
+            attachment.setAttributes(attributes);
+        }
+
+        function errorCallback(xhr,attachment){
+            attachment.remove();
+            alert(xhr.statusText);
+        }
+    }
+});
+
+
+function uploadFile(data, progressCallback, successCallback, errorCallback) {
+    var formData = createFormData(data);
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "https://propertybikri.com/laravel-trix/attachment", true);
+
+    xhr.upload.addEventListener("progress", function(event) {
+        var progress = (event.loaded / event.total) * 100;
+        progressCallback(progress);
+    });
+
+    xhr.addEventListener("load", function(event) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            var response = JSON.parse(xhr.response);
+
+            setAttachementUrlCollectorValue('attachment-' + data['id'], function(collector){
+                collector.push(response.url.split("/").pop())
+
+                return collector;
+            });
+
+            successCallback({
+                url : response.url,
+                href: response.url
+            })
+        } else {
+            errorCallback(xhr,data.attachment)
+        }
+    });
+
+    xhr.send(formData);
+}
+
+function setAttachementUrlCollectorValue(inputId, callback){
+    var attachmentCollector = document.getElementById(inputId);
+
+    attachmentCollector.value = JSON.stringify(callback(JSON.parse(attachmentCollector.value)));
+}
+
+function createFormData(data) {
+    var formData = new FormData();
+    formData.append("Content-Type", data.attachment.file.type);
+    formData.append("file", data.attachment.file);
+    formData.append("field", data.field);
+    formData.append("modelClass", data.modelClass);
+
+    if(data.disk != undefined) {
+        formData.append("disk", data.disk);
+    }
+
+    return formData;
+}
+
+function laravelTrixConfig (event) {
+    return JSON.parse(event.target.getAttribute("data-config"));
+}
+
+window.onload = function() {
+    var laravelTrixInstanceStyles =  document.getElementsByTagName('laravel-trix-instance-style');
+
+    var style = document.createElement('style');
+        style.type = 'text/css';
+
+    for (var tag of laravelTrixInstanceStyles) {
+        style.innerHTML += tag.textContent + ' ';
+    }
+
+    document.getElementsByTagName('head')[0].appendChild(style);
+}
+
+</script>
+<meta content="website" property="og:type"/>
+<meta content="Property Bikroy" property="og:site_name"/>
+<meta content="https://propertybikri.com/news" property="og:url"/>
+<meta content="Property Bikroy" property="og:title"/>
+<meta content="বাংলাদেশ-এর সবচেয়ে বড় প্রপার্টি মার্কেটপ্লেস!" property="og:description"/>
+<meta content="/img/share.png" property="og:image"/>
+<title>Property Bikroy</title>
+<!-- icon -->
+<link href="https://propertybikri.com/favicon.ico" rel="shortcut icon"/>
+<link as="style" href="https://propertybikri.com/build/assets/app-CEAXOcl3.css" rel="preload"/><link as="style" href="https://propertybikri.com/build/assets/app-ordatJ7K.css" rel="preload"/><link href="https://propertybikri.com/build/assets/app-C_uNDJ2_.js" rel="modulepreload"/><link href="../assets/css/app-CEAXOcl3_1.css" rel="stylesheet"/><link href="../assets/css/app-ordatJ7K_1.css" rel="stylesheet"/><script src="../assets/js/app-C_uNDJ2__1.js" type="module"></script>
+<!-- Custom Styles -->
+<style class="fslightbox-styles">.fslightbox-absoluted{position:absolute;top:0;left:0}.fslightbox-fade-in{animation:fslightbox-fade-in .3s cubic-bezier(0,0,.7,1)}.fslightbox-fade-out{animation:fslightbox-fade-out .3s ease}.fslightbox-fade-in-strong{animation:fslightbox-fade-in-strong .3s cubic-bezier(0,0,.7,1)}.fslightbox-fade-out-strong{animation:fslightbox-fade-out-strong .3s ease}@keyframes fslightbox-fade-in{from{opacity:.65}to{opacity:1}}@keyframes fslightbox-fade-out{from{opacity:.35}to{opacity:0}}@keyframes fslightbox-fade-in-strong{from{opacity:.3}to{opacity:1}}@keyframes fslightbox-fade-out-strong{from{opacity:1}to{opacity:0}}.fslightbox-cursor-grabbing{cursor:grabbing}.fslightbox-full-dimension{width:100%;height:100%}.fslightbox-open{overflow:hidden;height:100%}.fslightbox-flex-centered{display:flex;justify-content:center;align-items:center}.fslightbox-opacity-0{opacity:0!important}.fslightbox-opacity-1{opacity:1!important}.fslightbox-scrollbarfix{padding-right:17px}.fslightbox-transform-transition{transition:transform .3s}.fslightbox-container{font-family:Arial,sans-serif;position:fixed;top:0;left:0;background:linear-gradient(rgba(30,30,30,.9),#000 1810%);touch-action:pinch-zoom;z-index:1000000000;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}.fslightbox-container *{box-sizing:border-box}.fslightbox-svg-path{transition:fill .15s ease;fill:#ddd}.fslightbox-nav{height:45px;width:100%;position:absolute;top:0;left:0}.fslightbox-slide-number-container{display:flex;justify-content:center;align-items:center;position:relative;height:100%;font-size:15px;color:#d7d7d7;z-index:0;max-width:55px;text-align:left}.fslightbox-slide-number-container .fslightbox-flex-centered{height:100%}.fslightbox-slash{display:block;margin:0 5px;width:1px;height:12px;transform:rotate(15deg);background:#fff}.fslightbox-toolbar{position:absolute;z-index:3;right:0;top:0;height:100%;display:flex;background:rgba(35,35,35,.65)}.fslightbox-toolbar-button{height:100%;width:45px;cursor:pointer}.fslightbox-toolbar-button:hover .fslightbox-svg-path{fill:#fff}.fslightbox-slide-btn-container{display:flex;align-items:center;padding:12px 12px 12px 6px;position:absolute;top:50%;cursor:pointer;z-index:3;transform:translateY(-50%)}@media (min-width:476px){.fslightbox-slide-btn-container{padding:22px 22px 22px 6px}}@media (min-width:768px){.fslightbox-slide-btn-container{padding:30px 30px 30px 6px}}.fslightbox-slide-btn-container:hover .fslightbox-svg-path{fill:#f1f1f1}.fslightbox-slide-btn{padding:9px;font-size:26px;background:rgba(35,35,35,.65)}@media (min-width:768px){.fslightbox-slide-btn{padding:10px}}@media (min-width:1600px){.fslightbox-slide-btn{padding:11px}}.fslightbox-slide-btn-container-previous{left:0}@media (max-width:475.99px){.fslightbox-slide-btn-container-previous{padding-left:3px}}.fslightbox-slide-btn-container-next{right:0;padding-left:12px;padding-right:3px}@media (min-width:476px){.fslightbox-slide-btn-container-next{padding-left:22px}}@media (min-width:768px){.fslightbox-slide-btn-container-next{padding-left:30px}}@media (min-width:476px){.fslightbox-slide-btn-container-next{padding-right:6px}}.fslightbox-down-event-detector{position:absolute;z-index:1}.fslightbox-slide-swiping-hoverer{z-index:4}.fslightbox-invalid-file-wrapper{font-size:22px;color:#eaebeb;margin:auto}.fslightboxv{object-fit:cover}.fslightbox-youtube-iframe{border:0}.fslightboxl{display:block;margin:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:67px;height:67px}.fslightboxl div{box-sizing:border-box;display:block;position:absolute;width:54px;height:54px;margin:6px;border:5px solid;border-color:#999 transparent transparent transparent;border-radius:50%;animation:fslightboxl 1.2s cubic-bezier(.5,0,.5,1) infinite}.fslightboxl div:nth-child(1){animation-delay:-.45s}.fslightboxl div:nth-child(2){animation-delay:-.3s}.fslightboxl div:nth-child(3){animation-delay:-.15s}@keyframes fslightboxl{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.fslightbox-source{position:relative;z-index:2;opacity:0}</style><style type="text/css"></style></head>
+<body class="font-sans antialiased bg-gray-50">
+<div class="flex flex-col h-screen">
+<header class="relative w-full bg-theme text-theme-alt border-b border-theme-dark" x-data="{ open: false }">
+<div class="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16">
+<div class="flex justify-between items-center lg:justify-start lg:space-x-10">
+<div class="flex justify-start">
+<a class="flex justify-center items-center" href="/">
+<span class="sr-only"></span>
+<img alt="প্রপার্টি বিক্রয়" class="w-auto h-16 sm:h-28 py-3" src="../assets/images/logo_5.png"/>
+<span class="sr-only ml-3 text-3xl font-bold text-black">প্রপার্টি বিক্রয়</span>
+</a>
+</div>
+<div class="flex lg:hidden">
+<button @click="open = !open" aria-expanded="false" class="rounded-md p-2 inline-flex items-center justify-center text-theme-alt hover:text-theme-alt/80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-alt/50" type="button">
+<span class="sr-only">Open menu</span>
+<!-- Heroicon name: outline/menu -->
+<svg aria-hidden="true" class="size-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<nav class="hidden lg:flex items-center justify-between space-x-5 xl:space-x-5 lg:flex-1 lg:w-0">
+<div class="flex gap-x-2">
+<a class="px-3 py-2 border border-theme-alt rounded-md text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/language">English</a>
+<a class="px-3 py-2 rounded-md text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/ads">সকল বিজ্ঞাপন</a>
+</div>
+<div class="flex gap-x-2">
+<a class="inline-flex items-center gap-x-1.5 px-3 py-2 rounded-md text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/ads-by-location">
+<svg class="-ml-0.5 size-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                            সমগ্র বাংলাদেশ
+                        </a>
+</div>
+<div class="flex gap-x-2">
+<a class="inline-flex items-center gap-x-1.5 px-3 py-2 rounded-md bg-theme2-300 text-theme2-alt hover:bg-theme2-400 hover:text-theme2-alt text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/properties/create">বিজ্ঞাপন দিন</a>
+<a class="inline-flex items-center gap-x-1.5 px-3 py-2 rounded-md bg-theme text-theme-alt border-2 border-dashed border-transparent hover:border-theme-alt text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme hover:text-theme-alt focus:outline-none focus:ring-1 focus:outline-dashed focus:ring-gray-900/10 transition duration-150 ease-in-out" href="https://propertybikri.com/wanted/create">সেবা চাই</a>
+<a class="inline-flex items-center gap-x-1.5 px-3 py-2 rounded-md text-xs font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/login">
+<svg class="-ml-0.5 size-5" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                            লগইন
+                        </a>
+</div>
+</nav>
+</div>
+</div>
+<div class="w-full fixed inset-y-0 right-0 z-20 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10" style="display: none;" x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-end="transform opacity-100 scale-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:leave="transition ease-in duration-75" x-transition:leave-end="transform opacity-0 scale-95" x-transition:leave-start="transform opacity-100 scale-100">
+<div class="bg-theme shadow-lg ring-1 ring-black ring-opacity-5 divide-y-2 divide-gray-50">
+<div class="pt-5 pb-6 px-5">
+<div class="flex items-center justify-between">
+<div class="flex justify-center items-center">
+<img alt="প্রপার্টি বিক্রয়" class="w-auto h-12 sm:h-28 px-3" src="../assets/images/logo_5.png"/>
+<span class="sr-only ml-3 mt-2 text-2xl font-bold text-black">প্রপার্টি বিক্রয়</span>
+</div>
+<div class="-mr-2">
+<button @click="open = !open" class="rounded-md p-2 inline-flex items-center justify-center text-theme-alt hover:text-theme-alt/80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-alt/50" type="button">
+<span class="sr-only">Close menu</span>
+<!-- Heroicon name: outline/x -->
+<svg aria-hidden="true" class="size-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<div class="mt-6">
+<nav class="grid gap-y-2">
+<a class="px-3 py-2 flex justify-center border border-theme-alt rounded-md text-sm font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/language">English</a>
+<a class="px-3 py-2 rounded-md text-sm font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/ads">সকল বিজ্ঞাপন</a>
+<a class="px-3 py-2 rounded-md text-sm font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/ads-by-location">সমগ্র বাংলাদেশ</a>
+<a class="px-3 py-2 rounded-md text-sm bg-theme2-300 text-theme2-alt hover:bg-theme2-400 hover:text-theme2-alt font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/properties/create">বিজ্ঞাপন দিন</a>
+<a class="px-3 py-2 rounded-md text-sm bg-theme2-300 text-theme2-alt hover:bg-theme2-400 hover:text-theme2-alt font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/wanted/create">সেবা চাই</a>
+<a class="px-3 py-2 rounded-md text-sm font-semibold tracking-wider leading-5 text-theme-alt hover:bg-theme-alt hover:text-theme-alt-reverse focus:outline-none focus:text-theme-alt-reverse focus:bg-theme-alt transition duration-150 ease-in-out" href="https://propertybikri.com/login">লগইন</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<form action="https://propertybikri.com/logout" id="logout-form" method="POST" style="display: none;">
+<input name="_token" type="hidden" value="PLfERF68HKd5eVMhN4w0FY4BQhLX9Ow4KktMBMEH"/> </form>
+</header>
+<div class="bg-white px-6 py-12 lg:px-8">
+<div class="mx-auto max-w-4xl text-base leading-7 text-gray-700">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                বাংলাদেশ প্রপার্টি নিউজ
+            </h2>
+<div class="mt-6 space-y-12 border-t border-gray-200 pt-6 sm:pt-10">
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/bangladeser-jnpriz-tails-ebng-siramik-kompani-dAMV_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2024-06-10">Jun 10, 2024</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/bangladeser-jnpriz-tails-ebng-siramik-kompani">
+<span class="absolute inset-0"></span>
+                                        বাংলাদেশের জনপ্রিয় টাইলস এবং সিরামিক কোম্পানি
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">নির্মাণ খাতের উচ্ছ্বাসের কারণে বাংলাদেশে টাইলস ও সিরামিক কোম্পানিগুলো দ্রুত বৃদ্ধি পেয়েছে। স্থানীয় এবং আন্তর্জাতিক ব্র্যান্ডগুলি আধুনিক অভ্যন্তর নকশার জন্য বিভিন্ন ধরণের ডিজাইন এবং উপকরণ সরবরাহ করে। বাংলাদেশে টাইলস এবং সিরামিক তৈরির জন্য প্রচুর কাদামাটি এবং অন্যান্য সংস্থান থাকায় আন্তর্জাতিক মানের সাথে মেলে এমন উচ্চ মানের পণ্য তৈরির জন্য বেশ কিছু সুবিধা স্থাপন করা হয়েছে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/tails-bzbsar-vbishztt-khubi-asabznjk-OiHw_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2024-06-10">Jun 10, 2024</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/tails-bzbsar-vbishztt-khubi-asabznjk">
+<span class="absolute inset-0"></span>
+                                        টাইলস ব্যবসার ভবিষ্যৎ খুবই আশাব্যঞ্জক
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">দেশের টাইলস ব্যবসার ভবিষ্যৎ খুবই আশাব্যঞ্জক। যদিও বর্তমান প্রেক্ষাপট একটু নেতিবাচক; কিন্তু দেশের ধারাবাহিক অর্থনৈতিক প্রবৃদ্ধি টাইলস ব্যবসার ওপর ইতিবাচক প্রভাব রাখবে। দ্রুত নগরায়ণ ও আবাসন ব্যবসার প্রবৃদ্ধি আমাদের নির্মাণসামগ্রী তথা টাইলসের চাহিদাকে ঊর্ধ্বমুখী রাখবে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/kksbajar-himchdite-suv-udwodhn-hte-zacche-antrjatik-maner-car-tarka-hotel-be-hils-best-western-plus-bay-hills-coxbazar-J2w5_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-27">Nov 27, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/kksbajar-himchdite-suv-udwodhn-hte-zacche-antrjatik-maner-car-tarka-hotel-best-western-plus-bay-hills-coxbazar">
+<span class="absolute inset-0"></span>
+                                        কক্সবাজার হিমছড়িতে শুভ উদ্বোধন হতে যাচ্ছে আন্তর্জাতিক মানের চার তারকা হোটেল Best Western plus Bay Hills, Coxbazar
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">স্বাধীনতার মাসে আমরা আমরা উদ্বোধন করতে যাচ্ছি আমাদের বহুল আলোচিত আন্তর্জাতিক মানের চার তারকা মানের হোটেল Best Western plus Bay Hills, Coxbazar এর আগামী ৩০ মার্চ ২০২৪ তারিখে এর শুভ উদ্বোধন হতে যাচ্ছে ।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/22-tm-rizel-estet-ekspo-2023-aisisibi-dhaka-banglades-v4i3_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-25">Nov 25, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/22-tm-rizel-estet-ekspo-2023-aisisibi-dhaka-banglades">
+<span class="absolute inset-0"></span>
+                                        22 তম রিয়েল এস্টেট এক্সপো 2023 -  - আইসিসিবি, ঢাকা, বাংলাদেশ।
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">22 তম রিয়েল এস্টেট এক্সপো 2023। 𝟎𝟕 ~ 𝟎𝟗 𝐃𝐞𝐜𝐞𝐦𝐛𝐞𝐞𝐫 দ্য ইন্টারন্যাশনাল কনভেন্ট𝐟 দ্য কনভেন্ট সিটি থেকে বাংলাদেশের শিল্পের জন্য রিয়েল এস্টেট উন্নয়ন এবং হাউজিং সেক্টরের উপর একটি আন্তর্জাতিক প্রদর্শনী। - আইসিসিবি, ঢাকা, বাংলাদেশ।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/trast-bzangk-oo-edisn-rizel-esteter-mdhze-cukti-nLBn_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-25">Nov 25, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/trast-bzangk-oo-edisn-rizel-esteter-mdhze-cukti">
+<span class="absolute inset-0"></span>
+                                        ট্রাস্ট ব্যাংক ও এডিসন রিয়েল এস্টেটের মধ্যে চুক্তি
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">গ্রাহকদের গৃহঋণ দেয়ার লক্ষ্যে ট্রাস্ট ব্যাংক লিমিটেড ও এডিসন রিয়েল এস্টেট লিমিটেডের মধ্যে একটি সমঝোতা চুক্তি স্বাক্ষর হয়েছে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/brtmane-riyel-estete-biniyog-kra-ki-thik-hbe-5SOM_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-25">Nov 25, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/brtmane-riyel-estete-biniyog-kra-ki-thik-hbe">
+<span class="absolute inset-0"></span>
+                                        বর্তমানে রিয়েল এস্টেটে বিনিয়োগ করা কি ঠিক হবে?
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">মাটিতে বিনিয়োগ বিশ্বের প্রায় সব দেশেই লাভজনক হিসেবে পরিগণিত হয়। বর্তমানের প্রেক্ষাপটে রিয়েল এস্টেটে বিনিয়োগ করা সঠিক হবে কি না, নিরাপদ হবে কি না—এটা নিয়ে অনেকেই খুব দ্বিধাদ্বন্দ্বে আছেন। ধারণা করা হচ্ছে, ২০৫০ সালের মধ্যে বাংলাদেশের জনসংখ্যা হবে প্রায় ৩২ কোটি। জমির পরিমাণ তো আর বাড়ছে না, কিন্তু চাহিদা প্রতিদিনই বাড়ছে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/jmi-bari-ba-flzat-thakle-aykr-ritarne-kee-krte-hbe-hLI8_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-24">Nov 24, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/jmi-bari-ba-flzat-thakle-aykr-ritarne-kee-krte-hbe">
+<span class="absolute inset-0"></span>
+                                        জমি, বাড়ি বা ফ্ল্যাট থাকলে আয়কর রিটার্নে কী করতে হবে
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">আপনার আয়কর ফাইলে যদি জমি, বাড়ি বা ফ্ল্যাটের সঠিক বিবরণ না থাকে, তবে বিপত্তি হতে পারে। আয়কর ফাইলে কীভাবে সম্পত্তির মূল্য দেখাতে হবে, সে বিষয়ে অনেকের সঠিক ধারণা থাকে না। ফলে অনেকের গুনতে হয় অতিরিক্ত আয়কর, এমনকি জেল বা জরিমানাও হতে পারে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+<article class="relative isolate flex flex-col gap-8 lg:flex-row">
+<div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+<img alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" src="../assets/images/rizel-estet-kshmta-t92p_1.jpg"/>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+</div>
+<div>
+<div class="flex items-center gap-x-4 text-xs">
+<time class="text-gray-500" datetime="2023-11-24">Nov 24, 2023</time>
+</div>
+<div class="group isolate relative max-w-xl">
+<h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+<a href="https://propertybikri.com/news/rizel-estet-kshmta.p3ZS">
+<span class="absolute inset-0"></span>
+                                        রিয়েল এস্টেট ক্ষমতা
+                                    </a>
+</h3>
+<p class="mt-5 text-sm leading-6 text-gray-600">বাংলাদেশ একটি উদীয়মান অর্থনীতি যা শীঘ্রই রিয়েল এস্টেট সহ ট্রিলিয়ন ডলারের সেগমেন্টে পা রাখবে এই রূপান্তরে অবিচ্ছেদ্য ভূমিকা পালন করবে, ইন্ডাস্ট্রির লোকজনের মতে।সাম্প্রতিক বছরগুলিতে দেশের রিয়েল এস্টেট সেক্টর উল্লেখযোগ্য বৃদ্ধি পেয়েছে এবং এটি বর্ধিত নগরায়ন, ক্রমবর্ধমান আয় এবং ক্রমবর্ধমান মধ্যবিত্ত শ্রেণীর সহ বিভিন্ন কারণকে দায়ী করা যেতে পারে।ফলস্বরূপ, রিয়েল এস্টেট বিনিয়োগের জন্য একটি আকর্ষণীয় বিকল্প হয়ে উঠেছে।</p>
+<button class="mt-2 px-3 py-1.5 text-sm font-normal bg-gray-200 rounded shadow" type="button">Read
+                                    more &gt;&gt;</button>
+</div>
+</div>
+</article>
+</div>
+<div class="my-5">
+</div>
+</div>
+</div>
+<footer class="w-full text-gray-700">
+<div class="translate-y-1.5 w-full h-20 bg-[url(/img/footer.png)] bg-contain bg-bottom bg-repeat-x"></div>
+<div class="w-full bg-theme text-theme-alt px-4">
+<div class="max-w-5xl mx-auto">
+<div class="py-8 sm:py-12 mx-auto text-center sm:text-left flex flex-wrap flex-col sm:flex-row md:flex-no-wrap lg:items-start">
+<div class="w-full md:w-1/3 text-center md:text-left">
+<h2 class="font-semibold text-theme-alt/90 tracking-widest text-base mb-3">
+                        এখানে আমাদের সাথে</h2>
+<ul class="list-none">
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/about">
+                                    আমাদের সম্পর্কিত </a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/our-service"> আমাদের সেবা </a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/terms-conditions"> বিধি - নিষেধ এবং শর্তাবলী </a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/career">
+                                    কেরিয়ার </a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/contact">
+                                    যোগাযোগ করুন </a>
+</li>
+</ul>
+</div>
+<div class="w-full md:w-1/3 text-center md:text-left mt-6 md:mt-0 py-4 sm:py-0 lg:pl-20">
+<h2 class="font-semibold text-theme-alt/90 tracking-widest text-base mb-3">
+                        হটলাইন
+					</h2>
+<ul class="list-none md:w-48">
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm tracking-widest" href="tel:+8801304281742">+৮৮০-১৩০৪-২৮১৭৪২</a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm tracking-widest" href="tel:+8801304280203">+৮৮০-১৩০৪-২৮০২০৩</a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm tracking-widest" href="tel:+8801780086417">+৮৮০-১৭৮০-০৮৬৪১৭</a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/representative">
+                                    প্রপার্টি বিক্রয় জেলা এজেন্ট
+                                </a>
+</li>
+</ul>
+<ul class="mt-4 list-none md:w-48">
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/blogs">
+                                    প্রপার্টি বিক্রয় ব্লগ
+								</a>
+</li>
+<li>
+<a class="text-theme-alt/90 hover:text-theme-alt text-sm" href="https://propertybikri.com/news">
+                                    প্রপার্টি বিক্রয় নিউজ
+								</a>
+</li>
+</ul>
+</div>
+<div class="w-full md:w-1/3 mt-6 md:mt-0">
+<a class="flex font-semibold items-center md:justify-end justify-center text-gray-900">
+<img alt="Color logo" class="h-20 md:h-28 w-auto px-4 py-3" src="../assets/images/logo-alt_4.png"/>
+</a>
+<!-- <p class="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p> -->
+</div>
+</div>
+</div>
+</div>
+<div class="bg-theme-dark border-theme-dark border-t px-4">
+<div class="max-w-5xl mx-auto py-4 flex flex-wrap flex-col sm:flex-row">
+<p class="text-theme-alt/90 py-3 text-center rounded-full text-xs xs:text-sm sm:text-left">
+                © 2026 PropertyBikri.com a concern of
+                <span class="whitespace-nowrap uppercase font-bold tracking-tighter">Property Bikroy Ltd.</span>
+</p>
+<span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+<a class="mx-2 py-3 text-center inline-flex items-center justify-center size-10 shadow-lg rounded-full bg-white cursor-pointer" href="https://www.facebook.com/propertybikroy/" target="_blank">
+<svg class="size-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path class="text-blue-600" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z">
+</path>
+</svg>
+</a>
+<!-- Don't Delete Bellow Section-->
+<!-- <a class="ml-3 mx-2 text-gray-500 p-3 text-center inline-flex items-center justify-center size-10 shadow-lg rounded-full bg-white cursor-pointer"><svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="size-5" viewBox="0 0 24 24"><path class="text-blue-300" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path></svg></a> -->
+<!-- <a class="ml-3 mx-2 text-gray-500 p-3 text-center inline-flex items-center justify-center size-10 shadow-lg rounded-full bg-white cursor-pointer"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="size-5" viewBox="0 0 24 24"><rect class="text-red-300" width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path></svg></a> -->
+<!-- <a class="ml-3 mx-2 text-gray-500 p-3 text-center inline-flex items-center justify-center size-10 shadow-lg rounded-full bg-white cursor-pointer"><svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="size-5" viewBox="0 0 24 24"><path class="text-blue-400" stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2" stroke="none"></circle></svg></a>  -->
+</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
