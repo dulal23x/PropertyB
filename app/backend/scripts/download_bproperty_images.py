@@ -15,7 +15,11 @@ bproperty_images = [
     'https://api.bproperty.com/api/files/a4alnectuppemjo/pxnlpvi7n4sd7sf/pexels_ahmetcotur_24805042_bMfLViS5TI.jpg',
     'https://api.bproperty.com/api/files/a4alnectuppemjo/yo1q0wnr696ktyf/pexels_aksinfo7_30781823_AqejZ6aPcy.jpg',
     'https://api.bproperty.com/api/files/a4alnectuppemjo/nw47y4x99h3z704/pexels_bohlemedia_1330753_942x603_1_MP3w78v8n0.jpg',
-    'https://api.bproperty.com/api/files/a4alnectuppemjo/n7fsgnd4z2w1b0y/pexels_expect_best_79873_323772_1_942x603_2_30JLVwV2uu.jpg'
+    'https://api.bproperty.com/api/files/a4alnectuppemjo/n7fsgnd4z2w1b0y/pexels_expect_best_79873_323772_1_942x603_2_30JLVwV2uu.jpg',
+    'https://api.bproperty.com/api/files/a4alnectuppemjo/kkymdympwilpyfo/cropped_y8TXope1Jd.jpg',
+    'https://api.bproperty.com/api/files/a4alnectuppemjo/kkymdympwilpyfo/cropped_9mAggw0teh.jpg',
+    'https://api.bproperty.com/api/files/a4alnectuppemjo/kkymdympwilpyfo/cropped_RyBcuu9jjS.jpg',
+    'https://api.bproperty.com/api/files/a4alnectuppemjo/kkymdympwilpyfo/cropped_eCYp4Q6v41.jpg'
 ]
 
 output_dir = Path('app/backend/userdata/seed_data/image_pool')
