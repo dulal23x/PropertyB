@@ -54,6 +54,10 @@
 - `06-operations/DEPLOYMENT_GUARD.md`
 - `06-operations/RISK_REGISTER.md`
 - `06-operations/BACKUP_AND_RECOVERY.md`
+- `06-operations/LINUX_SERVER_REQUIREMENTS_MASTER.md`
+- `06-operations/LINUX_INSTALL_COMMANDS_CHEATSHEET.md`
+- `06-operations/ENVIRONMENT_MATRIX_PROD_STAGING.md`
+- `06-operations/ROLLBACK_AND_RECOVERY_RUNBOOK.md`
 
 ## Documentation Policy
 Keep this docs pack current. If implementation changes behavior, update the relevant feature doc, relevant contract, `CHANGELOG.md`, and `DECISIONS_LOG.md` in the same task.
