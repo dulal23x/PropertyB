@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-gray-500 uppercase tracking-widest">
-          <p>&copy; {new Date().getFullYear()} Bproperty Clone. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PropertyBikri. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/sitemap" className="hover:text-brand-green">Sitemap</Link>
             <Link href="/cookies" className="hover:text-brand-green">Cookie Policy</Link>

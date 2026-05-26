@@ -45,7 +45,7 @@ export default function MyPropertiesPage() {
       } else {
         setError('Failed to load listings');
       }
-    } catch (err) {
+    } catch (_err) {
       setError('Connection error');
     } finally {
       setLoading(false);

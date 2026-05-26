@@ -82,7 +82,7 @@ export default function AdvertisePage() {
                     '2 Custom Video Creatives',
                     '2 High-impact Graphic Designs',
                     '3-Month Dedicated Marketing Contract',
-                    'Cross-promotion across Bproperty network'
+                    'Cross-promotion across PropertyBikri network'
                   ].map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-[15px] font-medium text-gray-700">
                       <div className="mt-1 shrink-0 text-brand-green">
@@ -182,7 +182,7 @@ export default function AdvertisePage() {
                     <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-green"><Mail size={20} /></div>
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Us</p>
-                      <p className="font-bold text-brand-dark">info@bproperty.com</p>
+                      <p className="font-bold text-brand-dark">info@propertybikri.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-brand-light/50">

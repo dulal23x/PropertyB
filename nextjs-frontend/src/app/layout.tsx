@@ -14,10 +14,9 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
 export const metadata: Metadata = {
-  title: "Bproperty Clone - Real Estate in Bangladesh",
-  description: "Find your dream property in Bangladesh with our Bproperty clone.",
+  title: "PropertyBikri - Real Estate in Bangladesh",
+  description: "Find your dream property in Bangladesh with PropertyBikri.",
   icons: {
     icon: "/favicon.ico",
   },

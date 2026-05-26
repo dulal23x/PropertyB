@@ -1,3 +1,5 @@
+import { apiFetch } from "@/lib/api";
+
 export type AuthUser = {
   id: number;
   email: string;

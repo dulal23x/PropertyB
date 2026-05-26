@@ -30,7 +30,7 @@ export default function Navbar() {
             <Link href="/" className="flex-shrink-0 flex items-center">
               <Image 
                 src="/assets/bproperty-logo.svg" 
-                alt="Bproperty Logo" 
+                alt="PropertyBikri Logo" 
                 width={140} 
                 height={30} 
                 priority 

@@ -17,7 +17,7 @@ const config: Config = {
           border: "#e2e8f0",
           featured: "#f5b316",
           textSecondary: "#666666",
-          beige: "#fafaf0", // Bproperty signature CTA background
+          beige: "#fafaf0", // PropertyBikri signature CTA background
         },
         background: "var(--background)",
         foreground: "var(--foreground)",

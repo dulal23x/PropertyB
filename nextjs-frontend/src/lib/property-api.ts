@@ -93,8 +93,9 @@ export async function fetchProperty(slug: string) {
   return res.json();
 }
 
-export async function fetchMyListings() {
-  const res = await apiFetch("/properties/me", {
+export async function fetchMyListings(query = "") {
+  const url = query ? `/properties/me?${query}` : "/properties/me";
+  const res = await apiFetch(url, {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",

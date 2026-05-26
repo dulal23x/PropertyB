@@ -160,7 +160,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-               <h2 className="text-2xl md:text-[32px] font-black text-brand-dark tracking-tight uppercase italic">Bproperty Insights</h2>
+               <h2 className="text-2xl md:text-[32px] font-black text-brand-dark tracking-tight uppercase italic">PropertyBikri Insights</h2>
                <p className="text-brand-textSecondary font-medium mt-2 text-lg italic">Your guide to real estate in Bangladesh</p>
             </div>
             <button className="text-brand-green font-black text-sm uppercase tracking-widest hover:text-brand-greenHover flex items-center gap-1 group">
