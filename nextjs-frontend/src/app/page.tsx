@@ -35,7 +35,7 @@ export default async function Home() {
         {/* Background Image - Locally Hosted */}
         <Image 
           src="/assets/home/hero/hero-bg.jpg"
-          alt="Bproperty Hero"
+          alt="PropertyBikri Hero"
           fill
           priority
           className="object-cover"
@@ -43,8 +43,8 @@ export default async function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
         
         <div className="relative z-10 w-full max-w-5xl px-4 text-center mt-[-40px] md:mt-[-60px]">
-          <h1 className="text-3xl md:text-5xl lg:text-[52px] font-black text-white mb-8 leading-tight tracking-tight drop-shadow-2xl">
-            Search 10,000+ Houses, Apartments, and Land
+          <h1 className="text-2xl md:text-4xl lg:text-[42px] font-extrabold text-white mb-8 leading-snug tracking-tight drop-shadow-xl max-w-4xl mx-auto">
+            Search 10,000+ Houses, Apartments, and Land in Dhaka, Bangladesh
           </h1>
           
           <Suspense fallback={<HeroSearchWidgetSkeleton />}>
