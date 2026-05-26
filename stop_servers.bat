@@ -7,4 +7,3 @@ for /f "tokens=5" %%a in ('netstat -aon ^| findstr :3010') do taskkill /f /pid %
 
 echo.
 echo All specified servers have been stopped.
-pause
