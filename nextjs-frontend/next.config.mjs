@@ -16,6 +16,21 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'api.propertybikri.com',
+                pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'propertybikri.com',
+                pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.propertybikri.com',
+                pathname: '/images/**',
+            },
+            {
+                protocol: 'https',
                 hostname: 'placehold.co',
                 pathname: '/**',
             },

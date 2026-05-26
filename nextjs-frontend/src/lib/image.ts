@@ -7,6 +7,10 @@ function isLocalBackendHost(hostname: string, port?: string) {
   );
 }
 
+function isTrustedProductionHost(hostname: string) {
+  return hostname === "propertybikri.com" || hostname === "www.propertybikri.com" || hostname === "api.propertybikri.com";
+}
+
 export function getSafePropertyImageSrc(src?: string | null) {
   if (!src) return FALLBACK_PROPERTY_IMAGE;
 
@@ -16,7 +20,7 @@ export function getSafePropertyImageSrc(src?: string | null) {
 
   try {
     const url = new URL(src);
-    if ((url.protocol === "http:" || url.protocol === "https:") && isLocalBackendHost(url.hostname, url.port)) {
+    if ((url.protocol === "http:" || url.protocol === "https:") && (isLocalBackendHost(url.hostname, url.port) || isTrustedProductionHost(url.hostname))) {
       return src;
     }
   } catch {

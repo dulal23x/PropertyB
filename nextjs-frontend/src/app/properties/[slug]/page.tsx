@@ -182,10 +182,10 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
 
               <div className="mb-6 flex items-center gap-4 border-b pb-4">
                 <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-                  <Image src="/assets/bproperty-logo.svg" alt="Bproperty" width={50} height={12} />
+                  <Image src="/assets/bproperty-logo.svg" alt="PropertyBikri" width={50} height={12} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800">Bproperty Verified</h3>
+                  <h3 className="font-bold text-gray-800">PropertyBikri Verified</h3>
                   <p className="text-sm text-gray-500">Corporate Seller</p>
                 </div>
               </div>

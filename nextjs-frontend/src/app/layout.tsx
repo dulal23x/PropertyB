@@ -15,8 +15,24 @@ const geistMono = localFont({
   weight: "100 900",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://propertybikri.com"),
   title: "PropertyBikri - Real Estate in Bangladesh",
   description: "Find your dream property in Bangladesh with PropertyBikri.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "PropertyBikri - Real Estate in Bangladesh",
+    description: "Find your dream property in Bangladesh with PropertyBikri.",
+    url: "https://propertybikri.com",
+    siteName: "PropertyBikri",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PropertyBikri - Real Estate in Bangladesh",
+    description: "Find your dream property in Bangladesh with PropertyBikri.",
+  },
   icons: {
     icon: "/favicon.ico",
   },

@@ -8,7 +8,9 @@ class Settings(BaseSettings):
     app_name: str = "RealEstateSite Backend"
     port: int = 8090
     frontend_url: str = "http://localhost:3010"
-    allowed_origins: str = "http://localhost:3010,http://127.0.0.1:3010,http://localhost:3000,http://127.0.0.1:3000"
+    allowed_origins: str = "http://localhost:3010,http://127.0.0.1:3010,http://localhost:3000,http://127.0.0.1:3000,https://propertybikri.com,https://www.propertybikri.com"
+    public_site_url: str = "https://propertybikri.com"
+    public_api_url: str = "https://api.propertybikri.com"
     database_url: str = "sqlite+aiosqlite:///./realestate_mvp_v1.db"
     secret_key: str = "change-me-in-production"
     algorithm: str = "HS256"
