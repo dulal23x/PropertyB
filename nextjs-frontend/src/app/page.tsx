@@ -1,19 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import nextDynamic from 'next/dynamic';
-import { Suspense } from 'react';
 import PropertyCard from '@/components/property/PropertyCard';
 import { PropertyCardSkeleton } from '@/components/ui/Skeletons';
-import HeroSearchWidgetSkeleton from '@/components/home/HeroSearchWidgetSkeleton';
+import BanglaHero from '@/components/home/BanglaHero';
 import { fetchProperties } from '@/lib/property-api';
 
 export const dynamic = 'force-dynamic';
-
-// Dynamically import client component widget
-const HeroSearchWidget = nextDynamic(() => import('@/components/home/HeroSearchWidget'), {
-  ssr: true,
-  loading: () => <HeroSearchWidgetSkeleton />
-});
 
 async function getFeaturedProperties() {
   try {
@@ -31,27 +23,7 @@ export default async function Home() {
     <div className="bg-white min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative h-[480px] md:h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Background Image - Locally Hosted */}
-        <Image 
-          src="/assets/home/hero/hero-bg.jpg"
-          alt="PropertyBikri Hero"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
-        
-        <div className="relative z-10 w-full max-w-5xl px-4 text-center mt-[-40px] md:mt-[-60px]">
-          <h1 className="text-2xl md:text-4xl lg:text-[42px] font-extrabold text-white mb-8 leading-snug tracking-tight drop-shadow-xl max-w-4xl mx-auto">
-            Search 10,000+ Houses, Apartments, and Land in Dhaka, Bangladesh
-          </h1>
-          
-          <Suspense fallback={<HeroSearchWidgetSkeleton />}>
-            <HeroSearchWidget />
-          </Suspense>
-        </div>
-      </section>
+      <BanglaHero />
 
       {/* City Section */}
       <section className="py-20 bg-white">
