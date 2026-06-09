@@ -6,6 +6,7 @@ import { Camera, BedDouble, Bath, Square, Phone, Mail, MessageCircle, MapPin } f
 import { formatBDT } from '@/utils/formatters';
 import type { PropertyListItem } from '@/lib/property-api';
 import { getSafePropertyImageSrc } from '@/lib/image';
+import { formatPropertyLocation } from '@/lib/locations';
 
 interface PropertyCardProps {
   property: PropertyListItem;
@@ -21,6 +22,7 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
   const bedroomCount = Number(property.bedrooms || 0);
   const bathroomCount = Number(property.bathrooms || 0);
   const sizeValue = Number(property.size_value || 0);
+  const locationLabel = formatPropertyLocation(property);
 
   return (
     <div className={`bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-2xl transition-all duration-500 group flex ${isList ? 'flex-col md:flex-row h-auto md:h-[280px]' : 'flex-col h-full'}`}>
@@ -83,7 +85,7 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
         {/* Location */}
         <div className="flex items-start text-brand-textSecondary text-[13px] mb-4 font-medium opacity-80">
           <MapPin size={14} className="mr-1.5 mt-0.5 shrink-0 text-brand-green" />
-          <span className="line-clamp-1">{property.area_name}, {property.city}</span>
+          <span className="line-clamp-1">{locationLabel}</span>
         </div>
         
         {/* Specs Divider & Icons */}

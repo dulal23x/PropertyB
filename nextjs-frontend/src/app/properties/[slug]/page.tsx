@@ -5,6 +5,7 @@ import { formatBDT } from '@/utils/formatters';
 import PropertyInquiryForm from '@/components/property/PropertyInquiryForm';
 import RevealContactButton from '@/components/property/RevealContactButton';
 import { getSafePropertyImageSrc } from '@/lib/image';
+import { formatPropertyLocation } from '@/lib/locations';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +21,7 @@ type PropertyDetail = {
   listing_purpose?: string | null;
   property_type?: string | null;
   area_name?: string | null;
+  display_address?: string | null;
   city?: string | null;
   currency?: string | null;
   price_amount?: number | string | null;
@@ -72,6 +74,8 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
   const listingPurpose = property.listing_purpose || 'sale';
   const propertyType = property.property_type || 'property';
   const businessPhone = property.business_phone || '+8801000000000';
+  const locationLabel = formatPropertyLocation(property);
+  const areaLabel = property.area_name || property.city || 'Bangladesh';
 
   return (
     <div className="bg-brand-light min-h-screen py-8">
@@ -84,7 +88,7 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
               {listingPurpose}
             </Link>
             <span>/</span>
-            <span className="text-gray-700 capitalize">{propertyType} in {property.area_name}</span>
+            <span className="text-gray-700 capitalize">{propertyType} in {areaLabel}</span>
           </nav>
           <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
             <div>
@@ -94,7 +98,7 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.242-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                {property.area_name}, {property.city}
+                {locationLabel}
               </p>
             </div>
             <div className="text-left md:text-right">
