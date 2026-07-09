@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { ChevronLeft, HelpCircle } from 'lucide-react';
+import { ChevronLeft, LifeBuoy } from 'lucide-react';
 import { getAuthSession } from '@/lib/auth';
 
 export default function PostPropertyPage() {
@@ -27,7 +27,7 @@ export default function PostPropertyPage() {
             </div>
             <div className="flex items-center gap-6">
               <Link href="/help" className="flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-brand-green">
-                <HelpCircle size={18} />
+                <LifeBuoy size={18} />
                 <span className="hidden md:inline">Need Help?</span>
               </Link>
               <Link href="/auth/login" className="text-sm font-bold text-brand-green border border-brand-green px-4 py-1.5 rounded hover:bg-green-50">

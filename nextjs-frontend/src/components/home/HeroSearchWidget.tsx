@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, MapPin, Building2, Banknote, BedDouble, Search } from 'lucide-react';
+import { ChevronDown, MapPinned, Building2, BadgeDollarSign, BedDouble, Search } from 'lucide-react';
 
 export default function HeroSearchWidget() {
   const router = useRouter();
@@ -68,7 +68,7 @@ export default function HeroSearchWidget() {
           <div className="relative group border-b border-gray-100 pb-3 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-2">
             <label className="mb-1.5 block text-[10px] font-black uppercase tracking-widest text-gray-400 transition-colors group-focus-within:text-brand-green">Location</label>
             <div className="relative flex items-center min-h-[44px]">
-              <MapPin size={18} className="text-brand-green shrink-0 mr-3" />
+              <MapPinned size={18} className="text-brand-green shrink-0 mr-3" />
               <input 
                 type="text" 
                 placeholder="e.g. Gulshan, Dhaka" 
@@ -103,7 +103,7 @@ export default function HeroSearchWidget() {
           <div className="relative group border-b border-gray-100 pb-3 lg:border-b-0 lg:border-r lg:pb-0 lg:pl-2 lg:pr-2">
             <label className="mb-1.5 block text-[10px] font-black uppercase tracking-widest text-gray-400 transition-colors group-focus-within:text-brand-green">Price (BDT)</label>
             <div className="relative flex items-center min-h-[44px]">
-              <Banknote size={18} className="text-brand-green shrink-0 mr-3" />
+              <BadgeDollarSign size={18} className="text-brand-green shrink-0 mr-3" />
               <select 
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
