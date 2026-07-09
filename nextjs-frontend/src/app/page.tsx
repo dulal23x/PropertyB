@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { ArrowRight, Building2, House as HouseIcon, LandPlot, Store } from 'lucide-react';
 import PropertyCard from '@/components/property/PropertyCard';
 import { PropertyCardSkeleton } from '@/components/ui/Skeletons';
 import HeroSearchWidgetSkeleton from '@/components/home/HeroSearchWidgetSkeleton';
@@ -87,15 +88,15 @@ export default async function Home() {
           <h2 className="mb-7 text-center text-2xl font-black tracking-tight uppercase text-brand-dark md:mb-10 md:text-left md:text-[28px]">Browse properties by type</h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 md:gap-6">
             {[ 
-              { label: 'Apartments', value: 'apartment', count: '6,214' },
-              { label: 'Houses', value: 'house', count: '1,452' },
-              { label: 'Commercial', value: 'commercial', count: '942' },
-              { label: 'Land', value: 'land', count: '1,120' },
-              { label: 'Duplex', value: 'other', count: '241' }
+              { label: 'Apartments', value: 'apartment', count: '6,214', icon: <Building2 size={24} strokeWidth={1.8} /> },
+              { label: 'Houses', value: 'house', count: '1,452', icon: <HouseIcon size={24} strokeWidth={1.8} /> },
+              { label: 'Commercial', value: 'commercial', count: '942', icon: <Store size={24} strokeWidth={1.8} /> },
+              { label: 'Land', value: 'land', count: '1,120', icon: <LandPlot size={24} strokeWidth={1.8} /> },
+              { label: 'Duplex', value: 'other', count: '241', icon: <HouseIcon size={24} strokeWidth={1.8} /> }
             ].map((cat) => (
               <Link key={cat.label} href={`/properties?property_type=${cat.value}&listing_purpose=sale`} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center group md:p-8">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-green/10 text-brand-green transition-colors group-hover:bg-brand-green group-hover:text-white md:mb-6 md:h-16 md:w-16">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                  {cat.icon}
                 </div>
                 <h3 className="font-black text-brand-dark uppercase tracking-widest text-xs mb-2">{cat.label}</h3>
                 <p className="text-[11px] font-bold text-brand-textSecondary uppercase tracking-widest">{cat.count} listings</p>
@@ -115,7 +116,7 @@ export default async function Home() {
             </div>
             <Link href="/properties" className="text-brand-green font-black text-sm uppercase tracking-widest hover:text-brand-greenHover flex items-center gap-1 group">
               View All Properties 
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M9 18l6-6-6-6"></path></svg>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -165,7 +166,7 @@ export default async function Home() {
             </div>
             <button className="text-brand-green font-black text-sm uppercase tracking-widest hover:text-brand-greenHover flex items-center gap-1 group">
               Read All Articles
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M9 18l6-6-6-6"></path></svg>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
           

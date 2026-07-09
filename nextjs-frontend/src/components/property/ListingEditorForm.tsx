@@ -15,7 +15,7 @@ type FormState = {
   title: string;
   description: string;
   listing_purpose: "sale" | "rent";
-  property_type: "apartment" | "house" | "land" | "commercial" | "office" | "shop" | "warehouse" | "factory" | "other";
+  property_type: "apartment" | "house" | "villa" | "land" | "commercial" | "office" | "shop" | "warehouse" | "factory" | "other";
   city: string;
   area_name: string;
   display_address: string;
@@ -183,6 +183,7 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
               <select value={form.property_type} onChange={(e) => setField("property_type", e.target.value as FormState["property_type"])} className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green">
                 <option value="apartment">Apartment</option>
                 <option value="house">House</option>
+                <option value="villa">Villa</option>
                 <option value="commercial">Commercial</option>
                 <option value="land">Land</option>
                 <option value="office">Office</option>

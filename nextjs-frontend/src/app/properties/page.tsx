@@ -1,269 +1,433 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import PropertyCard from "@/components/property/PropertyCard";
-import { Search, ChevronRight, LayoutGrid, List as ListIcon, SlidersHorizontal, ChevronDown, MapPin, X, ChevronLeft } from 'lucide-react';
-import { PropertyCardSkeleton } from '@/components/ui/Skeletons';
-import { fetchProperties, type PropertyListResponse } from '@/lib/property-api';
+import {
+  Search,
+  ChevronRight,
+  LayoutGrid,
+  List as ListIcon,
+  SlidersHorizontal,
+  ChevronDown,
+  MapPin,
+  X,
+  ChevronLeft,
+} from "lucide-react";
+import { PropertyCardSkeleton } from "@/components/ui/Skeletons";
+import { fetchProperties, type PropertyListResponse } from "@/lib/property-api";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-function buildQuery(params: URLSearchParams) {
+type PurposeFilter = "all" | "buy" | "rent";
+type PropertyTypeFilter = "all" | "apartment" | "house" | "villa" | "commercial" | "land";
+type BedroomFilter = "any" | "1" | "2" | "3" | "4" | "5";
+
+type FilterState = {
+  purpose: PurposeFilter;
+  property_type: PropertyTypeFilter;
+  max_price: string;
+  bedrooms_min: BedroomFilter;
+  amenities: string[];
+  sort: string;
+  area_name: string;
+};
+
+const PRICE_MAX = 10_000_000;
+const PRICE_STEP = 1_000_000;
+
+const PROPERTY_TYPE_OPTIONS: Array<{ label: string; value: PropertyTypeFilter }> = [
+  { label: "All", value: "all" },
+  { label: "Apartment", value: "apartment" },
+  { label: "House", value: "house" },
+  { label: "Villa", value: "villa" },
+  { label: "Commercial", value: "commercial" },
+  { label: "Land", value: "land" },
+];
+
+const PURPOSE_OPTIONS: Array<{ label: string; value: PurposeFilter }> = [
+  { label: "All", value: "all" },
+  { label: "Buy", value: "buy" },
+  { label: "Rent", value: "rent" },
+];
+
+const BEDROOM_OPTIONS: Array<{ label: string; value: BedroomFilter }> = [
+  { label: "Any", value: "any" },
+  { label: "1+", value: "1" },
+  { label: "2+", value: "2" },
+  { label: "3+", value: "3" },
+  { label: "4+", value: "4" },
+  { label: "5+", value: "5" },
+];
+
+const AMENITY_OPTIONS = ["Parking", "Swimming Pool", "Furnished"];
+
+function normalizePurpose(value: string | null): PurposeFilter {
+  if (value === "rent") return "rent";
+  if (value === "all") return "all";
+  return "buy";
+}
+
+function normalizePropertyType(value: string | null): PropertyTypeFilter {
+  if (
+    value === "apartment" ||
+    value === "house" ||
+    value === "villa" ||
+    value === "commercial" ||
+    value === "land"
+  ) {
+    return value;
+  }
+  return "all";
+}
+
+function normalizeBedroomsMin(value: string | null): BedroomFilter {
+  if (value === "1" || value === "2" || value === "3" || value === "4" || value === "5") {
+    return value;
+  }
+  return "any";
+}
+
+function getPageFilters(params: URLSearchParams): FilterState {
+  return {
+    purpose: normalizePurpose(params.get("purpose") || params.get("listing_purpose")),
+    property_type: normalizePropertyType(params.get("property_type") || params.get("type")),
+    max_price: params.get("max_price") || String(PRICE_MAX),
+    bedrooms_min: normalizeBedroomsMin(params.get("bedrooms_min")),
+    amenities: (params.get("amenities") || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean),
+    sort: params.get("sort") || "newest",
+    area_name: params.get("area_name") || "",
+  };
+}
+
+function buildApiQuery(params: URLSearchParams) {
   const normalized = new URLSearchParams();
-  const purpose = params.get('listing_purpose') || params.get('purpose') || 'sale';
-  const propertyType = params.get('property_type') || params.get('type') || '';
-  const city = params.get('city') || '';
-  const areaName = params.get('area_name') || '';
-  const minPrice = params.get('min_price') || '';
-  const maxPrice = params.get('max_price') || '';
-  const bedrooms = params.get('bedrooms') || '';
-  const sort = params.get('sort') || 'newest';
+  const purpose = normalizePurpose(params.get("purpose") || params.get("listing_purpose"));
+  const propertyType = normalizePropertyType(params.get("property_type") || params.get("type"));
+  const city = params.get("city") || "";
+  const areaName = params.get("area_name") || "";
+  const maxPrice = params.get("max_price") || String(PRICE_MAX);
+  const bedroomsMin = normalizeBedroomsMin(params.get("bedrooms_min"));
+  const sort = params.get("sort") || "newest";
+  const amenities = params.get("amenities") || "";
 
-  normalized.set('listing_purpose', purpose);
-  if (propertyType) normalized.set('property_type', propertyType);
-  if (city) normalized.set('city', city);
-  if (areaName) normalized.set('area_name', areaName);
-  if (minPrice) normalized.set('min_price', minPrice);
-  if (maxPrice) normalized.set('max_price', maxPrice);
-  if (bedrooms && bedrooms !== 'Any') normalized.set('bedrooms', bedrooms === '4+' ? '4' : bedrooms);
-  if (sort) normalized.set('sort', sort);
+  if (purpose !== "all") normalized.set("listing_purpose", purpose === "buy" ? "sale" : "rent");
+  if (propertyType !== "all") normalized.set("property_type", propertyType);
+  if (city) normalized.set("city", city);
+  if (areaName) normalized.set("area_name", areaName);
+  if (maxPrice) normalized.set("max_price", maxPrice);
+  if (bedroomsMin !== "any") normalized.set("bedrooms_min", bedroomsMin);
+  if (amenities) normalized.set("amenities", amenities);
+  if (sort) normalized.set("sort", sort);
   return normalized.toString();
+}
+
+function buildUrlFromFilters(filters: FilterState) {
+  const params = new URLSearchParams();
+
+  if (filters.purpose !== "all") params.set("purpose", filters.purpose);
+  if (filters.property_type !== "all") params.set("property_type", filters.property_type);
+  if (filters.area_name.trim()) params.set("area_name", filters.area_name.trim());
+  if (filters.max_price) params.set("max_price", filters.max_price);
+  if (filters.bedrooms_min !== "any") params.set("bedrooms_min", filters.bedrooms_min);
+  if (filters.amenities.length > 0) params.set("amenities", filters.amenities.join(","));
+  if (filters.sort) params.set("sort", filters.sort);
+
+  const query = params.toString();
+  return query ? `/properties?${query}` : "/properties";
+}
+
+function formatPriceBucket(value: string) {
+  const numericValue = Number(value || PRICE_MAX);
+  if (!Number.isFinite(numericValue) || numericValue >= PRICE_MAX) return "10M+";
+  if (numericValue >= 1_000_000) return `${Math.round(numericValue / 1_000_000)}M`;
+  if (numericValue >= 1_000) return `${Math.round(numericValue / 1_000)}K`;
+  return numericValue.toLocaleString();
 }
 
 export default function PropertiesPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   const [data, setData] = useState<PropertyListResponse>({ items: [], total: 0, page: 1, page_size: 0 });
   const [loading, setLoading] = useState(true);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Local filter states
-  const [localFilters, setLocalFilters] = useState({
-    purpose: searchParams.get('listing_purpose') || searchParams.get('purpose') || 'sale',
-    property_type: searchParams.get('property_type') || searchParams.get('type') || '',
-    min_price: searchParams.get('min_price') || '',
-    max_price: searchParams.get('max_price') || '',
-    bedrooms: searchParams.get('bedrooms') || 'Any',
-    sort: searchParams.get('sort') || 'newest',
-    area_name: searchParams.get('area_name') || ''
-  });
+  const [localFilters, setLocalFilters] = useState<FilterState>(() => getPageFilters(new URLSearchParams(searchParams.toString())));
+  const purposeLabel = localFilters.purpose === "rent" ? "Rent" : localFilters.purpose === "all" ? "All" : "Buy";
 
-  // Sync local state when URL changes
   useEffect(() => {
-    setLocalFilters({
-      purpose: searchParams.get('listing_purpose') || searchParams.get('purpose') || 'sale',
-      property_type: searchParams.get('property_type') || searchParams.get('type') || '',
-      min_price: searchParams.get('min_price') || '',
-      max_price: searchParams.get('max_price') || '',
-      bedrooms: searchParams.get('bedrooms') || 'Any',
-      sort: searchParams.get('sort') || 'newest',
-      area_name: searchParams.get('area_name') || ''
-    });
+    setLocalFilters(getPageFilters(new URLSearchParams(searchParams.toString())));
   }, [searchParams]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const result = await fetchProperties(buildQuery(new URLSearchParams(searchParams.toString())));
+      const result = await fetchProperties(buildApiQuery(new URLSearchParams(searchParams.toString())));
       setData(result);
       setLoading(false);
     };
     fetchData();
   }, [searchParams]);
 
-  const updateFilters = useCallback((updates: Partial<typeof localFilters>) => {
-    const newFilters = { ...localFilters, ...updates };
-    const params = new URLSearchParams();
-    params.set('listing_purpose', newFilters.purpose);
-    Object.keys(newFilters).forEach(key => {
-      const val = newFilters[key as keyof typeof newFilters];
-      if (key === 'purpose') return;
-      if (val && val !== 'Any' && val !== '') {
-        if (key === 'bedrooms' && val === '4+') {
-          params.set(key, '4');
-          return;
-        }
-        params.set(key, val);
-      }
-    });
-    router.push(`/properties?${params.toString()}`);
-  }, [localFilters, router]);
+  const pushFilters = useCallback(
+    (nextFilters: FilterState) => {
+      setLocalFilters(nextFilters);
+      router.push(buildUrlFromFilters(nextFilters));
+    },
+    [router]
+  );
 
   const resetFilters = () => {
-    router.push('/properties?listing_purpose=sale');
+    pushFilters({
+      purpose: "buy",
+      property_type: "all",
+      max_price: String(PRICE_MAX),
+      bedrooms_min: "any",
+      amenities: [],
+      sort: "newest",
+      area_name: "",
+    });
+    setIsSidebarOpen(false);
+  };
+
+  const toggleAmenity = (amenity: string) => {
+    const amenities = localFilters.amenities.includes(amenity)
+      ? localFilters.amenities.filter((item) => item !== amenity)
+      : [...localFilters.amenities, amenity];
+    pushFilters({ ...localFilters, amenities });
   };
 
   return (
-    <div className="bg-brand-light min-h-screen">
-      
-      {/* Header Section */}
-      <div className="bg-white border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <nav className="flex items-center text-[13px] text-brand-textSecondary mb-4 font-medium">
-            <Link href="/" className="hover:text-brand-green transition-colors font-bold">Home</Link>
+    <div className="min-h-screen bg-brand-light">
+      <div className="border-b border-brand-border bg-white">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <nav className="mb-4 flex items-center text-[13px] font-medium text-brand-textSecondary">
+            <Link href="/" className="font-bold transition-colors hover:text-brand-green">
+              Home
+            </Link>
             <ChevronRight size={14} className="mx-2 opacity-50" />
-            <Link href="/properties" className="hover:text-brand-green transition-colors font-bold">Bangladesh</Link>
+            <Link href="/properties?purpose=buy" className="font-bold transition-colors hover:text-brand-green">
+              Bangladesh
+            </Link>
             <ChevronRight size={14} className="mx-2 opacity-50" />
-            <span className="text-brand-dark font-black capitalize tracking-tight">Properties for {localFilters.purpose}</span>
+            <span className="capitalize tracking-tight text-brand-dark font-black">
+              Properties for {purposeLabel}
+            </span>
           </nav>
-          
-          <h1 className="text-2xl md:text-[34px] font-black text-brand-dark leading-none tracking-tight">
-            Properties for {localFilters.purpose} in Bangladesh
+
+          <h1 className="text-2xl font-black leading-none tracking-tight text-brand-dark md:text-[34px]">
+            Properties for {purposeLabel} in Bangladesh
           </h1>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col lg:flex-row gap-10">
-          
-          {/* Phase 9: Mobile optimized Drawer Sidebar */}
-          <aside className={`fixed inset-0 z-[100] lg:relative lg:inset-auto lg:z-0 lg:block lg:w-[300px] shrink-0 transition-all duration-500 ${isSidebarOpen ? 'opacity-100 visible' : 'opacity-0 invisible lg:opacity-100 lg:visible'}`}>
-            {/* Backdrop */}
-            <div className={`lg:hidden fixed inset-0 bg-brand-dark/60 backdrop-blur-sm transition-opacity duration-500 ${isSidebarOpen ? 'opacity-100' : 'opacity-0'}`} onClick={() => setIsSidebarOpen(false)}></div>
-            
-            {/* Drawer Content */}
-            <div className={`fixed left-0 top-0 bottom-0 w-[300px] bg-white lg:bg-transparent lg:relative lg:w-full transform transition-transform duration-500 ease-out z-[101] overflow-y-auto lg:overflow-visible ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
-              <div className="bg-white p-6 lg:rounded-2xl shadow-2xl lg:shadow-sm border-r lg:border border-brand-border sticky top-24 min-h-screen lg:min-h-0">
-                <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-4 lg:pb-6">
-                  <h2 className="text-[17px] font-black text-brand-dark uppercase tracking-wider">Filter Search</h2>
-                  <div className="flex items-center gap-4">
-                    <button onClick={resetFilters} className="text-[11px] font-black text-red-500 hover:text-red-600 uppercase tracking-widest flex items-center gap-1 transition-colors">
-                      <X size={14} strokeWidth={3} />
-                      Reset
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-10 lg:flex-row">
+          <aside
+            className={`fixed inset-0 z-[100] shrink-0 transition-all duration-500 lg:relative lg:inset-auto lg:z-0 lg:block lg:w-[320px] ${
+              isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible lg:opacity-100 lg:visible"
+            }`}
+          >
+            <div
+              className={`fixed inset-0 bg-brand-dark/60 backdrop-blur-sm transition-opacity duration-500 lg:hidden ${
+                isSidebarOpen ? "opacity-100" : "opacity-0"
+              }`}
+              onClick={() => setIsSidebarOpen(false)}
+            />
+
+            <div
+              className={`fixed left-0 top-0 bottom-0 z-[101] w-[86%] max-w-[340px] overflow-y-auto bg-white shadow-2xl transition-transform duration-500 ease-out lg:relative lg:top-auto lg:bottom-auto lg:w-full lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:shadow-none ${
+                isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+              }`}
+            >
+              <div className="sticky top-24 min-h-screen border border-brand-border bg-white p-6 shadow-sm lg:min-h-0 lg:rounded-[28px] lg:border-gray-200 lg:shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
+                <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
+                  <h2 className="text-[22px] font-black tracking-tight text-brand-dark">Filters</h2>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={resetFilters}
+                      className="rounded-full px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-brand-textSecondary transition-colors hover:text-brand-dark"
+                    >
+                      Clear
                     </button>
                     <button className="lg:hidden text-brand-dark" onClick={() => setIsSidebarOpen(false)}>
                       <X size={24} />
                     </button>
                   </div>
                 </div>
-                
-                <div className="space-y-8">
-                  {/* Location */}
-                  <div className="relative group">
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 transition-colors group-focus-within:text-brand-green">Location</label>
-                    <div className="relative h-14 flex items-center">
-                      <MapPin size={18} className="absolute left-4 text-brand-green transition-transform group-focus-within:scale-110" />
-                      <input 
-                        type="text" 
-                        placeholder="Enter City or Area" 
-                        value={localFilters.area_name}
-                        onChange={(e) => setLocalFilters({ ...localFilters, area_name: e.target.value })}
-                        onKeyDown={(e) => e.key === 'Enter' && updateFilters({})}
-                        className="w-full h-full pl-11 pr-4 bg-brand-light border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green text-[15px] font-bold text-brand-dark placeholder-gray-400 transition-all shadow-sm"
-                      />
-                    </div>
-                  </div>
 
-                  {/* Purpose */}
-                  <div>
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Purpose</label>
-                    <div className="flex bg-brand-light p-1.5 rounded-xl border border-transparent h-14 shadow-sm">
-                      <button 
-                        onClick={() => updateFilters({ purpose: 'sale' })}
-                        className={`flex-1 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all ${localFilters.purpose === 'sale' ? 'bg-white shadow-lg text-brand-green' : 'text-gray-400 hover:text-brand-dark'}`}
-                      >
-                        Buy
-                      </button>
-                      <button 
-                        onClick={() => updateFilters({ purpose: 'rent' })}
-                        className={`flex-1 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all ${localFilters.purpose === 'rent' ? 'bg-white shadow-lg text-brand-green' : 'text-gray-400 hover:text-brand-dark'}`}
-                      >
-                        Rent
-                      </button>
+                <div className="space-y-6">
+                  <section>
+                    <p className="mb-3 text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                      Property Type
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {PROPERTY_TYPE_OPTIONS.map((option) => {
+                        const active = localFilters.property_type === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => pushFilters({ ...localFilters, property_type: option.value })}
+                            className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
+                              active
+                                ? "border-brand-green bg-brand-green text-white shadow-lg shadow-brand-green/20"
+                                : "border-gray-200 bg-white text-brand-dark hover:border-brand-green hover:bg-green-50"
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
                     </div>
-                  </div>
-                  
-                  {/* Property Type */}
-                  <div>
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 transition-colors group-focus-within:text-brand-green">Property Type</label>
-                    <div className="relative h-14">
-                      <select 
-                        value={localFilters.property_type}
-                        onChange={(e) => updateFilters({ property_type: e.target.value })}
-                        className="w-full h-full pl-4 pr-10 bg-brand-light border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green appearance-none text-[15px] font-bold text-brand-dark cursor-pointer transition-all shadow-sm"
-                      >
-                        <option value="">Any Type</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="house">House</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="land">Land</option>
-                      </select>
-                      <ChevronDown size={18} className="absolute right-4 top-4.5 text-gray-400 pointer-events-none" />
+                  </section>
+
+                  <section>
+                    <p className="mb-3 text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                      Listing Type
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {PURPOSE_OPTIONS.map((option) => {
+                        const active = localFilters.purpose === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => pushFilters({ ...localFilters, purpose: option.value })}
+                            className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
+                              active
+                                ? "border-brand-green bg-brand-green text-white shadow-lg shadow-brand-green/20"
+                                : "border-gray-200 bg-white text-brand-dark hover:border-brand-green hover:bg-green-50"
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
                     </div>
-                  </div>
-                  
-                  {/* Price Range */}
-                  <div>
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Price Range (BDT)</label>
-                    <div className="flex gap-3 h-14">
-                      <input 
-                        type="number" 
-                        placeholder="Min" 
-                        value={localFilters.min_price}
-                        onChange={(e) => setLocalFilters({ ...localFilters, min_price: e.target.value })}
-                        onBlur={() => updateFilters({})}
-                        className="w-1/2 px-4 bg-brand-light border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green text-[15px] font-bold text-brand-dark placeholder-gray-400 transition-all shadow-sm" 
+                  </section>
+
+                  <section>
+                    <div className="mb-3 flex items-center justify-between">
+                      <p className="text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                        Price Range: BDT 0 - {formatPriceBucket(localFilters.max_price)}
+                      </p>
+                    </div>
+                    <input
+                      type="range"
+                      min={0}
+                      max={PRICE_MAX}
+                      step={PRICE_STEP}
+                      value={Number(localFilters.max_price || PRICE_MAX)}
+                      onChange={(e) => pushFilters({ ...localFilters, max_price: e.target.value })}
+                      className="h-2 w-full cursor-pointer appearance-none rounded-full accent-brand-green"
+                    />
+                  </section>
+
+                  <section>
+                    <p className="mb-3 text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                      Min Bedrooms
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {BEDROOM_OPTIONS.map((option) => {
+                        const active = localFilters.bedrooms_min === option.value;
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => pushFilters({ ...localFilters, bedrooms_min: option.value })}
+                            className={`min-w-[54px] rounded-full border px-4 py-2 text-sm font-medium transition-all ${
+                              active
+                                ? "border-brand-green bg-brand-green text-white shadow-lg shadow-brand-green/20"
+                                : "border-gray-200 bg-white text-brand-dark hover:border-brand-green hover:bg-green-50"
+                            }`}
+                          >
+                            {option.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
+
+                  <section>
+                    <p className="mb-3 text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                      Amenities
+                    </p>
+                    <div className="space-y-3">
+                      {AMENITY_OPTIONS.map((amenity) => {
+                        const checked = localFilters.amenities.includes(amenity);
+                        return (
+                          <label key={amenity} className="flex cursor-pointer items-center gap-3 text-brand-dark">
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => toggleAmenity(amenity)}
+                              className="h-5 w-5 rounded border-gray-300 text-brand-green focus:ring-brand-green"
+                            />
+                            <span className="text-base font-medium">{amenity}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </section>
+
+                  <section>
+                    <p className="mb-3 text-[13px] font-black uppercase tracking-[0.22em] text-brand-textSecondary">
+                      Location
+                    </p>
+                    <div className="relative group">
+                      <MapPin
+                        size={18}
+                        className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-brand-green transition-transform group-focus-within:scale-110"
                       />
-                      <input 
-                        type="number" 
-                        placeholder="Max" 
-                        value={localFilters.max_price}
-                        onChange={(e) => setLocalFilters({ ...localFilters, max_price: e.target.value })}
-                        onBlur={() => updateFilters({})}
-                        className="w-1/2 px-4 bg-brand-light border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green text-[15px] font-bold text-brand-dark placeholder-gray-400 transition-all shadow-sm" 
+                      <input
+                        type="text"
+                        placeholder="Enter City or Area"
+                        value={localFilters.area_name}
+                        onChange={(e) => pushFilters({ ...localFilters, area_name: e.target.value })}
+                        className="h-14 w-full rounded-full border border-gray-200 bg-white pl-11 pr-4 text-[15px] font-medium text-brand-dark placeholder:text-gray-400 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20"
                       />
                     </div>
-                  </div>
-                  
-                  {/* Bedrooms */}
-                  <div>
-                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Bedrooms</label>
-                    <div className="grid grid-cols-5 gap-1.5">
-                      {['Any', '1', '2', '3', '4+'].map((opt) => (
-                        <button 
-                          key={opt} 
-                          onClick={() => updateFilters({ bedrooms: opt })}
-                          className={`py-3.5 text-[11px] font-black rounded-xl border transition-all shadow-sm ${localFilters.bedrooms === opt ? 'bg-brand-green border-brand-green text-white shadow-lg shadow-brand-green/30' : 'bg-brand-light border-transparent text-brand-dark hover:border-brand-green hover:bg-white'}`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <button 
-                    onClick={() => updateFilters({})}
-                    className="w-full bg-brand-green text-white font-black text-[14px] py-5 rounded-2xl hover:bg-brand-greenHover transition-all shadow-xl shadow-brand-green/40 uppercase tracking-[0.2em] active:scale-95 mt-6 border-b-4 border-brand-greenHover"
+                  </section>
+
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="w-full rounded-full border border-gray-200 bg-white py-3 text-[15px] font-medium text-brand-textSecondary transition-all hover:border-brand-green hover:text-brand-dark"
                   >
-                    FIND PROPERTIES
+                    Clear All Filters
                   </button>
                 </div>
               </div>
             </div>
           </aside>
 
-          {/* Main Results Section */}
           <main className="flex-1">
-            
-            <div className="bg-white rounded-2xl border border-brand-border p-4 mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+            <div className="mb-10 flex flex-col justify-between gap-6 rounded-2xl border border-brand-border bg-white p-4 shadow-sm sm:flex-row sm:items-center">
               <div className="flex items-center gap-4">
-                <button 
-                  className="lg:hidden flex items-center gap-2 px-5 py-3 bg-brand-dark text-white rounded-xl text-[13px] font-black uppercase tracking-widest shadow-xl active:scale-95 transition-all"
+                <button
+                  className="flex items-center gap-2 rounded-xl bg-brand-dark px-5 py-3 text-[13px] font-black uppercase tracking-widest text-white transition-all active:scale-95 lg:hidden"
                   onClick={() => setIsSidebarOpen(true)}
                 >
                   <SlidersHorizontal size={18} />
                   Filters
                 </button>
-                <div className="text-[16px] font-black text-brand-dark tracking-tight">
+                <div className="text-[16px] font-black tracking-tight text-brand-dark">
                   {loading ? (
-                    <div className="h-6 w-48 shimmer rounded-lg" />
+                    <div className="h-6 w-48 rounded-lg shimmer" />
                   ) : (
                     <>
-                      Showing <span className="text-brand-green">{data.items.length > 0 ? '1' : '0'} - {data.items.length}</span> of <span className="text-brand-green">{data.total}</span> Properties
+                      Showing{" "}
+                      <span className="text-brand-green">
+                        {data.items.length > 0 ? "1" : "0"} - {data.items.length}
+                      </span>{" "}
+                      of <span className="text-brand-green">{data.total}</span> Properties
                     </>
                   )}
                 </div>
@@ -271,33 +435,39 @@ export default function PropertiesPage() {
 
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3 border-r border-gray-100 pr-6">
-                  <span className="text-[11px] font-black text-brand-textSecondary uppercase tracking-widest opacity-60">Sort By:</span>
+                  <span className="text-[11px] font-black uppercase tracking-widest text-brand-textSecondary opacity-60">
+                    Sort By:
+                  </span>
                   <div className="relative">
-                    <select 
+                    <select
                       value={localFilters.sort}
-                      onChange={(e) => updateFilters({ sort: e.target.value })}
-                      className="pl-2 pr-10 py-2 text-[14px] font-black text-brand-dark bg-transparent focus:outline-none appearance-none cursor-pointer tracking-tight"
+                      onChange={(e) => pushFilters({ ...localFilters, sort: e.target.value })}
+                      className="cursor-pointer appearance-none bg-transparent py-2 pl-2 pr-10 text-[14px] font-black tracking-tight text-brand-dark focus:outline-none"
                     >
                       <option value="newest">Newest First</option>
                       <option value="price_asc">Price: Low to High</option>
                       <option value="price_desc">Price: High to Low</option>
                       <option value="size_desc">Size: Large to Small</option>
                     </select>
-                    <ChevronDown size={16} className="absolute right-1 top-2.5 text-brand-green pointer-events-none" />
+                    <ChevronDown size={16} className="pointer-events-none absolute right-1 top-2.5 text-brand-green" />
                   </div>
                 </div>
-                
-                <div className="flex gap-2 bg-brand-light p-1 rounded-xl border border-transparent">
-                  <button 
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2.5 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white shadow-lg text-brand-green' : 'text-gray-400 hover:text-brand-dark'}`}
+
+                <div className="flex gap-2 rounded-xl border border-transparent bg-brand-light p-1">
+                  <button
+                    onClick={() => setViewMode("grid")}
+                    className={`rounded-lg p-2.5 transition-all ${
+                      viewMode === "grid" ? "bg-white text-brand-green shadow-lg" : "text-gray-400 hover:text-brand-dark"
+                    }`}
                     title="Grid View"
                   >
                     <LayoutGrid size={20} />
                   </button>
-                  <button 
-                    onClick={() => setViewMode('list')}
-                    className={`p-2.5 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white shadow-lg text-brand-green' : 'text-gray-400 hover:text-brand-dark'}`}
+                  <button
+                    onClick={() => setViewMode("list")}
+                    className={`rounded-lg p-2.5 transition-all ${
+                      viewMode === "list" ? "bg-white text-brand-green shadow-lg" : "text-gray-400 hover:text-brand-dark"
+                    }`}
                     title="List View"
                   >
                     <ListIcon size={20} />
@@ -305,65 +475,74 @@ export default function PropertiesPage() {
                 </div>
               </div>
             </div>
-            
+
             {loading ? (
-              <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 gap-10" : "flex flex-col gap-10"}>
-                {[1, 2, 3, 4].map(i => (
+              <div className={viewMode === "grid" ? "grid grid-cols-1 gap-10 md:grid-cols-2" : "flex flex-col gap-10"}>
+                {[1, 2, 3, 4].map((i) => (
                   <PropertyCardSkeleton key={i} />
                 ))}
               </div>
             ) : data.items.length === 0 ? (
-              <div className="bg-white py-32 px-12 text-center rounded-3xl border border-brand-border shadow-2xl shadow-black/5">
-                <div className="w-28 h-24 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-10 overflow-hidden relative">
-                   <div className="shimmer absolute inset-0 opacity-10" />
-                  <Search size={52} className="text-gray-300 relative z-10" />
+              <div className="rounded-3xl border border-brand-border bg-white px-12 py-32 text-center shadow-2xl shadow-black/5">
+                <div className="relative mx-auto mb-10 flex h-24 w-28 items-center justify-center overflow-hidden rounded-full bg-brand-light">
+                  <div className="shimmer absolute inset-0 opacity-10" />
+                  <Search size={52} className="relative z-10 text-gray-300" />
                 </div>
-                <h3 className="text-[28px] font-black text-brand-dark mb-4 tracking-tighter uppercase italic">No Properties found</h3>
-                <p className="text-brand-textSecondary max-w-sm mx-auto font-bold text-lg opacity-60 leading-tight mb-12">
+                <h3 className="mb-4 text-[28px] font-black uppercase italic tracking-tighter text-brand-dark">
+                  No Properties found
+                </h3>
+                <p className="mx-auto mb-12 max-w-sm text-lg font-bold leading-tight text-brand-textSecondary opacity-60">
                   Try adjusting your filters or resetting the search to discover more gems.
                 </p>
-                <button 
+                <button
                   onClick={resetFilters}
-                  className="px-12 py-5 bg-brand-green text-white font-black rounded-2xl hover:bg-brand-greenHover transition-all shadow-2xl shadow-brand-green/40 uppercase tracking-[0.2em] active:scale-95"
+                  className="rounded-2xl bg-brand-green px-12 py-5 text-white shadow-2xl shadow-brand-green/40 transition-all active:scale-95 hover:bg-brand-greenHover font-black uppercase tracking-[0.2em]"
                 >
                   Reset All Filters
                 </button>
               </div>
             ) : (
-              <div className={viewMode === 'grid' ? "grid grid-cols-1 md:grid-cols-2 gap-10" : "flex flex-col gap-10"}>
+              <div className={viewMode === "grid" ? "grid grid-cols-1 gap-10 md:grid-cols-2" : "flex flex-col gap-10"}>
                 {data.items.map((prop) => (
-                  <PropertyCard 
-                    key={prop.slug} 
-                    viewMode={viewMode}
-                    property={prop}
-                  />
+                  <PropertyCard key={prop.slug} viewMode={viewMode} property={prop} />
                 ))}
               </div>
             )}
-            
-            {/* Pagination Controls */}
+
             {!loading && data.total > 0 && (
               <div className="mt-20 flex flex-col items-center gap-8 border-t border-gray-100 pt-12">
                 <div className="flex items-center gap-3">
-                  <button className="w-14 h-14 flex items-center justify-center rounded-2xl border border-brand-border bg-white text-gray-400 cursor-not-allowed transition-all shadow-sm"><ChevronLeft size={18} /></button>
-                  <button className="w-14 h-14 flex items-center justify-center rounded-2xl border border-brand-green bg-brand-green text-white font-black shadow-2xl shadow-brand-green/40">1</button>
-                  <button className="w-14 h-14 flex items-center justify-center rounded-2xl border border-brand-border bg-white text-brand-dark font-black hover:border-brand-green hover:text-brand-green transition-all shadow-sm">2</button>
-                  <button className="w-14 h-14 flex items-center justify-center rounded-2xl border border-brand-border bg-white text-brand-dark font-black hover:border-brand-green hover:text-brand-green transition-all shadow-sm">3</button>
-                  <span className="px-3 text-gray-400 font-black text-xl">...</span>
-                  <button className="w-14 h-14 flex items-center justify-center rounded-2xl border border-brand-border bg-white text-brand-green font-black hover:bg-green-50 transition-all shadow-sm"><ChevronRight size={18} /></button>
+                  <button className="flex h-14 w-14 cursor-not-allowed items-center justify-center rounded-2xl border border-brand-border bg-white text-gray-400 shadow-sm">
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-green bg-brand-green font-black text-white shadow-2xl shadow-brand-green/40">
+                    1
+                  </button>
+                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-dark shadow-sm transition-all hover:border-brand-green hover:text-brand-green">
+                    2
+                  </button>
+                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-dark shadow-sm transition-all hover:border-brand-green hover:text-brand-green">
+                    3
+                  </button>
+                  <span className="px-3 text-xl font-black text-gray-400">...</span>
+                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-green shadow-sm transition-all hover:bg-green-50">
+                    <ChevronRight size={18} />
+                  </button>
                 </div>
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-[12px] font-black text-brand-textSecondary uppercase tracking-[0.25em] opacity-40">
+                  <p className="text-[12px] font-black uppercase tracking-[0.25em] text-brand-textSecondary opacity-40">
                     Showing 1 to {data.items.length} of {data.total} properties
                   </p>
-                  <div className="h-1 w-24 bg-gray-100 rounded-full overflow-hidden">
-                     <div className="h-full bg-brand-green" style={{ width: `${(data.items.length / data.total) * 100}%` }} />
+                  <div className="h-1 w-24 overflow-hidden rounded-full bg-gray-100">
+                    <div
+                      className="h-full bg-brand-green"
+                      style={{ width: `${data.total > 0 ? (data.items.length / data.total) * 100 : 0}%` }}
+                    />
                   </div>
                 </div>
               </div>
             )}
           </main>
-          
         </div>
       </div>
     </div>
