@@ -15,7 +15,7 @@ interface PropertyCardProps {
 
 export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCardProps) {
   const imageCount = property.image_count || 5; 
-  const phone = property.business_phone || "+8801000000000";
+  const phone = property.business_phone || "+8801717-849009";
   const waPhone = phone.replace(/[^0-9]/g, '');
   const isList = viewMode === 'list';
   const priceAmount = Number(property.price_amount || 0);

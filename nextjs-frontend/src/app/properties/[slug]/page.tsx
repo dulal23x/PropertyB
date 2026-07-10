@@ -73,7 +73,7 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
   const amenities = parseAmenities(property);
   const listingPurpose = property.listing_purpose || 'sale';
   const propertyType = property.property_type || 'property';
-  const businessPhone = property.business_phone || '+8801000000000';
+  const businessPhone = property.business_phone || '+8801717-849009';
   const locationLabel = formatPropertyLocation(property);
   const areaLabel = property.area_name || property.city || 'Bangladesh';
 

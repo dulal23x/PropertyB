@@ -1,4 +1,4 @@
-const FALLBACK_API_BASE_URL = "http://127.0.0.1:8090";
+const FALLBACK_API_BASE_URL = "https://api.propertybikri.com";
 
 export function getApiBaseUrl() {
   return process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_PUBLIC_API_URL || FALLBACK_API_BASE_URL;

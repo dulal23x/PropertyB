@@ -18,7 +18,7 @@ class Settings(BaseSettings):
 
     email_provider: str = "console"
     email_log_dir: str = "./userdata/logs/emails"
-    real_estate_public_phone: str = "+8801000000000"
+    real_estate_public_phone: str = "+8801717-849009"
     real_estate_public_email: str = "info@example.com"
     real_estate_support_email: str = "support@example.com"
     real_estate_admin_alert_email: str = "admin@example.com"

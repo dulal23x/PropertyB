@@ -41,7 +41,13 @@ export default function Footer() {
             <h3 className="mb-5 inline-block border-b border-gray-700 pb-2 text-[15px] font-black uppercase tracking-[0.1em]">Connect With Us</h3>
             <div className="mb-6 flex flex-wrap gap-4">
               {/* Facebook */}
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all hover:-translate-y-1 hover:bg-brand-green">
+              <a
+                href="https://www.facebook.com/propertybikri"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PropertyBikri Facebook page"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all hover:-translate-y-1 hover:bg-brand-green"
+              >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
               {/* Twitter */}
