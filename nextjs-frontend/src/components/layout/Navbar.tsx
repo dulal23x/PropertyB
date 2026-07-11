@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-3">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
+            <Link href="/" aria-label="PropertyBikri home" className="flex-shrink-0 flex items-center">
               <Image 
                 src="/assets/propertybikri-logo.png" 
                 alt="PropertyBikri logo" 
@@ -41,6 +41,7 @@ export default function Navbar() {
                 className="h-auto w-[168px] object-contain sm:w-[196px]"
                 priority 
               />
+              <span className="sr-only">PropertyBikri</span>
             </Link>
             <nav className="hidden lg:ml-8 lg:flex lg:space-x-4">
               <Link href="/properties?purpose=sale" className="text-brand-dark hover:text-brand-green px-2 py-2 text-[13px] font-bold uppercase tracking-wider transition-colors">Buy</Link>

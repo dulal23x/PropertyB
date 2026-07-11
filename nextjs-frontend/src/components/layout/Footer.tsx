@@ -49,6 +49,7 @@ export default function Footer() {
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all hover:-translate-y-1 hover:bg-brand-green"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <span className="sr-only">PropertyBikri</span>
               </a>
               <a href="#" aria-label="Email us" className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all hover:-translate-y-1 hover:bg-brand-green">
                 <Mail size={18} strokeWidth={2.1} />
@@ -77,7 +78,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-center text-xs font-bold uppercase tracking-widest text-gray-500 md:flex-row md:text-left">
-          <p>&copy; {new Date().getFullYear()} PropertyBikri. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()}{" "}
+            <Link href="/" className="hover:text-brand-green">PropertyBikri</Link>. All rights reserved.
+          </p>
           <div className="flex flex-wrap justify-center gap-4 md:justify-start md:gap-6">
             <Link href="/sitemap" className="hover:text-brand-green">Sitemap</Link>
             <Link href="/cookies" className="hover:text-brand-green">Cookie Policy</Link>
