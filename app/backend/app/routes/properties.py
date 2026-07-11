@@ -187,6 +187,8 @@ async def list_public(
     min_price: Decimal | None = None,
     max_price: Decimal | None = None,
     bedrooms: int | None = None,
+    bedrooms_min: int | None = None,
+    bedrooms_max: int | None = None,
     bathrooms: int | None = None,
     min_size: float | None = None,
     max_size: float | None = None,
@@ -194,6 +196,7 @@ async def list_public(
     land_size_min: float | None = None,
     land_size_max: float | None = None,
     land_size_unit: str | None = None,
+    amenities: str | None = None,
     price_visibility: str | None = None,
     sort: str = "newest",
     page: int = Query(default=1, ge=1),
@@ -221,7 +224,11 @@ async def list_public(
         filters.append(PropertyListing.price_amount >= min_price)
     if max_price is not None:
         filters.append(PropertyListing.price_amount <= max_price)
-    if bedrooms is not None:
+    if bedrooms_min is not None:
+        filters.append(PropertyListing.bedrooms >= bedrooms_min)
+    if bedrooms_max is not None:
+        filters.append(PropertyListing.bedrooms <= bedrooms_max)
+    if bedrooms is not None and bedrooms_min is None and bedrooms_max is None:
         filters.append(PropertyListing.bedrooms == bedrooms)
     if bathrooms is not None:
         filters.append(PropertyListing.bathrooms == bathrooms)
@@ -237,6 +244,10 @@ async def list_public(
         filters.append(PropertyListing.land_size_value <= land_size_max)
     if land_size_unit:
         filters.append(PropertyListing.land_size_unit == land_size_unit)
+    if amenities:
+        selected_amenities = [item.strip() for item in amenities.split(",") if item.strip()]
+        for amenity in selected_amenities:
+            filters.append(PropertyListing.amenities_json.ilike(f"%{amenity}%"))
     if price_visibility:
         filters.append(PropertyListing.price_visibility == price_visibility)
 

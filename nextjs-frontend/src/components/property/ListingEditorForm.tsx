@@ -9,14 +9,13 @@ import {
   updateMyListing,
   type PropertyEditorItem,
 } from "@/lib/property-api";
-import { DHAKA_AREAS } from "@/lib/locations";
 import ListingImageUploader from "@/components/property/ListingImageUploader";
 
 type FormState = {
   title: string;
   description: string;
   listing_purpose: "sale" | "rent";
-  property_type: "apartment" | "house" | "land" | "commercial" | "office" | "shop" | "warehouse" | "factory" | "other";
+  property_type: "apartment" | "house" | "villa" | "land" | "commercial" | "office" | "shop" | "warehouse" | "factory" | "other";
   city: string;
   area_name: string;
   display_address: string;
@@ -72,7 +71,6 @@ interface ListingEditorFormProps {
 export default function ListingEditorForm({ editId = null }: ListingEditorFormProps) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(initialState);
-  const [useCustomArea, setUseCustomArea] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -89,7 +87,6 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
         const listing = await fetchMyListing(editId);
         if (listing) {
           setForm(mapListingToState(listing));
-          setUseCustomArea(Boolean(listing.area_name && !DHAKA_AREAS.includes(listing.area_name as (typeof DHAKA_AREAS)[number])));
           setExistingId(listing.id);
           setLoadedTitle(listing.title);
         }
@@ -105,14 +102,6 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const setArea = (areaName: string) => {
-    setForm((prev) => ({
-      ...prev,
-      area_name: areaName,
-      display_address: areaName ? `${areaName}, ${prev.city || "Dhaka"}` : "",
-    }));
   };
 
   const buildPayload = () => ({
@@ -194,6 +183,7 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
               <select value={form.property_type} onChange={(e) => setField("property_type", e.target.value as FormState["property_type"])} className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green">
                 <option value="apartment">Apartment</option>
                 <option value="house">House</option>
+                <option value="villa">Villa</option>
                 <option value="commercial">Commercial</option>
                 <option value="land">Land</option>
                 <option value="office">Office</option>
@@ -219,34 +209,7 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Area / Neighborhood</label>
-              <select
-                value={useCustomArea ? "__custom" : form.area_name}
-                onChange={(e) => {
-                  if (e.target.value === "__custom") {
-                    setUseCustomArea(true);
-                    setArea("");
-                    return;
-                  }
-                  setUseCustomArea(false);
-                  setArea(e.target.value);
-                }}
-                className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green"
-              >
-                <option value="">Select area</option>
-                {DHAKA_AREAS.map((area) => (
-                  <option key={area} value={area}>{area}</option>
-                ))}
-                <option value="__custom">Other / custom area</option>
-              </select>
-              {useCustomArea && (
-                <input
-                  value={form.area_name}
-                  onChange={(e) => setArea(e.target.value)}
-                  type="text"
-                  placeholder="Enter custom area"
-                  className="mt-3 w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green"
-                />
-              )}
+              <input value={form.area_name} onChange={(e) => setField("area_name", e.target.value)} type="text" placeholder="e.g. Gulshan 1" className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Display Address</label>

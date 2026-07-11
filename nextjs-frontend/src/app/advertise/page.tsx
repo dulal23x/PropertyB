@@ -2,7 +2,19 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Check, Users, Layout, Globe, Zap, BarChart3, Mail, Phone, ChevronRight } from 'lucide-react';
+import {
+  ArrowRight,
+  BarChart3,
+  Globe,
+  Mail,
+  PhoneCall,
+  Palette,
+  Rocket,
+  Target,
+  TrendingUp,
+  CheckCircle2,
+  Zap
+} from 'lucide-react';
 
 export default function AdvertisePage() {
   const [valleyType, setValleyType] = useState<'inside' | 'outside'>('inside');
@@ -60,7 +72,7 @@ export default function AdvertisePage() {
             <div className="bg-white rounded-2xl border-2 border-brand-green shadow-xl overflow-hidden transform transition-all hover:scale-[1.02]">
               <div className="bg-brand-green p-8 text-center text-white">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
-                  <Zap size={32} className="fill-current" />
+                  <Rocket size={32} className="fill-current" />
                 </div>
                 <h3 className="text-2xl font-black uppercase tracking-tighter mb-2">
                   {valleyType === 'inside' ? 'Standard Plan' : 'Digital Plan'}
@@ -86,7 +98,7 @@ export default function AdvertisePage() {
                   ].map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-[15px] font-medium text-gray-700">
                       <div className="mt-1 shrink-0 text-brand-green">
-                        <Check size={18} strokeWidth={3} />
+                        <CheckCircle2 size={18} strokeWidth={2.5} />
                       </div>
                       {feature}
                     </li>
@@ -111,11 +123,12 @@ export default function AdvertisePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
             {[
-              { icon: <Users size={32} />, title: "Precision Audience Targeting", desc: "Targeting based on detailed demographics, interests, and real-time search behavior." },
-              { icon: <Layout size={32} />, title: "High-Impact Creative Design", desc: "Scroll-stopping visuals and high-definition property videos designed for social engagement." },
+              { icon: <Target size={32} />, title: "Precision Audience Targeting", desc: "Targeting based on detailed demographics, interests, and real-time search behavior." },
+              { icon: <Palette size={32} />, title: "High-Impact Creative Design", desc: "Scroll-stopping visuals and high-definition property videos designed for social engagement." },
               { icon: <Globe size={32} />, title: "Multi-Platform Ad Placement", desc: "Your property promoted across Facebook, Instagram, TikTok, and partner networks." },
               { icon: <Zap size={32} />, title: "Instant Lead Delivery", desc: "Real-time inquiry alerts sent directly to you, ensuring you never miss a potential deal." },
-              { icon: <BarChart3 size={32} />, title: "Performance Optimization", desc: "Continuous ad monitoring and monthly performance reports to maximize your ROI." }
+              { icon: <BarChart3 size={32} />, title: "Performance Optimization", desc: "Continuous ad monitoring and monthly performance reports to maximize your ROI." },
+              { icon: <TrendingUp size={32} />, title: "Growth Acceleration", desc: "Strategic campaign tuning that helps your listing gain traction faster and stay visible longer." }
             ].map((benefit, idx) => (
               <div key={idx} className="p-8 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-xl transition-shadow duration-300 group">
                 <div className="w-16 h-16 bg-brand-green/10 rounded-xl flex items-center justify-center text-brand-green mb-6 group-hover:bg-brand-green group-hover:text-white transition-colors">
@@ -186,7 +199,7 @@ export default function AdvertisePage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-brand-light/50">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-green"><Phone size={20} /></div>
+                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-brand-green"><PhoneCall size={20} /></div>
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Call Us</p>
                       <p className="font-bold text-brand-dark">+880 1000 000000</p>
@@ -210,7 +223,7 @@ export default function AdvertisePage() {
           </p>
           <Link href="/post-property" className="inline-flex items-center gap-3 bg-white text-brand-green font-black py-5 px-14 rounded shadow-2xl hover:bg-brand-light transition-all transform hover:-translate-y-1 active:scale-95 group">
             GET STARTED TODAY
-            <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, UserRound } from 'lucide-react';
 import { useAuthSession } from "@/lib/use-auth-session";
 
 export default function Navbar() {
@@ -34,10 +34,11 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
               <Image 
-                src="/assets/bproperty-logo.svg" 
-                alt="PropertyBikri Logo" 
-                width={140} 
-                height={30} 
+                src="/assets/propertybikri-logo.png" 
+                alt="PropertyBikri logo" 
+                width={1437} 
+                height={355} 
+                className="h-auto w-[168px] object-contain sm:w-[196px]"
                 priority 
               />
             </Link>
@@ -50,22 +51,13 @@ export default function Navbar() {
           </div>
           
           <div className="flex items-center space-x-6">
-            <div className="hidden md:flex items-center gap-1 text-[13px] font-black text-brand-dark border-r border-gray-200 pr-6 mr-2">
-               <button className="text-brand-green">EN</button>
-               <span className="text-gray-300">|</span>
-               <button className="hover:text-brand-green transition-colors">BN</button>
-            </div>
-
             <Link href={postPropertyHref} className="hidden sm:inline-flex items-center justify-center px-6 py-2 bg-brand-green text-white text-[12px] font-black uppercase tracking-widest rounded shadow-lg shadow-brand-green/20 hover:bg-brand-greenHover transition-all">
               Post Property
             </Link>
             
             <Link href={accountHref} className="flex items-center gap-2 text-brand-dark hover:text-brand-green transition-colors group">
               <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-brand-green">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-brand-green">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+                <UserRound size={18} strokeWidth={1.9} className="text-gray-400 group-hover:text-brand-green" />
               </div>
               <span className="text-[12px] font-black uppercase tracking-widest hidden lg:inline">{accountLabel}</span>
             </Link>

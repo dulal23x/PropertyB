@@ -2,7 +2,7 @@ from fastapi import HTTPException
 
 from app.models.entities import PropertyListing
 
-PROPERTY_TYPES = {"apartment", "house", "land", "commercial", "office", "shop", "warehouse", "factory", "other"}
+PROPERTY_TYPES = {"apartment", "house", "villa", "land", "commercial", "office", "shop", "warehouse", "factory", "other"}
 LISTING_PURPOSES = {"sale", "rent"}
 PRICE_VISIBILITY = {"show_price", "call_for_price"}
 
