@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ImagePlus, Trash2 } from "lucide-react";
 import { uploadListingImage, deleteListingImage, fetchListingImages, propertyImageUrl } from "@/lib/property-api";
 
 interface ListingImageUploaderProps {
@@ -94,9 +95,7 @@ export default function ListingImageUploader({ listingId }: ListingImageUploader
               className="absolute right-2 top-2 hidden rounded-full bg-red-600 p-1.5 text-white shadow-sm group-hover:block hover:bg-red-700"
               title="Delete Image"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+              <Trash2 className="h-3.5 w-3.5" strokeWidth={2.5} />
             </button>
           </div>
         ))}
@@ -108,9 +107,7 @@ export default function ListingImageUploader({ listingId }: ListingImageUploader
               <div className="h-5 w-5 animate-spin rounded-full border-2 border-brand-green border-t-transparent"></div>
             ) : (
               <>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
+                <ImagePlus className="h-8 w-8 text-gray-400" strokeWidth={1.8} />
                 <span className="mt-1 text-xs font-medium text-gray-500">Add Photo</span>
               </>
             )}

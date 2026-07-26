@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Camera, BedDouble, Bath, Square, Phone, Mail, MessageCircle, MapPin } from 'lucide-react';
+import { Camera, BedDouble, Bath, Square, PhoneCall, Mail, MessageCircleMore, MapPinned } from 'lucide-react';
 import { formatBDT } from '@/utils/formatters';
 import type { PropertyListItem } from '@/lib/property-api';
 import { getSafePropertyImageSrc } from '@/lib/image';
@@ -44,10 +44,10 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
         )}
 
         {/* Photo Count */}
-        <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1.5 z-10">
-          <Camera size={14} className="stroke-[1.5]" />
-          {imageCount}
-        </div>
+          <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1.5 z-10">
+            <Camera size={14} className="stroke-[1.5]" />
+            {imageCount}
+          </div>
       </div>
       
       {/* Details Section */}
@@ -82,7 +82,7 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
 
         {/* Location */}
         <div className="flex items-start text-brand-textSecondary text-[13px] mb-4 font-medium opacity-80">
-          <MapPin size={14} className="mr-1.5 mt-0.5 shrink-0 text-brand-green" />
+          <MapPinned size={14} className="mr-1.5 mt-0.5 shrink-0 text-brand-green" />
           <span className="line-clamp-1">{property.area_name}, {property.city}</span>
         </div>
         
@@ -111,7 +111,7 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
         {/* Action Footer */}
         <div className={`mt-5 flex gap-3 ${isList ? 'md:mt-6' : ''}`}>
            <a href={`tel:${phone}`} className="flex-[3] flex items-center justify-center gap-2 text-center py-3 border border-brand-green text-brand-green text-[13px] font-black rounded-lg hover:bg-green-50 transition-all shadow-sm active:scale-95">
-             <Phone size={16} strokeWidth={3} />
+             <PhoneCall size={16} strokeWidth={3} />
              CALL
            </a>
            <Link href={`/properties/${property.slug}#contact`} className="flex-[3] flex items-center justify-center gap-2 text-center py-3 border border-gray-200 text-brand-dark text-[13px] font-black rounded-lg hover:bg-gray-50 transition-all shadow-sm active:scale-95">
@@ -119,7 +119,7 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
              EMAIL
            </Link>
            <a href={`https://wa.me/${waPhone}`} target="_blank" className="flex-1 flex items-center justify-center py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#20b858] transition-all shadow-lg shadow-green-500/20 active:scale-95" title="WhatsApp">
-             <MessageCircle size={20} fill="currentColor" strokeWidth={0} />
+             <MessageCircleMore size={20} strokeWidth={2.5} />
            </a>
         </div>
 

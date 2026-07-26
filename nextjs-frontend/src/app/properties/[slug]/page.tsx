@@ -5,6 +5,7 @@ import { formatBDT } from '@/utils/formatters';
 import PropertyInquiryForm from '@/components/property/PropertyInquiryForm';
 import RevealContactButton from '@/components/property/RevealContactButton';
 import { getSafePropertyImageSrc } from '@/lib/image';
+import { BadgeCheck, CheckCircle2, MapPinned } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -90,10 +91,7 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-brand-dark">{property.title}</h1>
               <p className="text-gray-600 mt-2 flex items-center">
-                <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.242-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+                <MapPinned className="mr-1 h-5 w-5" />
                 {property.area_name}, {property.city}
               </p>
             </div>
@@ -166,9 +164,7 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {(amenities.length > 0 ? amenities : ['Security Staff', 'CCTV Security', 'Electricity Backup', 'Elevator', 'Intercom']).map((amenity: string) => (
                   <div key={amenity} className="flex items-center gap-2 text-gray-700">
-                    <svg className="w-5 h-5 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <CheckCircle2 className="h-5 w-5 text-brand-green" />
                     {amenity}
                   </div>
                 ))}
@@ -181,11 +177,20 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
               <h2 className="text-lg font-bold text-brand-dark mb-4">Contact Agent</h2>
 
               <div className="mb-6 flex items-center gap-4 border-b pb-4">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-                  <Image src="/assets/bproperty-logo.svg" alt="PropertyBikri" width={50} height={12} />
+                <div className="flex h-12 w-40 items-center justify-center overflow-hidden rounded-lg border border-brand-border bg-white px-2 shadow-sm">
+                  <Image
+                    src="/assets/propertybikri-logo.png"
+                    alt="PropertyBikri logo"
+                    width={1437}
+                    height={355}
+                    className="h-auto w-full object-contain"
+                  />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800">PropertyBikri Verified</h3>
+                  <h3 className="flex items-center gap-1 font-bold text-gray-800">
+                    <BadgeCheck className="h-4 w-4 text-brand-green" />
+                    PropertyBikri Verified
+                  </h3>
                   <p className="text-sm text-gray-500">Corporate Seller</p>
                 </div>
               </div>

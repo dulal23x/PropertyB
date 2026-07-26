@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { sendAdminEmail } from "@/lib/admin-api";
 
+export const dynamic = "force-dynamic";
+
 export default function AdminEmailComposePage() {
   const [toEmail, setToEmail] = useState("");
   const [subject, setSubject] = useState("");

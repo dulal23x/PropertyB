@@ -52,7 +52,14 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center mb-6">
-          <Image src="/assets/bproperty-logo.svg" alt="PropertyBikri Logo" width={200} height={50} />
+          <Image
+            src="/assets/propertybikri-logo.png"
+            alt="PropertyBikri logo"
+            width={1437}
+            height={355}
+            className="h-auto w-[220px] max-w-[85vw] object-contain"
+            priority
+          />
         </div>
         <h2 className="text-center text-3xl font-bold text-gray-900 mb-2">Create an account</h2>
         <p className="text-center text-sm text-gray-600">
