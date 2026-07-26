@@ -93,6 +93,48 @@ def _validate_listing_payload(payload: PropertyCreate) -> None:
     validate_listing_type_rules(payload.listing_purpose, payload.property_type, payload.price_visibility)
 
 
+def _validate_image_extension(public_url: str) -> str:
+    ext = _ext_from_url(public_url)
+    allowed_exts = {x.strip().lower() for x in settings.property_image_allowed_extensions.split(",") if x.strip()}
+    if ext not in allowed_exts:
+        raise HTTPException(status_code=400, detail="Unsupported image extension")
+    return ext
+
+
+async def _store_listing_image(
+    *,
+    db: AsyncSession,
+    listing: PropertyListing,
+    public_url: str,
+    alt_text: str | None,
+    is_cover: bool,
+    uploaded_by_user_id: int,
+    storage_path: str,
+) -> dict:
+    count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
+    if count_res.scalar_one() >= settings.property_image_max_count:
+        raise HTTPException(status_code=400, detail="Image limit reached")
+
+    _validate_image_extension(public_url)
+
+    if is_cover:
+        await db.execute(PropertyImage.__table__.update().where(PropertyImage.listing_id == listing.id).values(is_cover=False))
+
+    image = PropertyImage(
+        listing_id=listing.id,
+        storage_path=storage_path,
+        public_url=public_url,
+        alt_text=alt_text,
+        is_cover=is_cover,
+        uploaded_by_user_id=uploaded_by_user_id,
+    )
+    db.add(image)
+    db.add(PropertyAuditLog(listing_id=listing.id, actor_user_id=uploaded_by_user_id, action="image_added"))
+    await db.commit()
+    await db.refresh(image)
+    return {"id": image.id, "public_url": image.public_url, "is_cover": image.is_cover}
+
+
 async def _require_submission_ready(db: AsyncSession, listing: PropertyListing) -> None:
     if not listing.title or not listing.description:
         raise HTTPException(status_code=400, detail="Listing title and description are required")
@@ -387,6 +429,29 @@ async def get_listing_images(listing_id: int, current_user: User = Depends(get_c
     return [{"id": x.id, "public_url": x.public_url, "alt_text": x.alt_text, "is_cover": x.is_cover} for x in images.scalars().all()]
 
 
+@router.post("/me/{listing_id}/images")
+async def create_listing_image(
+    listing_id: int,
+    payload: ImageCreate,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(PropertyListing).where(PropertyListing.id == listing_id, PropertyListing.owner_user_id == current_user.id))
+    listing = res.scalar_one_or_none()
+    if not listing:
+        raise HTTPException(status_code=404, detail="Listing not found")
+    storage_path = payload.public_url.lstrip("/")
+    return await _store_listing_image(
+        db=db,
+        listing=listing,
+        public_url=payload.public_url,
+        alt_text=payload.alt_text,
+        is_cover=payload.is_cover,
+        uploaded_by_user_id=current_user.id,
+        storage_path=storage_path,
+    )
+
+
 @router.post("/me/{listing_id}/upload-image")
 async def upload_image(
     listing_id: int,
@@ -400,9 +465,6 @@ async def upload_image(
     listing = res.scalar_one_or_none()
     if not listing:
         raise HTTPException(status_code=404, detail="Listing not found")
-    count_res = await db.execute(select(func.count()).select_from(PropertyImage).where(PropertyImage.listing_id == listing.id))
-    if count_res.scalar_one() >= settings.property_image_max_count:
-        raise HTTPException(status_code=400, detail="Image limit reached")
     ext = file.filename.split(".")[-1].lower() if file.filename and "." in file.filename else ""
     allowed_exts = {x.strip().lower() for x in settings.property_image_allowed_extensions.split(",") if x.strip()}
     if ext not in allowed_exts:
@@ -419,14 +481,15 @@ async def upload_image(
     with open(abs_path, "wb") as f:
         f.write(content)
     public_url = f"/images/{rel_path}"
-    if is_cover:
-        await db.execute(PropertyImage.__table__.update().where(PropertyImage.listing_id == listing.id).values(is_cover=False))
-    image = PropertyImage(listing_id=listing.id, storage_path=f"userdata/property-images/{rel_path}", public_url=public_url, alt_text=alt_text, is_cover=is_cover, uploaded_by_user_id=current_user.id)
-    db.add(image)
-    db.add(PropertyAuditLog(listing_id=listing.id, actor_user_id=current_user.id, action="image_added"))
-    await db.commit()
-    await db.refresh(image)
-    return {"id": image.id, "public_url": image.public_url, "is_cover": image.is_cover}
+    return await _store_listing_image(
+        db=db,
+        listing=listing,
+        public_url=public_url,
+        alt_text=alt_text,
+        is_cover=is_cover,
+        uploaded_by_user_id=current_user.id,
+        storage_path=f"userdata/property-images/{rel_path}",
+    )
 
 
 @router.delete("/me/{listing_id}/images/{image_id}")

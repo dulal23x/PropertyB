@@ -75,6 +75,35 @@ export type PropertyEditorItem = {
   status?: string;
 };
 
+async function readApiErrorMessage(res: Response, fallback: string) {
+  const data = await res.json().catch(() => null);
+  const detail = data?.detail;
+
+  if (typeof detail === "string") {
+    return detail;
+  }
+
+  if (Array.isArray(detail)) {
+    const messages = detail
+      .map((item) => {
+        const path = Array.isArray(item?.loc) ? item.loc.filter(Boolean).join(".") : "";
+        const message = item?.msg || item?.message || "Validation error";
+        return path ? `${path}: ${message}` : message;
+      })
+      .filter(Boolean);
+
+    if (messages.length > 0) {
+      return messages.join(", ");
+    }
+  }
+
+  if (detail && typeof detail === "object") {
+    return JSON.stringify(detail);
+  }
+
+  return fallback;
+}
+
 export async function fetchProperties(query: string) {
   const res = await apiFetch(`/properties?${query}`, {
     cache: "no-store",
@@ -204,8 +233,7 @@ export async function createListing(payload: Record<string, unknown>) {
     body: JSON.stringify(payload),
   });
   if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.detail || "Failed to create listing");
+    throw new Error(await readApiErrorMessage(res, "Failed to create listing"));
   }
   return res.json() as Promise<PropertyEditorItem>;
 }
@@ -220,8 +248,7 @@ export async function updateMyListing(listingId: number, payload: Record<string,
     body: JSON.stringify(payload),
   });
   if (!res.ok) {
-    const data = await res.json().catch(() => null);
-    throw new Error(data?.detail || "Failed to update listing");
+    throw new Error(await readApiErrorMessage(res, "Failed to update listing"));
   }
   return res.json() as Promise<PropertyEditorItem>;
 }

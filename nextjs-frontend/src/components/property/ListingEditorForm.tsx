@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   createListing,
@@ -104,14 +104,29 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 
+  const validateForm = () => {
+    const title = form.title.trim();
+    const description = form.description.trim();
+
+    if (title.length < 5) {
+      return "Property title must be at least 5 characters long.";
+    }
+
+    if (description.length < 10) {
+      return "Description must be at least 10 characters long.";
+    }
+
+    return "";
+  };
+
   const buildPayload = () => ({
-    title: form.title,
-    description: form.description,
+    title: form.title.trim(),
+    description: form.description.trim(),
     listing_purpose: form.listing_purpose,
     property_type: form.property_type,
-    city: form.city,
-    area_name: form.area_name,
-    display_address: form.display_address,
+    city: form.city.trim() || null,
+    area_name: form.area_name.trim() || null,
+    display_address: form.display_address.trim() || null,
     price_amount: form.price_amount ? Number(form.price_amount) : null,
     bedrooms: form.bedrooms ? Number(form.bedrooms) : null,
     bathrooms: form.bathrooms ? Number(form.bathrooms) : null,
@@ -123,6 +138,12 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
 
   const saveListing = async (submitAfter: boolean) => {
     setError("");
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setSaving(true);
     try {
       let currentId = existingId;
@@ -195,7 +216,15 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
             </div>
             <div className="md:col-span-2">
               <label className="mb-1 block text-sm font-medium text-gray-700">Property Title</label>
-              <input value={form.title} onChange={(e) => setField("title", e.target.value)} type="text" placeholder="e.g. Beautiful 3 Bed Apartment in Banani" className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
+              <input
+                value={form.title}
+                onChange={(e) => setField("title", e.target.value)}
+                type="text"
+                placeholder="e.g. Beautiful 3 Bed Apartment in Banani"
+                minLength={5}
+                required
+                className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green"
+              />
             </div>
           </div>
         </section>
@@ -250,7 +279,15 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">Description</label>
-            <textarea value={form.description} onChange={(e) => setField("description", e.target.value)} rows={6} placeholder="Describe the property features..." className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
+            <textarea
+              value={form.description}
+              onChange={(e) => setField("description", e.target.value)}
+              rows={6}
+              placeholder="Describe the property features..."
+              minLength={10}
+              required
+              className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green"
+            />
           </div>
         </section>
 
