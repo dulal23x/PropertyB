@@ -7,6 +7,7 @@ import PropertyCard from '@/components/property/PropertyCard';
 import { PropertyCardSkeleton } from '@/components/ui/Skeletons';
 import HeroSearchWidgetSkeleton from '@/components/home/HeroSearchWidgetSkeleton';
 import { fetchProperties } from '@/lib/property-api';
+import { SEO_LANDING_PAGES, landingPageHref } from '@/lib/seo-pages';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,6 +28,8 @@ async function getFeaturedProperties() {
 
 export default async function Home() {
   const featuredProperties = await getFeaturedProperties();
+  const popularSeoPages = SEO_LANDING_PAGES.slice(0, 10);
+  const areaSeoPages = SEO_LANDING_PAGES.filter((page) => page.slug.startsWith("flat-for-sale-in-") && page.area).slice(0, 12);
 
   return (
     <div className="bg-white min-h-screen">
@@ -127,6 +130,45 @@ export default async function Home() {
                 <PropertyCard key={prop.slug} property={prop} />
               ))
             )}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-gray-100 bg-white py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 max-w-3xl">
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-brand-green">Popular searches</p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight text-brand-dark md:text-[32px]">
+              Find flats, houses, land and properties for sale in Dhaka
+            </h2>
+            <p className="mt-3 text-base font-medium leading-relaxed text-brand-textSecondary">
+              Browse high-intent Dhaka property searches with live listings, buyer guidance and direct contact options.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {popularSeoPages.map((page) => (
+              <Link key={page.slug} href={landingPageHref(page.slug)} className="rounded-xl border border-brand-border bg-brand-light px-4 py-4 text-sm font-black capitalize text-brand-dark transition-all hover:border-brand-green hover:bg-white">
+                {page.primaryKeyword}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-light py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 max-w-3xl">
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-brand-green">Dhaka areas</p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight text-brand-dark md:text-[32px]">
+              Search flats for sale by Dhaka neighborhood
+            </h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {areaSeoPages.map((page) => (
+              <Link key={page.slug} href={landingPageHref(page.slug)} className="rounded-xl border border-brand-border bg-white px-4 py-4 text-sm font-black text-brand-dark shadow-sm transition-all hover:border-brand-green">
+                {page.h1}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

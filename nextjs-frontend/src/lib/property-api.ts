@@ -76,9 +76,10 @@ export type PropertyEditorItem = {
 };
 
 export async function fetchProperties(query: string) {
-  const res = await apiFetch(`/properties?${query}`, {
-    cache: "no-store",
-  });
+  const path = `/properties?${query}`;
+  const res = typeof window === "undefined"
+    ? await apiFetch(path, { cache: "no-store" })
+    : await fetch(`/api${path}`, { cache: "no-store" });
   if (!res.ok) {
     return { items: [], total: 0, page: 1, page_size: 0 } as PropertyListResponse;
   }

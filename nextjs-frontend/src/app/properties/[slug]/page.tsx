@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { fetchProperty } from '@/lib/property-api';
@@ -8,6 +9,7 @@ import { getSafePropertyImageSrc } from '@/lib/image';
 import { BadgeCheck, CheckCircle2, MapPinned } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://propertybikri.com";
 
 type PropertyImage = {
   public_url: string;
@@ -24,6 +26,8 @@ type PropertyDetail = {
   city?: string | null;
   currency?: string | null;
   price_amount?: number | string | null;
+  price_label?: string | null;
+  price_visibility?: string | null;
   bedrooms?: number | null;
   bathrooms?: number | null;
   size_value?: number | null;
@@ -36,6 +40,56 @@ type PropertyDetail = {
 
 async function getProperty(slug: string) {
   return fetchProperty(slug) as Promise<PropertyDetail | null>;
+}
+
+function describeProperty(property: PropertyDetail) {
+  const bits = [
+    property.property_type ? `${property.property_type} for ${property.listing_purpose || "sale"}` : "property listing",
+    property.area_name || property.city ? `in ${[property.area_name, property.city].filter(Boolean).join(", ")}` : "",
+    property.bedrooms ? `${property.bedrooms} bed` : "",
+    property.bathrooms ? `${property.bathrooms} bath` : "",
+    property.size_value ? `${property.size_value} ${property.size_unit || "sqft"}` : "",
+  ].filter(Boolean);
+  return bits.join(" - ");
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const property = await getProperty(params.slug);
+  if (!property) {
+    return {
+      title: "Property Not Found | PropertyBikri",
+      robots: { index: false, follow: true },
+    };
+  }
+
+  const location = [property.area_name, property.city].filter(Boolean).join(", ");
+  const purpose = property.listing_purpose || "sale";
+  const type = property.property_type || "property";
+  const title = `${property.title} | ${type} for ${purpose} in ${location || "Bangladesh"}`;
+  const isCallForPrice = property.price_visibility === 'call_for_price';
+  const description = isCallForPrice
+    ? `${describeProperty(property)}. Call PropertyBikri for current price, pictures, availability and viewing details.`
+    : `${describeProperty(property)}. View price, photos, amenities and contact details on PropertyBikri.`;
+  const image = property.images?.[0]?.public_url;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/properties/${property.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/properties/${property.slug}`,
+      type: "article",
+      images: image ? [{ url: image }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
 }
 
 function parseAmenities(property: PropertyDetail) {
@@ -66,6 +120,10 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
   }
 
   const priceAmount = Number(property.price_amount || 0);
+  const isCallForPrice = property.price_visibility === 'call_for_price';
+  const priceText = isCallForPrice
+    ? property.price_label || 'Call for details'
+    : `${property.currency || 'BDT'} ${formatBDT(priceAmount)}`;
   const bedroomCount = Number(property.bedrooms || 0);
   const bathroomCount = Number(property.bathrooms || 0);
   const sizeValue = Number(property.size_value || 0);
@@ -73,9 +131,30 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
   const listingPurpose = property.listing_purpose || 'sale';
   const propertyType = property.property_type || 'property';
   const businessPhone = property.business_phone || '+8801717-849009';
+  const detailJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    name: property.title,
+    description: property.description,
+    url: `${SITE_URL}/properties/${property.slug}`,
+    image: property.images?.map((image) => image.public_url).filter(Boolean),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: property.area_name || property.city || "Dhaka",
+      addressRegion: property.city || "Dhaka",
+      addressCountry: "BD",
+    },
+    offers: {
+      "@type": "Offer",
+      ...(isCallForPrice ? {} : { price: priceAmount || undefined }),
+      priceCurrency: property.currency || "BDT",
+      availability: "https://schema.org/InStock",
+    },
+  };
 
   return (
     <div className="bg-brand-light min-h-screen py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(detailJsonLd) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6">
           <nav className="text-sm text-gray-500 mb-4 flex gap-2">
@@ -97,8 +176,13 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
             </div>
             <div className="text-left md:text-right">
               <div className="text-3xl font-bold text-brand-dark">
-                {property.currency || 'BDT'} {formatBDT(priceAmount)}
+                {priceText}
               </div>
+              {isCallForPrice && (
+                <p className="mt-2 max-w-sm text-sm font-medium text-gray-600 md:ml-auto">
+                  Demo listing: call PropertyBikri for current pictures, price and availability.
+                </p>
+              )}
             </div>
           </div>
         </div>

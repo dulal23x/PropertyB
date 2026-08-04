@@ -1,4 +1,4 @@
-const FALLBACK_PROPERTY_IMAGE = "/assets/placeholders/property-placeholder.svg";
+const FALLBACK_PROPERTY_IMAGE = "/default site banner.png";
 
 function isLocalBackendHost(hostname: string, port?: string) {
   return (
@@ -20,6 +20,12 @@ export function getSafePropertyImageSrc(src?: string | null) {
 
   try {
     const url = new URL(src);
+    if (
+      isTrustedProductionHost(url.hostname) &&
+      decodeURIComponent(url.pathname) === FALLBACK_PROPERTY_IMAGE
+    ) {
+      return FALLBACK_PROPERTY_IMAGE;
+    }
     if ((url.protocol === "http:" || url.protocol === "https:") && (isLocalBackendHost(url.hostname, url.port) || isTrustedProductionHost(url.hostname))) {
       return src;
     }
@@ -29,4 +35,3 @@ export function getSafePropertyImageSrc(src?: string | null) {
 
   return FALLBACK_PROPERTY_IMAGE;
 }
-

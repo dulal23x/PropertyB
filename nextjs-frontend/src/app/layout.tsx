@@ -16,25 +16,32 @@ const geistMono = localFont({
 });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://propertybikri.com"),
-  title: "PropertyBikri - Real Estate in Bangladesh",
-  description: "Find your dream property in Bangladesh with PropertyBikri.",
+  title: {
+    default: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
+    template: "%s",
+  },
+  description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh. Browse verified listings in Gulshan, Banani, Bashundhara, Uttara and Dhanmondi.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PropertyBikri - Real Estate in Bangladesh",
-    description: "Find your dream property in Bangladesh with PropertyBikri.",
+    title: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
+    description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh.",
     url: "https://propertybikri.com",
     siteName: "PropertyBikri",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PropertyBikri - Real Estate in Bangladesh",
-    description: "Find your dream property in Bangladesh with PropertyBikri.",
+    title: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
+    description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/assets/site-icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/assets/site-icon.png", sizes: "128x128", type: "image/png" },
+    ],
+    apple: "/assets/apple-touch-icon.png",
   },
 };
 

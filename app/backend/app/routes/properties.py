@@ -221,9 +221,9 @@ async def list_public(
     if area_name:
         filters.append(PropertyListing.area_name == area_name)
     if min_price is not None:
-        filters.append(PropertyListing.price_amount >= min_price)
+        filters.append(or_(PropertyListing.price_amount >= min_price, PropertyListing.price_visibility == "call_for_price"))
     if max_price is not None:
-        filters.append(PropertyListing.price_amount <= max_price)
+        filters.append(or_(PropertyListing.price_amount <= max_price, PropertyListing.price_visibility == "call_for_price"))
     if bedrooms_min is not None:
         filters.append(PropertyListing.bedrooms >= bedrooms_min)
     if bedrooms_max is not None:

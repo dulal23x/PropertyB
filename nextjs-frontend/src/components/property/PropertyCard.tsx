@@ -21,6 +21,10 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
   const bedroomCount = Number(property.bedrooms || 0);
   const bathroomCount = Number(property.bathrooms || 0);
   const sizeValue = Number(property.size_value || 0);
+  const isCallForPrice = property.price_visibility === 'call_for_price';
+  const priceText = isCallForPrice
+    ? property.price_label || 'Call for details'
+    : `${property.currency || 'BDT'} ${formatBDT(priceAmount)}`;
 
   return (
     <div className={`bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-2xl transition-all duration-500 group flex ${isList ? 'flex-col md:flex-row h-auto md:h-[280px]' : 'flex-col h-full'}`}>
@@ -69,9 +73,14 @@ export default function PropertyCard({ property, viewMode = 'grid' }: PropertyCa
         <div className="mb-3 pr-16">
           <Link href={`/properties/${property.slug}`}>
             <h3 className="font-black text-[24px] leading-none text-brand-dark hover:text-brand-green transition-colors mb-2 tracking-tight">
-              {property.currency || 'BDT'} {formatBDT(priceAmount)}
+              {priceText}
             </h3>
           </Link>
+          {isCallForPrice && (
+            <p className="mb-2 text-[12px] font-semibold leading-snug text-brand-textSecondary">
+              Pictures and current availability shared after contact.
+            </p>
+          )}
           
           <Link href={`/properties/${property.slug}`}>
             <h4 className="text-brand-dark text-[16px] font-bold line-clamp-1 hover:text-brand-green transition-colors leading-tight mb-2 tracking-tight">

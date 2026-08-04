@@ -34,8 +34,9 @@ type FilterState = {
   area_name: string;
 };
 
-const PRICE_MAX = 10_000_000;
-const PRICE_STEP = 1_000_000;
+const PRICE_MAX = 200_000_000;
+const PRICE_STEP = 10_000_000;
+const PAGE_SIZE = 12;
 
 const PROPERTY_TYPE_OPTIONS: Array<{ label: string; value: PropertyTypeFilter }> = [
   { label: "All", value: "all" },
@@ -89,6 +90,11 @@ function normalizeBedroomsMin(value: string | null): BedroomFilter {
   return "any";
 }
 
+function normalizePage(value: string | null) {
+  const page = Number(value || 1);
+  return Number.isInteger(page) && page > 0 ? page : 1;
+}
+
 function getPageFilters(params: URLSearchParams): FilterState {
   return {
     purpose: normalizePurpose(params.get("purpose") || params.get("listing_purpose")),
@@ -114,6 +120,7 @@ function buildApiQuery(params: URLSearchParams) {
   const bedroomsMin = normalizeBedroomsMin(params.get("bedrooms_min"));
   const sort = params.get("sort") || "newest";
   const amenities = params.get("amenities") || "";
+  const page = normalizePage(params.get("page"));
 
   if (purpose !== "all") normalized.set("listing_purpose", purpose === "buy" ? "sale" : "rent");
   if (propertyType !== "all") normalized.set("property_type", propertyType);
@@ -123,10 +130,12 @@ function buildApiQuery(params: URLSearchParams) {
   if (bedroomsMin !== "any") normalized.set("bedrooms_min", bedroomsMin);
   if (amenities) normalized.set("amenities", amenities);
   if (sort) normalized.set("sort", sort);
+  normalized.set("page", String(page));
+  normalized.set("page_size", String(PAGE_SIZE));
   return normalized.toString();
 }
 
-function buildUrlFromFilters(filters: FilterState) {
+function buildUrlFromFilters(filters: FilterState, page = 1) {
   const params = new URLSearchParams();
 
   if (filters.purpose !== "all") params.set("purpose", filters.purpose);
@@ -136,9 +145,17 @@ function buildUrlFromFilters(filters: FilterState) {
   if (filters.bedrooms_min !== "any") params.set("bedrooms_min", filters.bedrooms_min);
   if (filters.amenities.length > 0) params.set("amenities", filters.amenities.join(","));
   if (filters.sort) params.set("sort", filters.sort);
+  if (page > 1) params.set("page", String(page));
 
   const query = params.toString();
   return query ? `/properties?${query}` : "/properties";
+}
+
+function buildPageNumbers(currentPage: number, totalPages: number) {
+  const pages = new Set<number>([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+  return Array.from(pages)
+    .filter((page) => page >= 1 && page <= totalPages)
+    .sort((a, b) => a - b);
 }
 
 function formatPriceBucket(value: string) {
@@ -160,6 +177,12 @@ export default function PropertiesPage() {
 
   const [localFilters, setLocalFilters] = useState<FilterState>(() => getPageFilters(new URLSearchParams(searchParams.toString())));
   const purposeLabel = localFilters.purpose === "rent" ? "Rent" : localFilters.purpose === "all" ? "All" : "Buy";
+  const currentPage = normalizePage(searchParams.get("page"));
+  const pageSize = data.page_size || PAGE_SIZE;
+  const totalPages = Math.ceil(data.total / pageSize);
+  const pageStart = data.items.length > 0 ? (currentPage - 1) * pageSize + 1 : 0;
+  const pageEnd = data.items.length > 0 ? Math.min(pageStart + data.items.length - 1, data.total) : 0;
+  const pageNumbers = totalPages > 1 ? buildPageNumbers(currentPage, totalPages) : [];
 
   useEffect(() => {
     setLocalFilters(getPageFilters(new URLSearchParams(searchParams.toString())));
@@ -168,12 +191,22 @@ export default function PropertiesPage() {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const result = await fetchProperties(buildApiQuery(new URLSearchParams(searchParams.toString())));
-      setData(result);
-      setLoading(false);
+      try {
+        const result = await fetchProperties(buildApiQuery(new URLSearchParams(searchParams.toString())));
+        setData(result);
+        const requestedPage = normalizePage(searchParams.get("page"));
+        const lastPage = Math.ceil(result.total / (result.page_size || PAGE_SIZE));
+        if (result.total > 0 && result.items.length === 0 && requestedPage > lastPage) {
+          router.replace(buildUrlFromFilters(getPageFilters(new URLSearchParams(searchParams.toString())), lastPage));
+        }
+      } catch {
+        setData({ items: [], total: 0, page: 1, page_size: 0 });
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-  }, [searchParams]);
+  }, [router, searchParams]);
 
   const pushFilters = useCallback(
     (nextFilters: FilterState) => {
@@ -181,6 +214,14 @@ export default function PropertiesPage() {
       router.push(buildUrlFromFilters(nextFilters));
     },
     [router]
+  );
+
+  const goToPage = useCallback(
+    (page: number) => {
+      const nextPage = Math.max(1, Math.min(page, Math.max(totalPages, 1)));
+      router.push(buildUrlFromFilters(localFilters, nextPage));
+    },
+    [localFilters, router, totalPages]
   );
 
   const resetFilters = () => {
@@ -425,7 +466,7 @@ export default function PropertiesPage() {
                     <>
                       Showing{" "}
                       <span className="text-brand-green">
-                        {data.items.length > 0 ? "1" : "0"} - {data.items.length}
+                        {pageStart} - {pageEnd}
                       </span>{" "}
                       of <span className="text-brand-green">{data.total}</span> Properties
                     </>
@@ -509,34 +550,63 @@ export default function PropertiesPage() {
               </div>
             )}
 
-            {!loading && data.total > 0 && (
+            {!loading && totalPages > 1 && (
               <div className="mt-20 flex flex-col items-center gap-8 border-t border-gray-100 pt-12">
                 <div className="flex items-center gap-3">
-                  <button className="flex h-14 w-14 cursor-not-allowed items-center justify-center rounded-2xl border border-brand-border bg-white text-gray-400 shadow-sm">
+                  <button
+                    type="button"
+                    onClick={() => goToPage(currentPage - 1)}
+                    disabled={currentPage <= 1}
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white shadow-sm transition-all ${
+                      currentPage <= 1
+                        ? "cursor-not-allowed text-gray-400"
+                        : "font-black text-brand-green hover:bg-green-50"
+                    }`}
+                    aria-label="Previous page"
+                  >
                     <ChevronLeft size={18} />
                   </button>
-                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-green bg-brand-green font-black text-white shadow-2xl shadow-brand-green/40">
-                    1
-                  </button>
-                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-dark shadow-sm transition-all hover:border-brand-green hover:text-brand-green">
-                    2
-                  </button>
-                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-dark shadow-sm transition-all hover:border-brand-green hover:text-brand-green">
-                    3
-                  </button>
-                  <span className="px-3 text-xl font-black text-gray-400">...</span>
-                  <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white font-black text-brand-green shadow-sm transition-all hover:bg-green-50">
+                  {pageNumbers.map((page, index) => (
+                    <div key={page} className="flex items-center gap-3">
+                      {index > 0 && page - pageNumbers[index - 1] > 1 && (
+                        <span className="px-1 text-xl font-black text-gray-400">...</span>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => goToPage(page)}
+                        className={`flex h-14 w-14 items-center justify-center rounded-2xl border font-black shadow-sm transition-all ${
+                          page === currentPage
+                            ? "border-brand-green bg-brand-green text-white shadow-2xl shadow-brand-green/40"
+                            : "border-brand-border bg-white text-brand-dark hover:border-brand-green hover:text-brand-green"
+                        }`}
+                        aria-current={page === currentPage ? "page" : undefined}
+                      >
+                        {page}
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => goToPage(currentPage + 1)}
+                    disabled={currentPage >= totalPages}
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-brand-border bg-white shadow-sm transition-all ${
+                      currentPage >= totalPages
+                        ? "cursor-not-allowed text-gray-400"
+                        : "font-black text-brand-green hover:bg-green-50"
+                    }`}
+                    aria-label="Next page"
+                  >
                     <ChevronRight size={18} />
                   </button>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                   <p className="text-[12px] font-black uppercase tracking-[0.25em] text-brand-textSecondary opacity-40">
-                    Showing 1 to {data.items.length} of {data.total} properties
+                    Showing {pageStart} to {pageEnd} of {data.total} properties
                   </p>
                   <div className="h-1 w-24 overflow-hidden rounded-full bg-gray-100">
                     <div
                       className="h-full bg-brand-green"
-                      style={{ width: `${data.total > 0 ? (data.items.length / data.total) * 100 : 0}%` }}
+                      style={{ width: `${totalPages > 0 ? (currentPage / totalPages) * 100 : 0}%` }}
                     />
                   </div>
                 </div>
