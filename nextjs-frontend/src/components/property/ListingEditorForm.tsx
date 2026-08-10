@@ -45,6 +45,19 @@ const initialState: FormState = {
   land_size_unit: "decimal",
 };
 
+const titleExamples: Record<FormState["property_type"], string> = {
+  apartment: "e.g. 3 Bed Apartment for Sale in Bashundhara",
+  house: "e.g. House for Sale in Gulshan",
+  villa: "e.g. Villa for Sale in Baridhara",
+  land: "e.g. Land for Sale in Purbachal",
+  commercial: "e.g. Commercial Property for Sale in Badda",
+  office: "e.g. Office Space for Sale in Tejgaon",
+  shop: "e.g. Shop for Sale in Banani",
+  warehouse: "e.g. Warehouse for Sale near Airport Road",
+  factory: "e.g. Factory for Sale near Dhaka",
+  other: "e.g. Property for Sale in Dhaka",
+};
+
 function mapListingToState(listing: PropertyEditorItem): FormState {
   return {
     title: listing.title || "",
@@ -195,7 +208,10 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
             </div>
             <div className="md:col-span-2">
               <label className="mb-1 block text-sm font-medium text-gray-700">Property Title</label>
-              <input value={form.title} onChange={(e) => setField("title", e.target.value)} type="text" placeholder="e.g. Beautiful 3 Bed Apartment in Banani" className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
+              <input value={form.title} onChange={(e) => setField("title", e.target.value)} type="text" placeholder={titleExamples[form.property_type]} className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
+              <p className="mt-2 text-xs font-medium text-gray-500">
+                Use clear buyer keywords like apartment for sale in Dhaka, house for sale in Gulshan, or land for sale in Purbachal.
+              </p>
             </div>
           </div>
         </section>
@@ -251,6 +267,9 @@ export default function ListingEditorForm({ editId = null }: ListingEditorFormPr
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">Description</label>
             <textarea value={form.description} onChange={(e) => setField("description", e.target.value)} rows={6} placeholder="Describe the property features..." className="w-full rounded-md border-gray-300 shadow-sm focus:ring-brand-green" />
+            <p className="mt-2 text-xs font-medium text-gray-500">
+              Include area, size, bedrooms, road access, parking, handover status, document readiness and why the property fits a buyer.
+            </p>
           </div>
         </section>
 

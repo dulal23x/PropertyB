@@ -48,7 +48,7 @@ export default async function Home() {
         
         <div className="relative z-10 w-full max-w-5xl px-4 pt-24 pb-10 text-center md:pt-0 md:pb-0 md:mt-[-60px]">
           <h1 className="mx-auto mb-5 max-w-[14ch] text-[28px] font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl md:mb-8 md:max-w-4xl md:text-4xl lg:text-[42px]">
-            Search 10,000+ Houses, Apartments, and Land in Dhaka, Bangladesh
+            Houses, Lands & Apartments For Sale in Dhaka
           </h1>
           
           <Suspense fallback={<HeroSearchWidgetSkeleton />}>
@@ -139,10 +139,10 @@ export default async function Home() {
           <div className="mb-8 max-w-3xl">
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-brand-green">Popular searches</p>
             <h2 className="mt-3 text-2xl font-black tracking-tight text-brand-dark md:text-[32px]">
-              Find flats, houses, land and properties for sale in Dhaka
+              Find houses, lands, apartments and properties for sale in Dhaka
             </h2>
             <p className="mt-3 text-base font-medium leading-relaxed text-brand-textSecondary">
-              Browse high-intent Dhaka property searches with live listings, buyer guidance and direct contact options.
+              Browse high-intent Dhaka property searches with live listings, buyer guidance, area pages and direct contact options.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { PRIMARY_SITE_DESCRIPTION, PRIMARY_SITE_KEYWORD } from "@/lib/seo-keywords";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -17,24 +18,24 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://propertybikri.com"),
   title: {
-    default: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
+    default: `${PRIMARY_SITE_KEYWORD} | PropertyBikri`,
     template: "%s",
   },
-  description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh. Browse verified listings in Gulshan, Banani, Bashundhara, Uttara and Dhanmondi.",
+  description: PRIMARY_SITE_DESCRIPTION,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
-    description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh.",
+    title: `${PRIMARY_SITE_KEYWORD} | PropertyBikri`,
+    description: PRIMARY_SITE_DESCRIPTION,
     url: "https://propertybikri.com",
     siteName: "PropertyBikri",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PropertyBikri: Flats, Houses & Properties for Sale in Dhaka",
-    description: "Find flats, apartments, houses, land and commercial properties for sale in Dhaka, Bangladesh.",
+    title: `${PRIMARY_SITE_KEYWORD} | PropertyBikri`,
+    description: PRIMARY_SITE_DESCRIPTION,
   },
   icons: {
     icon: [

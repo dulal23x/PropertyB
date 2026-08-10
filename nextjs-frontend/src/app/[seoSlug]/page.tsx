@@ -171,7 +171,7 @@ export default async function SeoLandingPage({ params }: { params: { seoSlug: st
             <p className="text-[12px] font-black uppercase tracking-[0.28em] text-brand-green">Buyer guide</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight">How to shortlist the right property</h2>
             <p className="mt-4 text-sm leading-relaxed text-brand-textSecondary">
-              Compare the asking price with nearby listings, inspect location access, confirm building or land documents, and verify the seller or agent before making a decision.
+              Compare the asking price with nearby listings, inspect location access, confirm building or land documents, and verify the seller or agent before making a decision. For houses, lands and apartments for sale in Dhaka, the best shortlist usually balances location, documents, usable size, daily access and resale demand.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -184,6 +184,23 @@ export default async function SeoLandingPage({ params }: { params: { seoSlug: st
           </div>
         </div>
       </section>
+
+      {page.contentSections && page.contentSections.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <p className="text-[12px] font-black uppercase tracking-[0.28em] text-brand-green">Local buying notes</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight">What to know before you compare listings</h2>
+          </div>
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {page.contentSections.map((section) => (
+              <section key={section.heading} className="rounded-2xl border border-brand-border bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-black leading-snug">{section.heading}</h3>
+                <p className="mt-4 text-sm leading-7 text-brand-textSecondary">{section.body}</p>
+              </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr]">

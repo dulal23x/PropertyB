@@ -25,6 +25,8 @@ export type PropertyListItem = {
   land_size_value?: number | null;
   land_size_unit?: string | null;
   featured?: boolean;
+  updated_at?: string | null;
+  created_at?: string | null;
   cover_image_url?: string | null;
   image_count?: number;
   business_phone?: string;

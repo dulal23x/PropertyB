@@ -1,4 +1,4 @@
-const FALLBACK_PROPERTY_IMAGE = "/default site banner.png";
+const FALLBACK_PROPERTY_IMAGE = "/assets/default-site-banner.png";
 
 function isLocalBackendHost(hostname: string, port?: string) {
   return (

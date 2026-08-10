@@ -63,6 +63,8 @@ def public_shape(l: PropertyListing) -> dict:
         "land_size_value": l.land_size_value,
         "land_size_unit": l.land_size_unit,
         "featured": l.featured,
+        "updated_at": l.updated_at,
+        "created_at": l.created_at,
         "business_phone": settings.real_estate_public_phone,
         "business_email": settings.real_estate_public_email,
     }

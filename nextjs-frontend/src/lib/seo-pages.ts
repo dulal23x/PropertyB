@@ -8,9 +8,12 @@ export type SeoLandingPage = {
   primaryKeyword: string;
   area?: string;
   propertyType?: string;
+  contentSections?: Array<{ heading: string; body: string }>;
   faqs: Array<{ question: string; answer: string }>;
   related: string[];
 };
+
+const PRIMARY_SITE_KEYWORD = "Houses, Lands & Apartments For Sale in Dhaka";
 
 const BASE_RELATED = [
   "properties-for-sale-in-dhaka",
@@ -76,22 +79,22 @@ function faq(keyword: string, location = "Dhaka") {
 const corePages: SeoLandingPage[] = [
   {
     slug: "properties-for-sale-in-dhaka",
-    title: "Properties for Sale in Dhaka | Flats, Houses & Land",
-    description: "Browse properties for sale in Dhaka including flats, apartments, houses, land and commercial spaces in Gulshan, Banani, Bashundhara, Uttara and Dhanmondi.",
-    h1: "Properties for sale in Dhaka",
-    primaryKeyword: "properties for sale in Dhaka",
-    intro: "Compare Dhaka property listings across apartments, houses, land, plots and commercial spaces. Use verified listing details, prices, photos and area information to shortlist the right property.",
+    title: `${PRIMARY_SITE_KEYWORD} | PropertyBikri`,
+    description: "Browse houses, lands and apartments for sale in Dhaka with prices, photos and direct contact options across Gulshan, Banani, Bashundhara, Uttara and Dhanmondi.",
+    h1: PRIMARY_SITE_KEYWORD,
+    primaryKeyword: PRIMARY_SITE_KEYWORD,
+    intro: "Compare houses, lands and apartments for sale in Dhaka across flats, family homes, plots and commercial spaces. Use verified listing details, prices, photos and area information to shortlist the right property.",
     query: { listing_purpose: "sale", city: "Dhaka" },
     faqs: faq("properties for sale in Dhaka"),
     related: BASE_RELATED,
   },
   {
     slug: "property-for-sale-in-dhaka",
-    title: "Property for Sale in Dhaka | PropertyBikri",
-    description: "Find property for sale in Dhaka with updated apartment, house, land and commercial listings across popular Dhaka neighborhoods.",
+    title: "Property for Sale in Dhaka | Houses, Lands & Apartments",
+    description: "Find property for sale in Dhaka including houses, lands, apartments, flats and commercial listings across popular Dhaka neighborhoods.",
     h1: "Property for sale in Dhaka",
     primaryKeyword: "property for sale in Dhaka",
-    intro: "Search property for sale in Dhaka with practical filters for price, area, size and property type. PropertyBikri keeps the browsing path simple for buyers comparing real options.",
+    intro: "Search property for sale in Dhaka with practical filters for houses, lands, apartments, commercial spaces, price, area and size. PropertyBikri keeps the browsing path simple for buyers comparing real options.",
     query: { listing_purpose: "sale", city: "Dhaka" },
     faqs: faq("property for sale in Dhaka"),
     related: BASE_RELATED,
@@ -99,7 +102,7 @@ const corePages: SeoLandingPage[] = [
   {
     slug: "flat-for-sale-in-dhaka",
     title: "Flat for Sale in Dhaka | Ready Flats & Apartments",
-    description: "Search flats for sale in Dhaka, including ready flats and apartments in Gulshan, Banani, Bashundhara, Uttara, Dhanmondi and nearby areas.",
+    description: "Search flats and apartments for sale in Dhaka, including ready flats in Gulshan, Banani, Bashundhara, Uttara, Dhanmondi and nearby areas.",
     h1: "Flat for sale in Dhaka",
     primaryKeyword: "flat for sale in Dhaka",
     intro: "Find flats for sale in Dhaka with location, price, bedroom, bathroom and size details. Compare ready flats and apartment listings in high-demand residential areas.",
@@ -110,37 +113,79 @@ const corePages: SeoLandingPage[] = [
   },
   {
     slug: "apartment-for-sale-in-dhaka",
-    title: "Apartment for Sale in Dhaka | PropertyBikri",
+    title: "Apartments for Sale in Dhaka | Flats & Ready Apartments",
     description: "Browse apartments for sale in Dhaka with verified listing details, photos, prices and locations across premium and family-friendly areas.",
     h1: "Apartment for sale in Dhaka",
     primaryKeyword: "apartment for sale in Dhaka",
     intro: "Apartment buyers in Dhaka often compare location, building quality, size, parking, lift, security and nearby services. Use this page to review apartment listings in one place.",
     query: { listing_purpose: "sale", property_type: "apartment", city: "Dhaka" },
     propertyType: "apartment",
+    contentSections: [
+      {
+        heading: "How apartment buyers usually compare Dhaka listings",
+        body: "When people search for an apartment for sale in Dhaka, the first thing is normally area and budget, but the better decision comes from checking the full living picture. A flat in Gulshan, Banani, Bashundhara, Uttara or Dhanmondi can look similar online, yet road width, lift quality, parking access, generator backup, service charge, security and the final usable layout can change the real value. Use this page to start with the broad apartment market, then narrow the shortlist by area, bedrooms, size and the kind of daily route your family or office life needs.",
+      },
+      {
+        heading: "What to check before shortlisting a flat",
+        body: "A practical apartment shortlist should include the asking price, per-square-foot comparison, floor position, sunlight, ventilation, building age, developer reputation, handover condition and document status. If the listing is a ready flat, visit during daylight and check the lobby, stairs, lift, parking, water line and common areas. If the apartment is under construction, compare payment schedule, delivery timeline, approval papers and the builder's previous work. PropertyBikri keeps the listing path simple so buyers can compare these details without jumping through too many pages.",
+      },
+      {
+        heading: "Best areas for apartment searches",
+        body: "Premium apartment buyers often start with Gulshan, Banani, Baridhara and Dhanmondi because these areas have strong lifestyle, office and school access. Family buyers also compare Bashundhara, Uttara, Mirpur, Mohammadpur and Badda because they can offer more practical sizes and budgets. There is no single best area for everyone. A good apartment for sale in Dhaka is the one where the location, building condition, monthly cost and future resale demand all make sense together.",
+      },
+    ],
     faqs: faq("apartment for sale in Dhaka"),
     related: ["flat-for-sale-in-dhaka", "luxury-apartment-for-sale-in-dhaka", "flat-for-sale-in-gulshan", "flat-for-sale-in-bashundhara"],
   },
   {
     slug: "house-for-sale-in-dhaka",
-    title: "House for Sale in Dhaka | Homes & Villas",
+    title: "Houses for Sale in Dhaka | Homes, Villas & Duplex",
     description: "Find houses for sale in Dhaka including family homes, villas and duplex properties in prime residential neighborhoods.",
     h1: "House for sale in Dhaka",
     primaryKeyword: "house for sale in Dhaka",
     intro: "Compare houses for sale in Dhaka by area, price, land size, bedrooms, bathrooms and access to daily services. Houses and villas are limited in prime locations, so shortlist carefully.",
     query: { listing_purpose: "sale", property_type: "house", city: "Dhaka" },
     propertyType: "house",
+    contentSections: [
+      {
+        heading: "Why house searches need a different checklist",
+        body: "A house for sale in Dhaka is not the same decision as buying an apartment. You are not only comparing bedrooms and size; you are also looking at land value, road access, boundary condition, building structure, utility lines, parking, neighborhood security and future redevelopment potential. In areas like Gulshan, Banani, Baridhara, Dhanmondi and Uttara, a house can carry value because of the land and location as much as the building itself.",
+      },
+      {
+        heading: "Family use, rental value and redevelopment value",
+        body: "Some buyers want a ready family home, some want a duplex or villa, and some are looking at the plot and structure for long-term redevelopment. Before deciding, check whether the house suits daily living, whether the road can handle parking and access, how old the structure is, and whether the price makes sense beside nearby land and apartment values. A good house listing should help you compare both present use and future value.",
+      },
+      {
+        heading: "Documents and visits matter more for houses",
+        body: "For houses, document checking is especially important. Ownership papers, mutation, tax records, RAJUK or local approvals, utility bills and boundary measurements should be reviewed before any serious negotiation. Visit the property more than once if possible. Check water, drainage, roof condition, cracks, damp areas, staircase width, electrical load and the surrounding roads. This page is built to help buyers find house options first, then move carefully into verification.",
+      },
+    ],
     faqs: faq("house for sale in Dhaka"),
     related: ["house-for-sale-in-gulshan", "house-for-sale-in-banani", "house-for-sale-in-uttara", "properties-for-sale-in-dhaka"],
   },
   {
     slug: "land-for-sale-in-dhaka",
-    title: "Land for Sale in Dhaka | Residential Land",
-    description: "Search land for sale in Dhaka and nearby growth areas, including plots and residential land options for future development.",
+    title: "Lands for Sale in Dhaka | Residential Land & Plots",
+    description: "Search lands for sale in Dhaka and nearby growth areas, including plots and residential land options for future development.",
     h1: "Land for sale in Dhaka",
-    primaryKeyword: "land for sale in Dhaka",
+    primaryKeyword: "lands for sale in Dhaka",
     intro: "Land buyers in Dhaka should compare road access, plot size, approvals, ownership documents, utility access and future development potential before committing.",
     query: { listing_purpose: "sale", property_type: "land", city: "Dhaka" },
     propertyType: "land",
+    contentSections: [
+      {
+        heading: "Land buying is mostly about location, paper and access",
+        body: "When someone searches for land for sale in Dhaka, the first mistake is looking only at price per katha. Land value depends heavily on exact road position, plot shape, access width, surrounding development, utility availability, soil and whether the papers are clean. Purbachal, Bashundhara, Uttara, Baridhara side areas and other growth locations can be interesting, but every plot needs careful checking before it becomes a real buying option.",
+      },
+      {
+        heading: "How to compare plots without getting confused",
+        body: "Start with the purpose. If you want to build a home, road width, neighborhood, schools, mosque, market and utility access matter. If you want investment value, compare future roads, nearby projects, development pace and resale demand. Then check land size, frontage, shape, facing, boundary, ownership history and whether the asking price matches nearby recent activity. A cheaper plot can become expensive later if the access, approval or document situation is weak.",
+      },
+      {
+        heading: "Verification before negotiation",
+        body: "Land needs the strongest verification process. Before payment, buyers should check title chain, mutation, khatian, tax, registration history, possession, boundary and any development authority requirements. Visit the land physically, speak with local sources, and make sure the measured land matches the papers. PropertyBikri's land pages are designed to organize land and plot searches, but final buying confidence should come from proper document review and site inspection.",
+      },
+    ],
     faqs: faq("land for sale in Dhaka"),
     related: ["plot-for-sale-in-dhaka", "land-for-sale-in-purbachal", "plot-for-sale-in-bashundhara"],
   },
@@ -165,6 +210,20 @@ const corePages: SeoLandingPage[] = [
     intro: "Commercial property buyers should compare location visibility, access, building facilities, floor size, parking, utility capacity and business suitability.",
     query: { listing_purpose: "sale", property_type: "commercial", city: "Dhaka" },
     propertyType: "commercial",
+    contentSections: [
+      {
+        heading: "Commercial property depends on business fit",
+        body: "Commercial property for sale in Dhaka needs a different buying mindset from residential property. The right office, shop, showroom or business space should match customer movement, staff access, road visibility, parking, lift capacity, power load, building rules and long-term operating cost. A location that works for an office may not work for retail, and a retail-facing space may not be ideal for a quieter service business.",
+      },
+      {
+        heading: "Compare visibility, access and building support",
+        body: "For commercial searches, check how easily clients or employees can reach the building, whether the address is easy to explain, how traffic behaves during working hours, and whether parking or drop-off is realistic. Inside the building, compare floor plate, ceiling height, common area quality, generator backup, fire safety, lift service, security and maintenance. These details can affect rent potential, resale demand and the daily business experience.",
+      },
+      {
+        heading: "Important checks before buying business space",
+        body: "Before buying commercial property, review ownership documents, allowed use, building approval, service charge, utility capacity, handover status and any association rules. For shops or showrooms, frontage and foot movement can matter more than size alone. For offices, layout efficiency and staff commute may matter more. This page helps buyers start with focused commercial listings in Dhaka and then move into proper inspection and negotiation.",
+      },
+    ],
     faqs: faq("commercial property for sale in Dhaka"),
     related: ["properties-for-sale-in-dhaka", "office-space-for-sale-in-dhaka", "property-for-sale-in-dhaka"],
   },

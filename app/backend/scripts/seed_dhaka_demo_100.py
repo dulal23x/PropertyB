@@ -11,12 +11,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-DEFAULT_DEMO_IMAGE_NAME = "default site banner.png"
-DEFAULT_DEMO_IMAGE_STORAGE = f"nextjs-frontend/public/{DEFAULT_DEMO_IMAGE_NAME}"
-DEFAULT_DEMO_IMAGE_URL = "https://propertybikri.com/default%20site%20banner.png"
-DEMO_DISCLOSURE = (
-    "This is a PropertyBikri demo/inquiry listing. Call us for current pictures, price and availability before shortlisting."
-)
+DEFAULT_DEMO_IMAGE_NAME = "default-site-banner.png"
+DEFAULT_DEMO_IMAGE_STORAGE = f"nextjs-frontend/public/assets/{DEFAULT_DEMO_IMAGE_NAME}"
+DEFAULT_DEMO_IMAGE_URL = "https://propertybikri.com/assets/default-site-banner.png"
 
 AREAS = [
     ("Gulshan", 23.7925, 90.4078),
@@ -77,7 +74,7 @@ def get_demo_image_pool(image_root: Path, dry_run: bool) -> list[Path]:
         return [target]
     if target.exists() and target.stat().st_size >= 10_000:
         return [target]
-    repo_asset = Path(__file__).resolve().parents[3] / "nextjs-frontend" / "public" / DEFAULT_DEMO_IMAGE_NAME
+    repo_asset = Path(__file__).resolve().parents[3] / "nextjs-frontend" / "public" / "assets" / DEFAULT_DEMO_IMAGE_NAME
     if repo_asset.exists() and repo_asset.stat().st_size >= 10_000:
         image_root.mkdir(parents=True, exist_ok=True)
         shutil.copy2(repo_asset, target)
@@ -187,6 +184,12 @@ def specs(area: str, property_type: str, index: int) -> dict:
 
 def description_for(area: str, property_type: str, index: int, spec: dict) -> str:
     type_label = {"apartment": "flat", "house": "house", "land": "plot", "commercial": "commercial space"}[property_type]
+    keyword_label = {
+        "apartment": "flat and apartment for sale",
+        "house": "house for sale",
+        "land": "land and plot for sale",
+        "commercial": "commercial property for sale",
+    }[property_type]
     area_note = AREA_NOTES[area]
     size_line = (
         f"The size is around {int(spec['size_value'])} sqft, with {spec['bedrooms'] or 'flexible'} rooms and {spec['bathrooms'] or 'planned'} bathrooms."
@@ -194,11 +197,10 @@ def description_for(area: str, property_type: str, index: int, spec: dict) -> st
         else f"The land size is around {spec['land_size_value']} katha, so the main thing is to verify papers, road access and boundary position before moving ahead."
     )
     return (
-        f"{DEMO_DISCLOSURE}\n\n"
-        f"This {type_label} for sale in {area}, Dhaka is added for buyers who want a clear and useful starting point instead of a thin listing with only a price and one line. "
+        f"This {keyword_label} in {area}, Dhaka is added for buyers who want a clear and useful starting point instead of a thin listing with only a price and one line. "
         f"{area_note} {size_line} The layout is planned for normal Dhaka living, so I would check light, ventilation, stair and lift condition, parking access, generator backup and the final usable space during viewing.\n\n"
         f"For a buyer, the good part of this listing is the location logic. It is not only about the building. You should compare how quickly you can reach main roads, schools, hospitals, mosque, kitchen market, office routes and daily transport. "
-        f"Price, pictures, document status, floor position and handover condition should be confirmed directly with PropertyBikri before you shortlist it seriously. If you are looking for {type_label} in {area}, keep this one beside two or three nearby options and compare them honestly.\n\n"
+        f"If you are looking for {type_label} in {area}, keep this one beside two or three nearby options and compare them honestly.\n\n"
         f"My simple advice is this: visit in daylight, ask for ownership papers, check utility bills, confirm parking, and do not decide only from photos. PropertyBikri keeps the listing easy to scan, but the final decision should come after a proper visit and document check."
     )
 

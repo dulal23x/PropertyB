@@ -6,6 +6,7 @@ import { formatBDT } from '@/utils/formatters';
 import PropertyInquiryForm from '@/components/property/PropertyInquiryForm';
 import RevealContactButton from '@/components/property/RevealContactButton';
 import { getSafePropertyImageSrc } from '@/lib/image';
+import { listingKeywordForType } from '@/lib/seo-keywords';
 import { BadgeCheck, CheckCircle2, MapPinned } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -65,11 +66,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const location = [property.area_name, property.city].filter(Boolean).join(", ");
   const purpose = property.listing_purpose || "sale";
   const type = property.property_type || "property";
-  const title = `${property.title} | ${type} for ${purpose} in ${location || "Bangladesh"}`;
+  const keyword = purpose === "sale" ? listingKeywordForType(type, property.area_name, property.city) : `${type} for rent in ${location || "Dhaka"}`;
+  const title = `${property.title} | ${keyword}`;
   const isCallForPrice = property.price_visibility === 'call_for_price';
   const description = isCallForPrice
-    ? `${describeProperty(property)}. Call PropertyBikri for current price, pictures, availability and viewing details.`
-    : `${describeProperty(property)}. View price, photos, amenities and contact details on PropertyBikri.`;
+    ? `${describeProperty(property)}. ${keyword}. Call PropertyBikri for current price, pictures, availability and viewing details.`
+    : `${describeProperty(property)}. ${keyword}. View price, photos, amenities and contact details on PropertyBikri.`;
   const image = property.images?.[0]?.public_url;
 
   return {
@@ -178,11 +180,6 @@ export default async function PropertyDetailPage({ params }: { params: { slug: s
               <div className="text-3xl font-bold text-brand-dark">
                 {priceText}
               </div>
-              {isCallForPrice && (
-                <p className="mt-2 max-w-sm text-sm font-medium text-gray-600 md:ml-auto">
-                  Demo listing: call PropertyBikri for current pictures, price and availability.
-                </p>
-              )}
             </div>
           </div>
         </div>
