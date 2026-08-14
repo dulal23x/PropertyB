@@ -2,8 +2,11 @@ export interface AppEnv {
   // Cloudflare D1 Database binding
   DB: D1Database;
 
-  // Cloudflare R2 Bucket binding
-  PROPERTY_IMAGES: R2Bucket;
+  // Cloudflare R2 Bucket binding (optional)
+  PROPERTY_IMAGES?: R2Bucket;
+
+  // Cloudflare Assets binding
+  ASSETS?: Fetcher;
 
   // Secrets
   JWT_SECRET?: string;

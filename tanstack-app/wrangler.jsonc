@@ -1,79 +1,40 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "propertybikri-worker",
+  "name": "propertybikri",
   "main": "./src/server/worker.ts",
   "compatibility_date": "2026-08-10",
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "html_handling": "none",
+    "run_worker_first": true
+  },
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "propertybikri-db",
-      "database_id": "local-d1-preview-id",
+      "database_name": "propertybikri-prod-db",
+      "database_id": "e4ed52f1-5d03-486e-9be8-4b6b0964a318",
       "migrations_dir": "migrations"
     }
   ],
-  "r2_buckets": [
-    {
-      "binding": "PROPERTY_IMAGES",
-      "bucket_name": "propertybikri-images"
-    }
+  "routes": [
+    { "pattern": "propertybikri.com/*", "zone_name": "propertybikri.com" },
+    { "pattern": "www.propertybikri.com/*", "zone_name": "propertybikri.com" },
+    { "pattern": "api.propertybikri.com/*", "zone_name": "propertybikri.com" }
   ],
   "vars": {
-    "ENVIRONMENT": "local",
-    "RELEASE_ID": "2026.08.10.1",
-    "PUBLIC_APP_URL": "http://localhost:3010",
-    "PUBLIC_API_URL": "http://localhost:3010/api",
+    "ENVIRONMENT": "production",
+    "RELEASE_ID": "2026.08.14.3",
+    "PUBLIC_APP_URL": "https://propertybikri.com",
+    "PUBLIC_API_URL": "https://propertybikri.com/api",
     "PUBLIC_DEFAULT_CONTACT_PHONE": "+8801700000000",
     "PUBLIC_WHATSAPP_NUMBER": "+8801700000000",
     "JWT_ISSUER": "propertybikri.com",
     "JWT_AUDIENCE": "propertybikri.com"
-  },
-  "env": {
-    "preview": {
-      "name": "propertybikri-worker-preview",
-      "vars": {
-        "ENVIRONMENT": "preview",
-        "PUBLIC_APP_URL": "https://preview.propertybikri.com",
-        "PUBLIC_API_URL": "https://preview.propertybikri.com/api"
-      },
-      "d1_databases": [
-        {
-          "binding": "DB",
-          "database_name": "propertybikri-preview-db",
-          "database_id": "preview-d1-id",
-          "migrations_dir": "migrations"
-        }
-      ],
-      "r2_buckets": [
-        {
-          "binding": "PROPERTY_IMAGES",
-          "bucket_name": "propertybikri-preview-images"
-        }
-      ]
-    },
-    "production": {
-      "name": "propertybikri-worker-production",
-      "vars": {
-        "ENVIRONMENT": "production",
-        "PUBLIC_APP_URL": "https://propertybikri.com",
-        "PUBLIC_API_URL": "https://api.propertybikri.com"
-      },
-      "d1_databases": [
-        {
-          "binding": "DB",
-          "database_name": "propertybikri-prod-db",
-          "database_id": "prod-d1-id",
-          "migrations_dir": "migrations"
-        }
-      ],
-      "r2_buckets": [
-        {
-          "binding": "PROPERTY_IMAGES",
-          "bucket_name": "propertybikri-prod-images"
-        }
-      ]
-    }
   }
 }

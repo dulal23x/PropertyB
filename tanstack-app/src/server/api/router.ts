@@ -426,13 +426,15 @@ export async function handleApiRequest(
       const r2Key = `property-images/${listingId}/${safeFilename}`;
       const publicUrl = `/images/${listingId}/${safeFilename}`;
 
-      // Upload directly to Cloudflare R2
-      await env.PROPERTY_IMAGES.put(r2Key, await file.arrayBuffer(), {
-        httpMetadata: {
-          contentType: file.type || "image/jpeg",
-          cacheControl: "public, max-age=31536000, immutable",
-        },
-      });
+      // Upload directly to Cloudflare R2 if configured
+      if (env.PROPERTY_IMAGES) {
+        await env.PROPERTY_IMAGES.put(r2Key, await file.arrayBuffer(), {
+          httpMetadata: {
+            contentType: file.type || "image/jpeg",
+            cacheControl: "public, max-age=31536000, immutable",
+          },
+        });
+      }
 
       const existingImages = await imagesRepo.findByListing(listingId);
       const isCover = existingImages.length === 0 ? 1 : 0;
@@ -454,11 +456,13 @@ export async function handleApiRequest(
     if (imageDeleteMatch && method === "DELETE") {
       const imageId = parseInt(imageDeleteMatch[1], 10);
       const result = await imagesRepo.delete(imageId);
-      // Attempt R2 deletion
-      try {
-        await env.PROPERTY_IMAGES.delete(result.deletedImage.storage_path);
-      } catch (err) {
-        console.error("R2 deletion warning:", err);
+      // Attempt R2 deletion if configured
+      if (env.PROPERTY_IMAGES) {
+        try {
+          await env.PROPERTY_IMAGES.delete(result.deletedImage.storage_path);
+        } catch (err) {
+          console.error("R2 deletion warning:", err);
+        }
       }
       return createJsonResponse({ status: "success", deleted_id: imageId, new_cover_id: result.newCoverId }, 200, ctx.requestId);
     }

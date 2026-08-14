@@ -1,6 +1,6 @@
 /**
  * PropertyBikri Cloudflare Worker Full-Stack Server Entry
- * Unified Server-Side Rendering (SSR), API router, R2 media delivery, and D1 database.
+ * Unified Server-Side Rendering (SSR), API router, R2 media delivery, Static Assets, and D1 database.
  */
 
 import { handleApiRequest } from "./api/router";
@@ -22,7 +22,7 @@ export default {
     const ctx = createRequestContext(req);
     const url = ctx.url;
     const method = req.method.toUpperCase();
-    const pathname = url.pathname;
+    const pathname = decodeURIComponent(url.pathname);
 
     // 1. Handle CORS Preflight
     if (method === "OPTIONS") {
@@ -36,7 +36,33 @@ export default {
       return new Response(null, { status: 204, headers });
     }
 
-    // 2. Handle /images/* Compatibility Route from Cloudflare R2 (Chapter 41)
+    // 2. Handle Static Files from public/ (/assets/*, /favicon.ico, etc.)
+    if (
+      env.ASSETS &&
+      method === "GET" &&
+      (pathname.startsWith("/assets/") ||
+        pathname === "/favicon.ico" ||
+        pathname.startsWith("/media/") ||
+        pathname.endsWith(".png") ||
+        pathname.endsWith(".jpg") ||
+        pathname.endsWith(".webp") ||
+        pathname.endsWith(".svg") ||
+        pathname.endsWith(".ico"))
+    ) {
+      try {
+        const assetResp = await env.ASSETS.fetch(req);
+        if (assetResp.status === 200) {
+          const newHeaders = new Headers(assetResp.headers);
+          newHeaders.set("Cache-Control", "public, max-age=86400");
+          applySecurityHeaders(newHeaders);
+          return new Response(assetResp.body, { status: 200, headers: newHeaders });
+        }
+      } catch {
+        // fall through
+      }
+    }
+
+    // 3. Handle /images/* Compatibility Route from Cloudflare R2 + Assets Fallback (Chapter 41)
     const imageMatch = pathname.match(/^\/images\/(\d+)\/([^/]+)$/);
     if (imageMatch && method === "GET") {
       const listingId = imageMatch[1];
@@ -45,26 +71,53 @@ export default {
       const r2Key = `property-images/${listingId}/${safeFilename}`;
 
       try {
-        const object = await env.PROPERTY_IMAGES.get(r2Key);
-        if (!object) {
-          return new Response("Image not found", { status: 404 });
+        // First try Cloudflare R2
+        if (env.PROPERTY_IMAGES && typeof env.PROPERTY_IMAGES.get === "function") {
+          const object = await env.PROPERTY_IMAGES.get(r2Key);
+          if (object) {
+            const headers = new Headers();
+            object.writeHttpMetadata(headers);
+            headers.set("etag", object.httpEtag);
+            headers.set("Cache-Control", "public, max-age=31536000, immutable");
+            headers.set("Access-Control-Allow-Origin", "*");
+            applySecurityHeaders(headers);
+            return new Response(object.body, { headers });
+          }
         }
 
-        const headers = new Headers();
-        object.writeHttpMetadata(headers);
-        headers.set("etag", object.httpEtag);
-        headers.set("Cache-Control", "public, max-age=31536000, immutable");
-        headers.set("Access-Control-Allow-Origin", "*");
-        applySecurityHeaders(headers);
+        // Second: Try local media asset path via env.ASSETS
+        if (env.ASSETS) {
+          const assetUrl = new URL(`/media/property-images/${listingId}/${safeFilename}`, req.url);
+          const assetReq = new Request(assetUrl.toString(), req);
+          const assetResp = await env.ASSETS.fetch(assetReq);
+          if (assetResp.status === 200) {
+            const headers = new Headers(assetResp.headers);
+            headers.set("Cache-Control", "public, max-age=31536000, immutable");
+            headers.set("Access-Control-Allow-Origin", "*");
+            applySecurityHeaders(headers);
+            return new Response(assetResp.body, { status: 200, headers });
+          }
 
-        return new Response(object.body, { headers });
+          // Fallback to placeholder banner
+          const placeholderUrl = new URL(`/assets/propertybikri-demo-call-for-details.png`, req.url);
+          const placeholderReq = new Request(placeholderUrl.toString(), req);
+          const placeholderResp = await env.ASSETS.fetch(placeholderReq);
+          if (placeholderResp.status === 200) {
+            const headers = new Headers(placeholderResp.headers);
+            headers.set("Cache-Control", "public, max-age=86400");
+            applySecurityHeaders(headers);
+            return new Response(placeholderResp.body, { status: 200, headers });
+          }
+        }
+
+        return new Response("Image not found", { status: 404 });
       } catch (err) {
-        console.error("R2 image fetch error:", err);
+        console.error("Image fetch error:", err);
         return new Response("Error fetching image", { status: 500 });
       }
     }
 
-    // 3. Crawler Feeds
+    // 4. Crawler Feeds
     if (pathname === "/sitemap.xml" && method === "GET") {
       const resp = await renderSitemapXml(env);
       applySecurityHeaders(resp.headers);
@@ -76,7 +129,7 @@ export default {
       return resp;
     }
 
-    // 4. API Endpoints
+    // 5. API Endpoints
     const isApiRoute =
       pathname.startsWith("/api") ||
       pathname.startsWith("/health") ||
@@ -110,23 +163,23 @@ export default {
       }
     }
 
-    // 5. Server-Side Rendered (SSR) HTML Frontend Pages
+    // 6. Server-Side Rendered (SSR) HTML Frontend Pages
     try {
-      // 5.1 Homepage
+      // 6.1 Homepage
       if (pathname === "/" || pathname === "") {
         const resp = await renderHomePage(env);
         applySecurityHeaders(resp.headers);
         return resp;
       }
 
-      // 5.2 Public Search / Properties Listing
+      // 6.2 Public Search / Properties Listing
       if (pathname === "/properties" || pathname === "/properties/") {
         const resp = await renderPropertiesPage(req, env);
         applySecurityHeaders(resp.headers);
         return resp;
       }
 
-      // 5.3 Property Detail Page
+      // 6.3 Property Detail Page
       const propDetailMatch = pathname.match(/^\/properties\/([a-zA-Z0-9_\-]+)\/?$/);
       if (propDetailMatch) {
         const slug = propDetailMatch[1];
@@ -135,7 +188,7 @@ export default {
         return resp;
       }
 
-      // 5.4 Authentication Pages (/auth/login, /auth/register, /auth/reset)
+      // 6.4 Authentication Pages (/auth/login, /auth/register, /auth/reset)
       if (pathname.startsWith("/auth/")) {
         const resp = renderAuthPage(pathname);
         if (resp) {
@@ -144,28 +197,28 @@ export default {
         }
       }
 
-      // 5.5 Owner Dashboard (/dashboard/*)
+      // 6.5 Owner Dashboard (/dashboard/*)
       if (pathname === "/dashboard" || pathname.startsWith("/dashboard/")) {
         const resp = renderDashboardPage(pathname, env);
         applySecurityHeaders(resp.headers);
         return resp;
       }
 
-      // 5.6 Admin Portal (/admin/*)
+      // 6.6 Admin Portal (/admin/*)
       if (pathname === "/admin" || pathname.startsWith("/admin/")) {
         const resp = renderAdminPage(pathname, env);
         applySecurityHeaders(resp.headers);
         return resp;
       }
 
-      // 5.7 Static & Corporate Pages
+      // 6.7 Static & Corporate Pages
       const staticResp = renderStaticPage(pathname, env);
       if (staticResp) {
         applySecurityHeaders(staticResp.headers);
         return staticResp;
       }
 
-      // 5.8 Programmatic SEO Landing Pages (90 pages)
+      // 6.8 Programmatic SEO Landing Pages (90 pages)
       const cleanSlug = pathname.replace(/^\/+|\/+$/g, "");
       const seoResp = await renderSeoLandingPage(cleanSlug, env);
       if (seoResp) {
@@ -173,7 +226,7 @@ export default {
         return seoResp;
       }
 
-      // 5.9 404 Fallback
+      // 6.9 404 Fallback
       const notFoundHtml = renderHtmlDocument({
         meta: {
           title: "Page Not Found (404) | PropertyBikri",
