@@ -1,0 +1,6249 @@
+{
+  "generated_at": "2026-08-14T14:56:00Z",
+  "workspace": "C:\\realestatesite",
+  "tools": {
+    "python": "3.14.3",
+    "node": "v24.14.0",
+    "npm": "11.9.0",
+    "wrangler": "4.123.0"
+  },
+  "database": {
+    "db_path": "C:\\realestatesite\\app\\backend\\realestate_mvp_v1.db",
+    "db_sha256": "6e29512fa66b5ae50cdce0bc1e9cb2289f8e47311c6c0d17fcf2e2e358ae1c4a",
+    "integrity_check": "ok",
+    "canonical_tables": [
+      "users",
+      "password_reset_tokens",
+      "property_listings",
+      "property_images",
+      "property_inquiries",
+      "property_audit_logs",
+      "email_logs",
+      "email_attachments",
+      "email_templates",
+      "security_events",
+      "site_settings"
+    ],
+    "excluded_tables": [
+      "users_v2",
+      "property_listings_v2",
+      "property_images_v2",
+      "property_inquiries_v2",
+      "property_audit_logs_v2",
+      "email_logs_v2",
+      "password_reset_tokens_v2",
+      "security_events_v2",
+      "migration_state",
+      "backfill_checkpoints"
+    ],
+    "table_profiles": {
+      "users": {
+        "row_count": 8,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "email",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "password_hash",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "role",
+            "type": "VARCHAR(20)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "full_name",
+            "type": "VARCHAR(120)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "is_active",
+            "type": "BOOLEAN",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "password_reset_tokens": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "email",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "token",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "expires_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "used",
+            "type": "BOOLEAN",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "property_listings": {
+        "row_count": 112,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "owner_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "title",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "slug",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "listing_purpose",
+            "type": "VARCHAR(20)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "property_type",
+            "type": "VARCHAR(30)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "property_subtype",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "status",
+            "type": "VARCHAR(30)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "price_amount",
+            "type": "NUMERIC(14, 2)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "price_label",
+            "type": "VARCHAR(120)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "price_visibility",
+            "type": "VARCHAR(30)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "currency",
+            "type": "VARCHAR(10)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "price_period",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "division",
+            "type": "VARCHAR(80)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "district",
+            "type": "VARCHAR(80)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "city",
+            "type": "VARCHAR(80)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "area_name",
+            "type": "VARCHAR(120)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "address_line",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "display_address",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "bedrooms",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "bathrooms",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "balconies",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "parking_spaces",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 24,
+            "name": "floor_number",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 25,
+            "name": "total_floors",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 26,
+            "name": "size_value",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 27,
+            "name": "size_unit",
+            "type": "VARCHAR(20)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 28,
+            "name": "land_size_value",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 29,
+            "name": "land_size_unit",
+            "type": "VARCHAR(20)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 30,
+            "name": "plot_type",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 31,
+            "name": "facing",
+            "type": "VARCHAR(40)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 32,
+            "name": "handover_status",
+            "type": "VARCHAR(40)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 33,
+            "name": "handover_date",
+            "type": "VARCHAR(40)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 34,
+            "name": "furnishing_status",
+            "type": "VARCHAR(40)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 35,
+            "name": "amenities_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 36,
+            "name": "nearby_places_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 37,
+            "name": "map_lat",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 38,
+            "name": "map_lng",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 39,
+            "name": "owner_note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 40,
+            "name": "admin_note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 41,
+            "name": "featured",
+            "type": "BOOLEAN",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 42,
+            "name": "approved_by_user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 43,
+            "name": "approved_at",
+            "type": "DATETIME",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 44,
+            "name": "published_at",
+            "type": "DATETIME",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 45,
+            "name": "rejected_at",
+            "type": "DATETIME",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 46,
+            "name": "unpublished_at",
+            "type": "DATETIME",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 47,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 48,
+            "name": "updated_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "property_images": {
+        "row_count": 121,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "storage_path",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "public_url",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "alt_text",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "sort_order",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "is_cover",
+            "type": "BOOLEAN",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "uploaded_by_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "property_inquiries": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "name",
+            "type": "VARCHAR(120)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "phone",
+            "type": "VARCHAR(40)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "email",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "message",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "preferred_contact_method",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "source_page",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "ip_hash",
+            "type": "VARCHAR(120)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "user_agent",
+            "type": "VARCHAR(255)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "status",
+            "type": "VARCHAR(20)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "assigned_admin_user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "updated_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "property_audit_logs": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "actor_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "action",
+            "type": "VARCHAR(80)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "from_status",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "to_status",
+            "type": "VARCHAR(30)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "metadata_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "email_logs": {
+        "row_count": 6,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "sender_type",
+            "type": "VARCHAR(30)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "to_email",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "subject",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "status",
+            "type": "VARCHAR(30)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "error",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "email_attachments": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "email_log_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "filename",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "storage_path",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "email_templates": {
+        "row_count": 10,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "template_key",
+            "type": "VARCHAR(120)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "subject",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "updated_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "security_events": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "event_type",
+            "type": "VARCHAR(120)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "ip",
+            "type": "VARCHAR(80)",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "detail",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "site_settings": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "setting_key",
+            "type": "VARCHAR(120)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "setting_value",
+            "type": "VARCHAR(255)",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "updated_at",
+            "type": "DATETIME",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": true
+      },
+      "users_v2": {
+        "row_count": 8,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "email",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "password_hash",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "role",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "full_name",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "is_active",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "1",
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "property_listings_v2": {
+        "row_count": 112,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "owner_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "title",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "slug",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "description",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "listing_purpose",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "property_type",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "property_subtype",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "price_amount",
+            "type": "NUMERIC",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "price_label",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "price_visibility",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "'show_price'",
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "currency",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "'BDT'",
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "price_period",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 15,
+            "name": "division",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 16,
+            "name": "district",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 17,
+            "name": "city",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 18,
+            "name": "area_name",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 19,
+            "name": "address_line",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 20,
+            "name": "display_address",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 21,
+            "name": "map_lat",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 22,
+            "name": "map_lng",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 23,
+            "name": "bedrooms",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 24,
+            "name": "bathrooms",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 25,
+            "name": "balconies",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 26,
+            "name": "parking_spaces",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 27,
+            "name": "floor_number",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 28,
+            "name": "total_floors",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 29,
+            "name": "size_value",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 30,
+            "name": "size_unit",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 31,
+            "name": "land_size_value",
+            "type": "FLOAT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 32,
+            "name": "land_size_unit",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 33,
+            "name": "plot_type",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 34,
+            "name": "facing",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 35,
+            "name": "handover_status",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 36,
+            "name": "handover_date",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 37,
+            "name": "furnishing_status",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 38,
+            "name": "amenities_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 39,
+            "name": "nearby_places_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 40,
+            "name": "owner_note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 41,
+            "name": "admin_note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 42,
+            "name": "featured",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "0",
+            "pk": false
+          },
+          {
+            "cid": 43,
+            "name": "approved_by_user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 44,
+            "name": "approved_at",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 45,
+            "name": "published_at",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 46,
+            "name": "rejected_at",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 47,
+            "name": "unpublished_at",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 48,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 49,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "property_images_v2": {
+        "row_count": 121,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "storage_path",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "public_url",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "alt_text",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "sort_order",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "0",
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "is_cover",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "0",
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "uploaded_by_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "property_inquiries_v2": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "name",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "phone",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "email",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "message",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "preferred_contact_method",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "source_page",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "ip_hash",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 10,
+            "name": "user_agent",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 11,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "'new'",
+            "pk": false
+          },
+          {
+            "cid": 12,
+            "name": "assigned_admin_user_id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 13,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 14,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "property_audit_logs_v2": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "listing_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "actor_user_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "action",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "from_status",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "to_status",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "note",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "metadata_json",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 9,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "email_logs_v2": {
+        "row_count": 6,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "sender_type",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "to_email",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "subject",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "'sent'",
+            "pk": false
+          },
+          {
+            "cid": 7,
+            "name": "error",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 8,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "password_reset_tokens_v2": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "email",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "token",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "expires_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "used",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "0",
+            "pk": false
+          },
+          {
+            "cid": 6,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "security_events_v2": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "public_id",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "lower(hex(randomblob(4)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(2)))||'-'||lower(hex(randomblob(6)))",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "event_type",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "ip",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 4,
+            "name": "detail",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "migration_state": {
+        "row_count": 1,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "INTEGER",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "phase",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "detail",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": false
+          },
+          {
+            "cid": 3,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "CURRENT_TIMESTAMP",
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      },
+      "backfill_checkpoints": {
+        "row_count": 0,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "table_name",
+            "type": "TEXT",
+            "notnull": false,
+            "default_value": null,
+            "pk": true
+          },
+          {
+            "cid": 1,
+            "name": "last_synced_id",
+            "type": "INTEGER",
+            "notnull": true,
+            "default_value": "0",
+            "pk": false
+          },
+          {
+            "cid": 2,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": true,
+            "default_value": "CURRENT_TIMESTAMP",
+            "pk": false
+          }
+        ],
+        "is_canonical": false
+      }
+    },
+    "listing_breakdown": {
+      "by_status": {
+        "approved": 112
+      },
+      "by_purpose": {
+        "sale": 112
+      },
+      "by_type": {
+        "apartment": 90,
+        "commercial": 4,
+        "house": 9,
+        "land": 9
+      }
+    },
+    "users_breakdown": {
+      "by_role": {
+        "admin": 1,
+        "client": 7
+      }
+    }
+  },
+  "frontend_routes": [
+    "[seoSlug]/page.tsx",
+    "about/page.tsx",
+    "admin/email-hub/compose/page.tsx",
+    "admin/email-hub/page.tsx",
+    "admin/email-hub/templates/page.tsx",
+    "admin/inquiries/page.tsx",
+    "admin/layout.tsx",
+    "admin/page.tsx",
+    "admin/properties/[id]/page.tsx",
+    "admin/properties/page.tsx",
+    "admin/settings/page.tsx",
+    "admin/users/page.tsx",
+    "advertise/page.tsx",
+    "api/properties/route.ts",
+    "auth/login/page.tsx",
+    "auth/register/page.tsx",
+    "careers/page.tsx",
+    "contact/page.tsx",
+    "cookies/page.tsx",
+    "dashboard/inquiries/page.tsx",
+    "dashboard/layout.tsx",
+    "dashboard/listings/[id]/edit/page.tsx",
+    "dashboard/listings/new/page.tsx",
+    "dashboard/listings/page.tsx",
+    "dashboard/page.tsx",
+    "dashboard/profile/page.tsx",
+    "dashboard/settings/page.tsx",
+    "layout.tsx",
+    "page.tsx",
+    "post-property/page.tsx",
+    "privacy/page.tsx",
+    "properties/[slug]/page.tsx",
+    "properties/page.tsx",
+    "sitemap/page.tsx",
+    "terms/page.tsx"
+  ],
+  "backend_openapi": {
+    "openapi": "3.1.0",
+    "info": {
+      "title": "RealEstateSite Backend",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/health": {
+        "get": {
+          "tags": [
+            "health"
+          ],
+          "summary": "Health",
+          "operationId": "health_health_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "/health/email": {
+        "get": {
+          "tags": [
+            "health"
+          ],
+          "summary": "Health Email",
+          "operationId": "health_email_health_email_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/register": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Register",
+          "operationId": "register_auth_register_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TokenResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/login": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Login",
+          "operationId": "login_auth_login_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TokenResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/me": {
+        "get": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Me",
+          "operationId": "me_auth_me_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        },
+        "patch": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Update Me",
+          "operationId": "update_me_auth_me_patch",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserUpdateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/auth/password-reset/request": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Password Reset Request",
+          "operationId": "password_reset_request_auth_password_reset_request_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordResetRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/password-reset/validate": {
+        "get": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Password Reset Validate",
+          "operationId": "password_reset_validate_auth_password_reset_validate_get",
+          "parameters": [
+            {
+              "name": "token",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Token"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth/password-reset/confirm": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Password Reset Confirm",
+          "operationId": "password_reset_confirm_auth_password_reset_confirm_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasswordResetConfirm"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/global-contact": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Get Global Contact",
+          "operationId": "get_global_contact_properties_global_contact_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me-summary": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "My Listing Summary",
+          "operationId": "my_listing_summary_properties_me_summary_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/properties/me/inquiries": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "My Listings Inquiries",
+          "operationId": "my_listings_inquiries_properties_me_inquiries_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/properties": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "List Public",
+          "operationId": "list_public_properties_get",
+          "parameters": [
+            {
+              "name": "keyword",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Keyword"
+              }
+            },
+            {
+              "name": "purpose",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Purpose"
+              }
+            },
+            {
+              "name": "listing_purpose",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Listing Purpose"
+              }
+            },
+            {
+              "name": "property_type",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Property Type"
+              }
+            },
+            {
+              "name": "type",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Type"
+              }
+            },
+            {
+              "name": "division",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Division"
+              }
+            },
+            {
+              "name": "district",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "District"
+              }
+            },
+            {
+              "name": "city",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "City"
+              }
+            },
+            {
+              "name": "area_name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Area Name"
+              }
+            },
+            {
+              "name": "min_price",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Min Price"
+              }
+            },
+            {
+              "name": "max_price",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Max Price"
+              }
+            },
+            {
+              "name": "bedrooms",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Bedrooms"
+              }
+            },
+            {
+              "name": "bedrooms_min",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Bedrooms Min"
+              }
+            },
+            {
+              "name": "bedrooms_max",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Bedrooms Max"
+              }
+            },
+            {
+              "name": "bathrooms",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Bathrooms"
+              }
+            },
+            {
+              "name": "min_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Min Size"
+              }
+            },
+            {
+              "name": "max_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Max Size"
+              }
+            },
+            {
+              "name": "size_unit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Size Unit"
+              }
+            },
+            {
+              "name": "land_size_min",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Land Size Min"
+              }
+            },
+            {
+              "name": "land_size_max",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Land Size Max"
+              }
+            },
+            {
+              "name": "land_size_unit",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Land Size Unit"
+              }
+            },
+            {
+              "name": "amenities",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Amenities"
+              }
+            },
+            {
+              "name": "price_visibility",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Price Visibility"
+              }
+            },
+            {
+              "name": "sort",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "default": "newest",
+                "title": "Sort"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 50,
+                "minimum": 1,
+                "default": 12,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Create Listing",
+          "operationId": "create_listing_properties_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyCreate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "My Listings",
+          "operationId": "my_listings_properties_me_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me/{listing_id}": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "My Listing Detail",
+          "operationId": "my_listing_detail_properties_me__listing_id__get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Update My Listing",
+          "operationId": "update_my_listing_properties_me__listing_id__put",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyUpdate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Delete Listing",
+          "operationId": "delete_listing_properties_me__listing_id__delete",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me/{listing_id}/submit": {
+        "post": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Submit Listing",
+          "operationId": "submit_listing_properties_me__listing_id__submit_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me/{listing_id}/images": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Get Listing Images",
+          "operationId": "get_listing_images_properties_me__listing_id__images_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me/{listing_id}/upload-image": {
+        "post": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Upload Image",
+          "operationId": "upload_image_properties_me__listing_id__upload_image_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            },
+            {
+              "name": "is_cover",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "boolean",
+                "default": false,
+                "title": "Is Cover"
+              }
+            },
+            {
+              "name": "alt_text",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Alt Text"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_upload_image_properties_me__listing_id__upload_image_post"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/me/{listing_id}/images/{image_id}": {
+        "delete": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Delete Image",
+          "operationId": "delete_image_properties_me__listing_id__images__image_id__delete",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            },
+            {
+              "name": "image_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Image Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/{slug}": {
+        "get": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Detail Public",
+          "operationId": "detail_public_properties__slug__get",
+          "parameters": [
+            {
+              "name": "slug",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Slug"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/properties/{listing_id}/inquiries": {
+        "post": {
+          "tags": [
+            "properties"
+          ],
+          "summary": "Create Inquiry",
+          "operationId": "create_inquiry_properties__listing_id__inquiries_post",
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InquiryCreate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Properties",
+          "operationId": "admin_properties_admin_properties_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "name": "property_type",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Property Type"
+              }
+            },
+            {
+              "name": "listing_purpose",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Listing Purpose"
+              }
+            },
+            {
+              "name": "city",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "City"
+              }
+            },
+            {
+              "name": "area_name",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Area Name"
+              }
+            },
+            {
+              "name": "owner_email",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Owner Email"
+              }
+            },
+            {
+              "name": "keyword",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Keyword"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/users": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Users",
+          "operationId": "admin_users_admin_users_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/users/{user_id}": {
+        "patch": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Update User",
+          "operationId": "admin_update_user_admin_users__user_id__patch",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "User Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminUserUpdate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/stats": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Property Stats",
+          "operationId": "admin_property_stats_admin_properties_stats_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/properties/{listing_id}": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Property Detail",
+          "operationId": "admin_property_detail_admin_properties__listing_id__get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Patch Listing",
+          "operationId": "admin_patch_listing_admin_properties__listing_id__patch",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminNoteRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/{listing_id}/approve": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Approve",
+          "operationId": "admin_approve_admin_properties__listing_id__approve_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/{listing_id}/reject": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Reject",
+          "operationId": "admin_reject_admin_properties__listing_id__reject_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminNoteRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/{listing_id}/unpublish": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Unpublish",
+          "operationId": "admin_unpublish_admin_properties__listing_id__unpublish_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminNoteRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/{listing_id}/archive": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Archive",
+          "operationId": "admin_archive_admin_properties__listing_id__archive_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "listing_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Listing Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/properties/bulk-approve": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Bulk Approve",
+          "operationId": "admin_bulk_approve_admin_properties_bulk_approve_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkActionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/properties/bulk-reject": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Bulk Reject",
+          "operationId": "admin_bulk_reject_admin_properties_bulk_reject_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkActionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/properties/bulk-unpublish": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Bulk Unpublish",
+          "operationId": "admin_bulk_unpublish_admin_properties_bulk_unpublish_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkActionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/properties/bulk-archive": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Bulk Archive",
+          "operationId": "admin_bulk_archive_admin_properties_bulk_archive_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkActionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/properties/audit-logs/recent": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Recent Audit Logs",
+          "operationId": "admin_recent_audit_logs_admin_properties_audit_logs_recent_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/inquiries": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Inquiries",
+          "operationId": "admin_inquiries_admin_inquiries_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "name": "listing_id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Listing Id"
+              }
+            },
+            {
+              "name": "phone",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Phone"
+              }
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Email"
+              }
+            },
+            {
+              "name": "keyword",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Keyword"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/inquiries/{inquiry_id}": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Inquiry Detail",
+          "operationId": "admin_inquiry_detail_admin_inquiries__inquiry_id__get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "inquiry_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Inquiry Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Inquiry Patch",
+          "operationId": "admin_inquiry_patch_admin_inquiries__inquiry_id__patch",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "inquiry_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Inquiry Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InquiryStatusPatch"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/inquiries/{inquiry_id}/mark-contacted": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Mark Contacted",
+          "operationId": "mark_contacted_admin_inquiries__inquiry_id__mark_contacted_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "inquiry_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Inquiry Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/inquiries/{inquiry_id}/mark-closed": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Mark Closed",
+          "operationId": "mark_closed_admin_inquiries__inquiry_id__mark_closed_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "inquiry_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Inquiry Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/inquiries/{inquiry_id}/mark-spam": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Mark Spam",
+          "operationId": "mark_spam_admin_inquiries__inquiry_id__mark_spam_post",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "inquiry_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Inquiry Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/email/logs": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Email Logs",
+          "operationId": "email_logs_admin_email_logs_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/email/logs/{log_id}/content": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Email Log Content",
+          "operationId": "email_log_content_admin_email_logs__log_id__content_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "log_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Log Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/email/user/{email}/history": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Email User History",
+          "operationId": "email_user_history_admin_email_user__email__history_get",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Email"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/email/send": {
+        "post": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Send Email",
+          "operationId": "admin_send_email_admin_email_send_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailSendRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/email/server-stats": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Admin Email Server Stats",
+          "operationId": "admin_email_server_stats_admin_email_server_stats_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/email/templates": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Email Templates",
+          "operationId": "email_templates_admin_email_templates_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/email/templates/{template_id}": {
+        "put": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Email Template Update",
+          "operationId": "email_template_update_admin_email_templates__template_id__put",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "template_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Template Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailTemplateUpdate"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/admin/migration/v2-status": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Migration V2 Status",
+          "operationId": "migration_v2_status_admin_migration_v2_status_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/migration/legacy-candidates": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Legacy Candidates",
+          "operationId": "legacy_candidates_admin_migration_legacy_candidates_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/settings": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Get Admin Settings",
+          "operationId": "get_admin_settings_admin_settings_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ]
+        }
+      },
+      "/admin/settings/{setting_key}": {
+        "put": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Update Admin Setting",
+          "operationId": "update_admin_setting_admin_settings__setting_key__put",
+          "security": [
+            {
+              "OAuth2PasswordBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "setting_key",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Setting Key"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingUpdateSchema"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AdminNoteRequest": {
+          "properties": {
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Note"
+            }
+          },
+          "type": "object",
+          "title": "AdminNoteRequest"
+        },
+        "AdminUserUpdate": {
+          "properties": {
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            },
+            "role": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Role"
+            },
+            "is_active": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Active"
+            }
+          },
+          "type": "object",
+          "title": "AdminUserUpdate"
+        },
+        "Body_upload_image_properties_me__listing_id__upload_image_post": {
+          "properties": {
+            "file": {
+              "type": "string",
+              "contentMediaType": "application/octet-stream",
+              "title": "File"
+            }
+          },
+          "type": "object",
+          "required": [
+            "file"
+          ],
+          "title": "Body_upload_image_properties_me__listing_id__upload_image_post"
+        },
+        "BulkActionRequest": {
+          "properties": {
+            "ids": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array",
+              "title": "Ids"
+            },
+            "note": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Note"
+            }
+          },
+          "type": "object",
+          "required": [
+            "ids"
+          ],
+          "title": "BulkActionRequest"
+        },
+        "EmailSendRequest": {
+          "properties": {
+            "to_email": {
+              "type": "string",
+              "format": "email",
+              "title": "To Email"
+            },
+            "subject": {
+              "type": "string",
+              "title": "Subject"
+            },
+            "body": {
+              "type": "string",
+              "title": "Body"
+            },
+            "sender_type": {
+              "type": "string",
+              "title": "Sender Type",
+              "default": "admin"
+            }
+          },
+          "type": "object",
+          "required": [
+            "to_email",
+            "subject",
+            "body"
+          ],
+          "title": "EmailSendRequest"
+        },
+        "EmailTemplateUpdate": {
+          "properties": {
+            "subject": {
+              "type": "string",
+              "title": "Subject"
+            },
+            "body": {
+              "type": "string",
+              "title": "Body"
+            }
+          },
+          "type": "object",
+          "required": [
+            "subject",
+            "body"
+          ],
+          "title": "EmailTemplateUpdate"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "InquiryCreate": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "phone": {
+              "type": "string",
+              "title": "Phone"
+            },
+            "email": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email"
+            },
+            "message": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Message"
+            },
+            "preferred_contact_method": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Preferred Contact Method"
+            }
+          },
+          "type": "object",
+          "required": [
+            "name",
+            "phone"
+          ],
+          "title": "InquiryCreate"
+        },
+        "InquiryStatusPatch": {
+          "properties": {
+            "status": {
+              "type": "string",
+              "title": "Status"
+            }
+          },
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "title": "InquiryStatusPatch"
+        },
+        "LoginRequest": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            },
+            "password": {
+              "type": "string",
+              "title": "Password"
+            }
+          },
+          "type": "object",
+          "required": [
+            "email",
+            "password"
+          ],
+          "title": "LoginRequest"
+        },
+        "PasswordResetConfirm": {
+          "properties": {
+            "token": {
+              "type": "string",
+              "title": "Token"
+            },
+            "new_password": {
+              "type": "string",
+              "minLength": 8,
+              "title": "New Password"
+            }
+          },
+          "type": "object",
+          "required": [
+            "token",
+            "new_password"
+          ],
+          "title": "PasswordResetConfirm"
+        },
+        "PasswordResetRequest": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            }
+          },
+          "type": "object",
+          "required": [
+            "email"
+          ],
+          "title": "PasswordResetRequest"
+        },
+        "PropertyCreate": {
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 5,
+              "title": "Title"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 10,
+              "title": "Description"
+            },
+            "listing_purpose": {
+              "type": "string",
+              "title": "Listing Purpose"
+            },
+            "property_type": {
+              "type": "string",
+              "title": "Property Type"
+            },
+            "division": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Division"
+            },
+            "district": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "District"
+            },
+            "city": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            },
+            "area_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Area Name"
+            },
+            "display_address": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Display Address"
+            },
+            "price_amount": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Amount"
+            },
+            "price_label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Label"
+            },
+            "price_visibility": {
+              "type": "string",
+              "title": "Price Visibility",
+              "default": "show_price"
+            },
+            "price_period": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Period"
+            },
+            "bedrooms": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Bedrooms"
+            },
+            "bathrooms": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Bathrooms"
+            },
+            "balconies": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Balconies"
+            },
+            "parking_spaces": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parking Spaces"
+            },
+            "floor_number": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Floor Number"
+            },
+            "total_floors": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Total Floors"
+            },
+            "size_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Size Value"
+            },
+            "size_unit": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Size Unit"
+            },
+            "land_size_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Land Size Value"
+            },
+            "land_size_unit": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Land Size Unit"
+            },
+            "plot_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Plot Type"
+            },
+            "facing": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Facing"
+            },
+            "handover_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Handover Status"
+            },
+            "handover_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Handover Date"
+            },
+            "furnishing_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Furnishing Status"
+            },
+            "amenities_json": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Amenities Json"
+            },
+            "nearby_places_json": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Nearby Places Json"
+            },
+            "map_lat": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Map Lat"
+            },
+            "map_lng": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Map Lng"
+            }
+          },
+          "type": "object",
+          "required": [
+            "title",
+            "description",
+            "listing_purpose",
+            "property_type"
+          ],
+          "title": "PropertyCreate"
+        },
+        "PropertyUpdate": {
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 5,
+              "title": "Title"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 10,
+              "title": "Description"
+            },
+            "listing_purpose": {
+              "type": "string",
+              "title": "Listing Purpose"
+            },
+            "property_type": {
+              "type": "string",
+              "title": "Property Type"
+            },
+            "division": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Division"
+            },
+            "district": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "District"
+            },
+            "city": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            },
+            "area_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Area Name"
+            },
+            "display_address": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Display Address"
+            },
+            "price_amount": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Amount"
+            },
+            "price_label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Label"
+            },
+            "price_visibility": {
+              "type": "string",
+              "title": "Price Visibility",
+              "default": "show_price"
+            },
+            "price_period": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price Period"
+            },
+            "bedrooms": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Bedrooms"
+            },
+            "bathrooms": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Bathrooms"
+            },
+            "balconies": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Balconies"
+            },
+            "parking_spaces": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parking Spaces"
+            },
+            "floor_number": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Floor Number"
+            },
+            "total_floors": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Total Floors"
+            },
+            "size_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Size Value"
+            },
+            "size_unit": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Size Unit"
+            },
+            "land_size_value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Land Size Value"
+            },
+            "land_size_unit": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Land Size Unit"
+            },
+            "plot_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Plot Type"
+            },
+            "facing": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Facing"
+            },
+            "handover_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Handover Status"
+            },
+            "handover_date": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Handover Date"
+            },
+            "furnishing_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Furnishing Status"
+            },
+            "amenities_json": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Amenities Json"
+            },
+            "nearby_places_json": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Nearby Places Json"
+            },
+            "map_lat": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Map Lat"
+            },
+            "map_lng": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Map Lng"
+            },
+            "owner_note": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Owner Note"
+            }
+          },
+          "type": "object",
+          "required": [
+            "title",
+            "description",
+            "listing_purpose",
+            "property_type"
+          ],
+          "title": "PropertyUpdate"
+        },
+        "RegisterRequest": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            },
+            "password": {
+              "type": "string",
+              "minLength": 8,
+              "title": "Password"
+            },
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            }
+          },
+          "type": "object",
+          "required": [
+            "email",
+            "password"
+          ],
+          "title": "RegisterRequest"
+        },
+        "SettingUpdateSchema": {
+          "properties": {
+            "value": {
+              "type": "string",
+              "title": "Value"
+            }
+          },
+          "type": "object",
+          "required": [
+            "value"
+          ],
+          "title": "SettingUpdateSchema"
+        },
+        "TokenResponse": {
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "title": "Access Token"
+            },
+            "token_type": {
+              "type": "string",
+              "title": "Token Type",
+              "default": "bearer"
+            }
+          },
+          "type": "object",
+          "required": [
+            "access_token"
+          ],
+          "title": "TokenResponse"
+        },
+        "UserResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email"
+            },
+            "role": {
+              "type": "string",
+              "title": "Role"
+            },
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "email",
+            "role"
+          ],
+          "title": "UserResponse"
+        },
+        "UserUpdateRequest": {
+          "properties": {
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 120
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            }
+          },
+          "type": "object",
+          "title": "UserUpdateRequest"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            },
+            "input": {
+              "title": "Input"
+            },
+            "ctx": {
+              "type": "object",
+              "title": "Context"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      },
+      "securitySchemes": {
+        "OAuth2PasswordBearer": {
+          "type": "oauth2",
+          "flows": {
+            "password": {
+              "scopes": {},
+              "tokenUrl": "/auth/login"
+            }
+          }
+        }
+      }
+    }
+  },
+  "environment_variables_contract": {
+    "server_secrets": [
+      "JWT_SECRET",
+      "RESEND_API_KEY",
+      "RESEND_WEBHOOK_SECRET"
+    ],
+    "server_bindings": [
+      "DB",
+      "PROPERTY_IMAGES"
+    ],
+    "public_variables": [
+      "PUBLIC_APP_URL",
+      "PUBLIC_API_URL",
+      "PUBLIC_DEFAULT_CONTACT_PHONE",
+      "PUBLIC_WHATSAPP_NUMBER"
+    ]
+  }
+}

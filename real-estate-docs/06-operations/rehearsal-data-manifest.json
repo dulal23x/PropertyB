@@ -1,0 +1,1852 @@
+{
+  "source_db_path": "C:\\realestatesite\\app\\backend\\realestate_mvp_v1.db",
+  "source_db_sha256": "6e29512fa66b5ae50cdce0bc1e9cb2289f8e47311c6c0d17fcf2e2e358ae1c4a",
+  "generated_at": "2026-08-14T08:57:18Z",
+  "tables": {
+    "users": {
+      "count": 8,
+      "compatible_passwords": 7,
+      "incompatible_passwords": 1,
+      "records": [
+        {
+          "id": 1,
+          "email": "dulalhussain94@gmail.com",
+          "role": "admin",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 2,
+          "email": "codex-test-1769999999@example.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 3,
+          "email": "codex-restart-test-1769999999@example.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 4,
+          "email": "codex-live-test-20260609-1143@example.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 5,
+          "email": "dulalhussain93@gmail.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 6,
+          "email": "mdrumonkhan42@gmail.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        },
+        {
+          "id": 7,
+          "email": "demo-owner@propertybikri.com",
+          "role": "client",
+          "is_active": false,
+          "is_pbkdf2_compatible": false,
+          "password_reset_required": true
+        },
+        {
+          "id": 8,
+          "email": "qsrahmanbappi@gmail.com",
+          "role": "client",
+          "is_active": true,
+          "is_pbkdf2_compatible": true,
+          "password_reset_required": false
+        }
+      ]
+    },
+    "property_listings": {
+      "count": 112,
+      "records": [
+        {
+          "id": 1,
+          "slug": "lake-placid-luxurious-flat-sale-in-gulshan",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 2,
+          "slug": "spacious-4-bedroom-premium-apartment-for-sale",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 3,
+          "slug": "luxury-flat-for-sale-in-bashundhara",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 4,
+          "slug": "luxury-banani-apartment-for-sale-by-signature-11",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 5,
+          "slug": "premium-gulshan-apartment-for-sale",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 6,
+          "slug": "elite-apartment-for-sale-in-gulshan",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 7,
+          "slug": "plot-2853-block-i-bashundhara-r-a-dhaka",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 8,
+          "slug": "regent-palace-exclusive-flat-for-sale-in-dhaka",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 9,
+          "slug": "modern-studio-apartment-in-uttara",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 10,
+          "slug": "duplex-villa-with-garden-in-baridhara",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 11,
+          "slug": "commercial-office-space-in-motijheel",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "commercial"
+        },
+        {
+          "id": 12,
+          "slug": "1825-sqft-west-facing-apartment-for-sale",
+          "owner_user_id": 1,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 13,
+          "slug": "pb-demo-gulshan-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 14,
+          "slug": "pb-demo-gulshan-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 15,
+          "slug": "pb-demo-gulshan-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 16,
+          "slug": "pb-demo-gulshan-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 17,
+          "slug": "pb-demo-gulshan-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 18,
+          "slug": "pb-demo-gulshan-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 19,
+          "slug": "pb-demo-gulshan-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 20,
+          "slug": "pb-demo-gulshan-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 21,
+          "slug": "pb-demo-gulshan-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 22,
+          "slug": "pb-demo-gulshan-house-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 23,
+          "slug": "pb-demo-banani-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 24,
+          "slug": "pb-demo-banani-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 25,
+          "slug": "pb-demo-banani-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 26,
+          "slug": "pb-demo-banani-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 27,
+          "slug": "pb-demo-banani-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 28,
+          "slug": "pb-demo-banani-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 29,
+          "slug": "pb-demo-banani-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 30,
+          "slug": "pb-demo-banani-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 31,
+          "slug": "pb-demo-banani-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 32,
+          "slug": "pb-demo-banani-commercial-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "commercial"
+        },
+        {
+          "id": 33,
+          "slug": "pb-demo-bashundhara-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 34,
+          "slug": "pb-demo-bashundhara-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 35,
+          "slug": "pb-demo-bashundhara-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 36,
+          "slug": "pb-demo-bashundhara-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 37,
+          "slug": "pb-demo-bashundhara-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 38,
+          "slug": "pb-demo-bashundhara-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 39,
+          "slug": "pb-demo-bashundhara-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 40,
+          "slug": "pb-demo-bashundhara-land-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 41,
+          "slug": "pb-demo-bashundhara-land-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 42,
+          "slug": "pb-demo-bashundhara-apartment-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 43,
+          "slug": "pb-demo-uttara-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 44,
+          "slug": "pb-demo-uttara-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 45,
+          "slug": "pb-demo-uttara-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 46,
+          "slug": "pb-demo-uttara-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 47,
+          "slug": "pb-demo-uttara-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 48,
+          "slug": "pb-demo-uttara-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 49,
+          "slug": "pb-demo-uttara-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 50,
+          "slug": "pb-demo-uttara-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 51,
+          "slug": "pb-demo-uttara-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 52,
+          "slug": "pb-demo-uttara-house-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 53,
+          "slug": "pb-demo-dhanmondi-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 54,
+          "slug": "pb-demo-dhanmondi-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 55,
+          "slug": "pb-demo-dhanmondi-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 56,
+          "slug": "pb-demo-dhanmondi-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 57,
+          "slug": "pb-demo-dhanmondi-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 58,
+          "slug": "pb-demo-dhanmondi-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 59,
+          "slug": "pb-demo-dhanmondi-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 60,
+          "slug": "pb-demo-dhanmondi-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 61,
+          "slug": "pb-demo-dhanmondi-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 62,
+          "slug": "pb-demo-dhanmondi-commercial-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "commercial"
+        },
+        {
+          "id": 63,
+          "slug": "pb-demo-baridhara-house-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 64,
+          "slug": "pb-demo-baridhara-house-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 65,
+          "slug": "pb-demo-baridhara-house-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 66,
+          "slug": "pb-demo-baridhara-house-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 67,
+          "slug": "pb-demo-baridhara-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 68,
+          "slug": "pb-demo-baridhara-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 69,
+          "slug": "pb-demo-baridhara-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 70,
+          "slug": "pb-demo-baridhara-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 71,
+          "slug": "pb-demo-baridhara-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 72,
+          "slug": "pb-demo-baridhara-apartment-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 73,
+          "slug": "pb-demo-mirpur-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 74,
+          "slug": "pb-demo-mirpur-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 75,
+          "slug": "pb-demo-mirpur-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 76,
+          "slug": "pb-demo-mirpur-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 77,
+          "slug": "pb-demo-mirpur-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 78,
+          "slug": "pb-demo-mirpur-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 79,
+          "slug": "pb-demo-mirpur-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 80,
+          "slug": "pb-demo-mirpur-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 81,
+          "slug": "pb-demo-mirpur-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 82,
+          "slug": "pb-demo-mirpur-house-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 83,
+          "slug": "pb-demo-mohammadpur-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 84,
+          "slug": "pb-demo-mohammadpur-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 85,
+          "slug": "pb-demo-mohammadpur-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 86,
+          "slug": "pb-demo-mohammadpur-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 87,
+          "slug": "pb-demo-mohammadpur-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 88,
+          "slug": "pb-demo-mohammadpur-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 89,
+          "slug": "pb-demo-mohammadpur-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 90,
+          "slug": "pb-demo-mohammadpur-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 91,
+          "slug": "pb-demo-mohammadpur-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 92,
+          "slug": "pb-demo-mohammadpur-house-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "house"
+        },
+        {
+          "id": 93,
+          "slug": "pb-demo-badda-apartment-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 94,
+          "slug": "pb-demo-badda-apartment-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 95,
+          "slug": "pb-demo-badda-apartment-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 96,
+          "slug": "pb-demo-badda-apartment-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 97,
+          "slug": "pb-demo-badda-apartment-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 98,
+          "slug": "pb-demo-badda-apartment-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 99,
+          "slug": "pb-demo-badda-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 100,
+          "slug": "pb-demo-badda-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 101,
+          "slug": "pb-demo-badda-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 102,
+          "slug": "pb-demo-badda-commercial-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "commercial"
+        },
+        {
+          "id": 103,
+          "slug": "pb-demo-purbachal-land-01",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 104,
+          "slug": "pb-demo-purbachal-land-02",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 105,
+          "slug": "pb-demo-purbachal-land-03",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 106,
+          "slug": "pb-demo-purbachal-land-04",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 107,
+          "slug": "pb-demo-purbachal-land-05",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 108,
+          "slug": "pb-demo-purbachal-land-06",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "land"
+        },
+        {
+          "id": 109,
+          "slug": "pb-demo-purbachal-apartment-07",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 110,
+          "slug": "pb-demo-purbachal-apartment-08",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 111,
+          "slug": "pb-demo-purbachal-apartment-09",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        },
+        {
+          "id": 112,
+          "slug": "pb-demo-purbachal-apartment-10",
+          "owner_user_id": 7,
+          "status": "approved",
+          "purpose": "sale",
+          "type": "apartment"
+        }
+      ]
+    },
+    "property_images": {
+      "count": 121,
+      "records": [
+        {
+          "id": 1,
+          "listing_id": 1,
+          "storage_path": "userdata/property-images/1/bproperty_1.webp",
+          "public_url": "https://api.propertybikri.com/images/1/bproperty_1.webp",
+          "is_cover": true
+        },
+        {
+          "id": 2,
+          "listing_id": 1,
+          "storage_path": "userdata/property-images/1/bproperty_2.webp",
+          "public_url": "https://api.propertybikri.com/images/1/bproperty_2.webp",
+          "is_cover": false
+        },
+        {
+          "id": 3,
+          "listing_id": 2,
+          "storage_path": "userdata/property-images/2/bproperty_3.jpg",
+          "public_url": "https://api.propertybikri.com/images/2/bproperty_3.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 4,
+          "listing_id": 2,
+          "storage_path": "userdata/property-images/2/bproperty_4.jpg",
+          "public_url": "https://api.propertybikri.com/images/2/bproperty_4.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 5,
+          "listing_id": 3,
+          "storage_path": "userdata/property-images/3/bproperty_5.webp",
+          "public_url": "https://api.propertybikri.com/images/3/bproperty_5.webp",
+          "is_cover": true
+        },
+        {
+          "id": 6,
+          "listing_id": 3,
+          "storage_path": "userdata/property-images/3/bproperty_6.jpg",
+          "public_url": "https://api.propertybikri.com/images/3/bproperty_6.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 7,
+          "listing_id": 4,
+          "storage_path": "userdata/property-images/4/bproperty_7.png",
+          "public_url": "https://api.propertybikri.com/images/4/bproperty_7.png",
+          "is_cover": true
+        },
+        {
+          "id": 8,
+          "listing_id": 5,
+          "storage_path": "userdata/property-images/5/bproperty_8.jpg",
+          "public_url": "https://api.propertybikri.com/images/5/bproperty_8.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 9,
+          "listing_id": 6,
+          "storage_path": "userdata/property-images/6/bproperty_9.jpg",
+          "public_url": "https://api.propertybikri.com/images/6/bproperty_9.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 10,
+          "listing_id": 7,
+          "storage_path": "userdata/property-images/7/bproperty_10.jpg",
+          "public_url": "https://api.propertybikri.com/images/7/bproperty_10.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 11,
+          "listing_id": 8,
+          "storage_path": "userdata/property-images/8/bproperty_11.jpg",
+          "public_url": "https://api.propertybikri.com/images/8/bproperty_11.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 12,
+          "listing_id": 9,
+          "storage_path": "userdata/property-images/9/bproperty_12.jpg",
+          "public_url": "https://api.propertybikri.com/images/9/bproperty_12.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 13,
+          "listing_id": 10,
+          "storage_path": "userdata/property-images/10/bproperty_13.jpg",
+          "public_url": "https://api.propertybikri.com/images/10/bproperty_13.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 14,
+          "listing_id": 11,
+          "storage_path": "userdata/property-images/11/bproperty_14.jpg",
+          "public_url": "https://api.propertybikri.com/images/11/bproperty_14.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 15,
+          "listing_id": 12,
+          "storage_path": "userdata/property-images/12/bproperty_15.jpg",
+          "public_url": "https://api.propertybikri.com/images/12/bproperty_15.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 16,
+          "listing_id": 13,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 17,
+          "listing_id": 14,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 18,
+          "listing_id": 15,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 19,
+          "listing_id": 16,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 20,
+          "listing_id": 17,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 21,
+          "listing_id": 18,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 22,
+          "listing_id": 19,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 23,
+          "listing_id": 20,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 24,
+          "listing_id": 21,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 25,
+          "listing_id": 22,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 26,
+          "listing_id": 23,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 27,
+          "listing_id": 24,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 28,
+          "listing_id": 25,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 29,
+          "listing_id": 26,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 30,
+          "listing_id": 27,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 31,
+          "listing_id": 28,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 32,
+          "listing_id": 29,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 33,
+          "listing_id": 30,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 34,
+          "listing_id": 31,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 35,
+          "listing_id": 32,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 36,
+          "listing_id": 33,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 37,
+          "listing_id": 34,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 38,
+          "listing_id": 35,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 39,
+          "listing_id": 36,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 40,
+          "listing_id": 37,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 41,
+          "listing_id": 38,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 42,
+          "listing_id": 39,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 43,
+          "listing_id": 40,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 44,
+          "listing_id": 41,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 45,
+          "listing_id": 42,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 46,
+          "listing_id": 43,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 47,
+          "listing_id": 44,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 48,
+          "listing_id": 45,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 49,
+          "listing_id": 46,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 50,
+          "listing_id": 47,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 51,
+          "listing_id": 48,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 52,
+          "listing_id": 49,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 53,
+          "listing_id": 50,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 54,
+          "listing_id": 51,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 55,
+          "listing_id": 52,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 56,
+          "listing_id": 53,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 57,
+          "listing_id": 54,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 58,
+          "listing_id": 55,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 59,
+          "listing_id": 56,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 60,
+          "listing_id": 57,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 61,
+          "listing_id": 58,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 62,
+          "listing_id": 59,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 63,
+          "listing_id": 60,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 64,
+          "listing_id": 61,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 65,
+          "listing_id": 62,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 66,
+          "listing_id": 63,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 67,
+          "listing_id": 64,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 68,
+          "listing_id": 65,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 69,
+          "listing_id": 66,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 70,
+          "listing_id": 67,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 71,
+          "listing_id": 68,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 72,
+          "listing_id": 69,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 73,
+          "listing_id": 70,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 74,
+          "listing_id": 71,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 75,
+          "listing_id": 72,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 76,
+          "listing_id": 73,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 77,
+          "listing_id": 74,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 78,
+          "listing_id": 75,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 79,
+          "listing_id": 76,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 80,
+          "listing_id": 77,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 81,
+          "listing_id": 78,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 82,
+          "listing_id": 79,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 83,
+          "listing_id": 80,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 84,
+          "listing_id": 81,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 85,
+          "listing_id": 82,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 86,
+          "listing_id": 83,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 87,
+          "listing_id": 84,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 88,
+          "listing_id": 85,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 89,
+          "listing_id": 86,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 90,
+          "listing_id": 87,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 91,
+          "listing_id": 88,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 92,
+          "listing_id": 89,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 93,
+          "listing_id": 90,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 94,
+          "listing_id": 91,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 95,
+          "listing_id": 92,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 96,
+          "listing_id": 93,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 98,
+          "listing_id": 95,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 99,
+          "listing_id": 96,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 100,
+          "listing_id": 97,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 101,
+          "listing_id": 98,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 102,
+          "listing_id": 99,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 103,
+          "listing_id": 100,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 104,
+          "listing_id": 101,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 105,
+          "listing_id": 102,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 108,
+          "listing_id": 105,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 109,
+          "listing_id": 106,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 110,
+          "listing_id": 107,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 111,
+          "listing_id": 108,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 112,
+          "listing_id": 109,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 113,
+          "listing_id": 110,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 114,
+          "listing_id": 111,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 115,
+          "listing_id": 112,
+          "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+          "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+          "is_cover": true
+        },
+        {
+          "id": 116,
+          "listing_id": 94,
+          "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-1.jpg",
+          "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-1.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 117,
+          "listing_id": 94,
+          "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-2.jpg",
+          "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-2.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 118,
+          "listing_id": 94,
+          "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-3.jpg",
+          "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-3.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 119,
+          "listing_id": 103,
+          "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-1.jpg",
+          "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-1.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 120,
+          "listing_id": 103,
+          "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-2.jpg",
+          "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-2.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 121,
+          "listing_id": 103,
+          "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-3.jpg",
+          "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-3.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 122,
+          "listing_id": 104,
+          "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-1.jpg",
+          "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-1.jpg",
+          "is_cover": true
+        },
+        {
+          "id": 123,
+          "listing_id": 104,
+          "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-2.jpg",
+          "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-2.jpg",
+          "is_cover": false
+        },
+        {
+          "id": 124,
+          "listing_id": 104,
+          "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-3.jpg",
+          "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-3.jpg",
+          "is_cover": false
+        }
+      ]
+    },
+    "email_templates": {
+      "count": 10,
+      "template_keys": [
+        "welcome_email",
+        "password_reset",
+        "listing_submitted_owner",
+        "listing_submitted_admin",
+        "listing_approved_owner",
+        "listing_rejected_owner",
+        "listing_unpublished_owner",
+        "inquiry_received_admin",
+        "inquiry_confirmation_visitor",
+        "admin_custom_email"
+      ]
+    },
+    "email_logs": {
+      "count": 6
+    }
+  },
+  "output_sql_path": "C:\\realestatesite\\tanstack-app\\migrations\\0003_rehearsal_seed.sql",
+  "output_sql_sha256": "6e46376fe9ecf646c956c291e81232787bdbd3c88f5c584de4aa8f7688a3d5f7",
+  "total_statements": 257
+}

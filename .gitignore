@@ -52,3 +52,8 @@ Thumbs.db
 # Local backups / runtime data
 .repo-archive/
 app/backend/userdata/
+
+# Cloudflare Wrangler local state
+.wrangler/
+tanstack-app/.wrangler/
+

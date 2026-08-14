@@ -1,0 +1,3836 @@
+{
+  "generated_at": "2026-08-14T14:58:00Z",
+  "total_source_files": 327,
+  "total_db_image_rows": 121,
+  "matched_verified_count": 24,
+  "missing_from_source_count": 97,
+  "unlinked_attached_count": 291,
+  "quarantine_count": 12,
+  "checksum_check": {
+    "sum_matched_unlinked_quarantine": 327,
+    "equals_total_source": true
+  },
+  "matched_items": [
+    {
+      "db_id": 1,
+      "listing_id": 1,
+      "storage_path": "userdata/property-images/1/bproperty_1.webp",
+      "public_url": "https://api.propertybikri.com/images/1/bproperty_1.webp",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/1/bproperty_1.webp",
+      "mime_type": "image/webp",
+      "size_bytes": 52904,
+      "sha256": "69d23f6863b6e830b9cad5dd7fa55bc851d89d0036c33319c99486f9ceebf205",
+      "source_archive_entry": "property-images/1/bproperty_1.webp",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 2,
+      "listing_id": 1,
+      "storage_path": "userdata/property-images/1/bproperty_2.webp",
+      "public_url": "https://api.propertybikri.com/images/1/bproperty_2.webp",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/1/bproperty_2.webp",
+      "mime_type": "image/webp",
+      "size_bytes": 153606,
+      "sha256": "77cbb2eecc0c0db0fed437ee295bc24438a00f47ae6079b7d765f8210cd621bb",
+      "source_archive_entry": "property-images/1/bproperty_2.webp",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 3,
+      "listing_id": 2,
+      "storage_path": "userdata/property-images/2/bproperty_3.jpg",
+      "public_url": "https://api.propertybikri.com/images/2/bproperty_3.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/2/bproperty_3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 140851,
+      "sha256": "c1af3d4b3a3a0617280b78ee5b79cf0acc49345f8fc0ef9053bc4765daa16890",
+      "source_archive_entry": "property-images/2/bproperty_3.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 4,
+      "listing_id": 2,
+      "storage_path": "userdata/property-images/2/bproperty_4.jpg",
+      "public_url": "https://api.propertybikri.com/images/2/bproperty_4.jpg",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/2/bproperty_4.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 133615,
+      "sha256": "680000853dd91e8ddda54ebc2126dd04ec7a8d582c66e47c5e70237f3e659807",
+      "source_archive_entry": "property-images/2/bproperty_4.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 5,
+      "listing_id": 3,
+      "storage_path": "userdata/property-images/3/bproperty_5.webp",
+      "public_url": "https://api.propertybikri.com/images/3/bproperty_5.webp",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/3/bproperty_5.webp",
+      "mime_type": "image/webp",
+      "size_bytes": 110282,
+      "sha256": "e0be1d1113700c943fd99dee29b725fa24d3f132c7e8bbf34c121c6d5a95f8cd",
+      "source_archive_entry": "property-images/3/bproperty_5.webp",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 6,
+      "listing_id": 3,
+      "storage_path": "userdata/property-images/3/bproperty_6.jpg",
+      "public_url": "https://api.propertybikri.com/images/3/bproperty_6.jpg",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/3/bproperty_6.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 108035,
+      "sha256": "95990fe723f322a52df5a46899058ea85bc1a2c3af904f09a529fc2cd6988312",
+      "source_archive_entry": "property-images/3/bproperty_6.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 7,
+      "listing_id": 4,
+      "storage_path": "userdata/property-images/4/bproperty_7.png",
+      "public_url": "https://api.propertybikri.com/images/4/bproperty_7.png",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/4/bproperty_7.png",
+      "mime_type": "image/png",
+      "size_bytes": 395659,
+      "sha256": "0f4bf840121b39c612425a067886c5fa41cce2e9f1f29f4e9d0c34c176b5c7f7",
+      "source_archive_entry": "property-images/4/bproperty_7.png",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 8,
+      "listing_id": 5,
+      "storage_path": "userdata/property-images/5/bproperty_8.jpg",
+      "public_url": "https://api.propertybikri.com/images/5/bproperty_8.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/5/bproperty_8.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 140851,
+      "sha256": "c1af3d4b3a3a0617280b78ee5b79cf0acc49345f8fc0ef9053bc4765daa16890",
+      "source_archive_entry": "property-images/5/bproperty_8.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 9,
+      "listing_id": 6,
+      "storage_path": "userdata/property-images/6/bproperty_9.jpg",
+      "public_url": "https://api.propertybikri.com/images/6/bproperty_9.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/6/bproperty_9.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 108035,
+      "sha256": "95990fe723f322a52df5a46899058ea85bc1a2c3af904f09a529fc2cd6988312",
+      "source_archive_entry": "property-images/6/bproperty_9.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 10,
+      "listing_id": 7,
+      "storage_path": "userdata/property-images/7/bproperty_10.jpg",
+      "public_url": "https://api.propertybikri.com/images/7/bproperty_10.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/7/bproperty_10.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 91928,
+      "sha256": "1a565760205acace57a1d6cec6d95dd37ec5d6394d7145b9c7896769335b9017",
+      "source_archive_entry": "property-images/7/bproperty_10.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 11,
+      "listing_id": 8,
+      "storage_path": "userdata/property-images/8/bproperty_11.jpg",
+      "public_url": "https://api.propertybikri.com/images/8/bproperty_11.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/8/bproperty_11.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 53282,
+      "sha256": "6b6eb11637d172227a99af3f606facb1489f96e5e8e232794117e1ddf92927c6",
+      "source_archive_entry": "property-images/8/bproperty_11.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 12,
+      "listing_id": 9,
+      "storage_path": "userdata/property-images/9/bproperty_12.jpg",
+      "public_url": "https://api.propertybikri.com/images/9/bproperty_12.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/9/bproperty_12.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 11383,
+      "sha256": "354215510039728c6332ada011b454f248017ba4c01367fa167536dd6eb73601",
+      "source_archive_entry": "property-images/9/bproperty_12.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 13,
+      "listing_id": 10,
+      "storage_path": "userdata/property-images/10/bproperty_13.jpg",
+      "public_url": "https://api.propertybikri.com/images/10/bproperty_13.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/10/bproperty_13.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 11383,
+      "sha256": "354215510039728c6332ada011b454f248017ba4c01367fa167536dd6eb73601",
+      "source_archive_entry": "property-images/10/bproperty_13.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 14,
+      "listing_id": 11,
+      "storage_path": "userdata/property-images/11/bproperty_14.jpg",
+      "public_url": "https://api.propertybikri.com/images/11/bproperty_14.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/11/bproperty_14.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 10446,
+      "sha256": "5f193ac4e13884e13bf42efb4742a309d1bae52e725ae02eccbe4000858944f9",
+      "source_archive_entry": "property-images/11/bproperty_14.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 15,
+      "listing_id": 12,
+      "storage_path": "userdata/property-images/12/bproperty_15.jpg",
+      "public_url": "https://api.propertybikri.com/images/12/bproperty_15.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/12/bproperty_15.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 9768,
+      "sha256": "419104c09d994cf218e2dd5fdca7cb94d050205123b172a7b17d1d7679e1ca65",
+      "source_archive_entry": "property-images/12/bproperty_15.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 116,
+      "listing_id": 94,
+      "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-1.jpg",
+      "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-1.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/94/pb-demo-badda-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "source_archive_entry": "property-images/94/pb-demo-badda-apartment-02-1.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 117,
+      "listing_id": 94,
+      "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-2.jpg",
+      "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-2.jpg",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/94/pb-demo-badda-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "source_archive_entry": "property-images/94/pb-demo-badda-apartment-02-2.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 118,
+      "listing_id": 94,
+      "storage_path": "userdata/property-images/94/pb-demo-badda-apartment-02-3.jpg",
+      "public_url": "https://api.propertybikri.com/images/94/pb-demo-badda-apartment-02-3.jpg",
+      "is_cover": false,
+      "sort_order": 2,
+      "r2_key": "property-images/94/pb-demo-badda-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "source_archive_entry": "property-images/94/pb-demo-badda-apartment-02-3.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 119,
+      "listing_id": 103,
+      "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-1.jpg",
+      "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-1.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/103/pb-demo-purbachal-land-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "source_archive_entry": "property-images/103/pb-demo-purbachal-land-01-1.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 120,
+      "listing_id": 103,
+      "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-2.jpg",
+      "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-2.jpg",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/103/pb-demo-purbachal-land-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "source_archive_entry": "property-images/103/pb-demo-purbachal-land-01-2.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 121,
+      "listing_id": 103,
+      "storage_path": "userdata/property-images/103/pb-demo-purbachal-land-01-3.jpg",
+      "public_url": "https://api.propertybikri.com/images/103/pb-demo-purbachal-land-01-3.jpg",
+      "is_cover": false,
+      "sort_order": 2,
+      "r2_key": "property-images/103/pb-demo-purbachal-land-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "source_archive_entry": "property-images/103/pb-demo-purbachal-land-01-3.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 122,
+      "listing_id": 104,
+      "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-1.jpg",
+      "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-1.jpg",
+      "is_cover": true,
+      "sort_order": 0,
+      "r2_key": "property-images/104/pb-demo-purbachal-land-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "source_archive_entry": "property-images/104/pb-demo-purbachal-land-02-1.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 123,
+      "listing_id": 104,
+      "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-2.jpg",
+      "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-2.jpg",
+      "is_cover": false,
+      "sort_order": 1,
+      "r2_key": "property-images/104/pb-demo-purbachal-land-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "source_archive_entry": "property-images/104/pb-demo-purbachal-land-02-2.jpg",
+      "status": "matched_verified"
+    },
+    {
+      "db_id": 124,
+      "listing_id": 104,
+      "storage_path": "userdata/property-images/104/pb-demo-purbachal-land-02-3.jpg",
+      "public_url": "https://api.propertybikri.com/images/104/pb-demo-purbachal-land-02-3.jpg",
+      "is_cover": false,
+      "sort_order": 2,
+      "r2_key": "property-images/104/pb-demo-purbachal-land-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "source_archive_entry": "property-images/104/pb-demo-purbachal-land-02-3.jpg",
+      "status": "matched_verified"
+    }
+  ],
+  "missing_items": [
+    {
+      "db_id": 16,
+      "listing_id": 13,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/13/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 17,
+      "listing_id": 14,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/14/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 18,
+      "listing_id": 15,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/15/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 19,
+      "listing_id": 16,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/16/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 20,
+      "listing_id": 17,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/17/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 21,
+      "listing_id": 18,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/18/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 22,
+      "listing_id": 19,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/19/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 23,
+      "listing_id": 20,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/20/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 24,
+      "listing_id": 21,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/21/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 25,
+      "listing_id": 22,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/22/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 26,
+      "listing_id": 23,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/23/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 27,
+      "listing_id": 24,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/24/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 28,
+      "listing_id": 25,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/25/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 29,
+      "listing_id": 26,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/26/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 30,
+      "listing_id": 27,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/27/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 31,
+      "listing_id": 28,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/28/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 32,
+      "listing_id": 29,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/29/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 33,
+      "listing_id": 30,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/30/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 34,
+      "listing_id": 31,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/31/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 35,
+      "listing_id": 32,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/32/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 36,
+      "listing_id": 33,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/33/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 37,
+      "listing_id": 34,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/34/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 38,
+      "listing_id": 35,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/35/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 39,
+      "listing_id": 36,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/36/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 40,
+      "listing_id": 37,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/37/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 41,
+      "listing_id": 38,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/38/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 42,
+      "listing_id": 39,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/39/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 43,
+      "listing_id": 40,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/40/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 44,
+      "listing_id": 41,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/41/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 45,
+      "listing_id": 42,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/42/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 46,
+      "listing_id": 43,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/43/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 47,
+      "listing_id": 44,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/44/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 48,
+      "listing_id": 45,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/45/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 49,
+      "listing_id": 46,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/46/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 50,
+      "listing_id": 47,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/47/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 51,
+      "listing_id": 48,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/48/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 52,
+      "listing_id": 49,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/49/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 53,
+      "listing_id": 50,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/50/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 54,
+      "listing_id": 51,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/51/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 55,
+      "listing_id": 52,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/52/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 56,
+      "listing_id": 53,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/53/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 57,
+      "listing_id": 54,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/54/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 58,
+      "listing_id": 55,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/55/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 59,
+      "listing_id": 56,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/56/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 60,
+      "listing_id": 57,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/57/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 61,
+      "listing_id": 58,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/58/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 62,
+      "listing_id": 59,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/59/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 63,
+      "listing_id": 60,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/60/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 64,
+      "listing_id": 61,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/61/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 65,
+      "listing_id": 62,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/62/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 66,
+      "listing_id": 63,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/63/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 67,
+      "listing_id": 64,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/64/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 68,
+      "listing_id": 65,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/65/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 69,
+      "listing_id": 66,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/66/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 70,
+      "listing_id": 67,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/67/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 71,
+      "listing_id": 68,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/68/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 72,
+      "listing_id": 69,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/69/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 73,
+      "listing_id": 70,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/70/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 74,
+      "listing_id": 71,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/71/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 75,
+      "listing_id": 72,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/72/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 76,
+      "listing_id": 73,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/73/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 77,
+      "listing_id": 74,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/74/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 78,
+      "listing_id": 75,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/75/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 79,
+      "listing_id": 76,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/76/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 80,
+      "listing_id": 77,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/77/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 81,
+      "listing_id": 78,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/78/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 82,
+      "listing_id": 79,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/79/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 83,
+      "listing_id": 80,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/80/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 84,
+      "listing_id": 81,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/81/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 85,
+      "listing_id": 82,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/82/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 86,
+      "listing_id": 83,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/83/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 87,
+      "listing_id": 84,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/84/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 88,
+      "listing_id": 85,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/85/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 89,
+      "listing_id": 86,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/86/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 90,
+      "listing_id": 87,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/87/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 91,
+      "listing_id": 88,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/88/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 92,
+      "listing_id": 89,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/89/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 93,
+      "listing_id": 90,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/90/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 94,
+      "listing_id": 91,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/91/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 95,
+      "listing_id": 92,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/92/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 96,
+      "listing_id": 93,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/93/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 98,
+      "listing_id": 95,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/95/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 99,
+      "listing_id": 96,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/96/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 100,
+      "listing_id": 97,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/97/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 101,
+      "listing_id": 98,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/98/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 102,
+      "listing_id": 99,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/99/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 103,
+      "listing_id": 100,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/100/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 104,
+      "listing_id": 101,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/101/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 105,
+      "listing_id": 102,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/102/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 108,
+      "listing_id": 105,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/105/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 109,
+      "listing_id": 106,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/106/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 110,
+      "listing_id": 107,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/107/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 111,
+      "listing_id": 108,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/108/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 112,
+      "listing_id": 109,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/109/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 113,
+      "listing_id": 110,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/110/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 114,
+      "listing_id": 111,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/111/default-site-banner.png",
+      "status": "missing_from_source"
+    },
+    {
+      "db_id": 115,
+      "listing_id": 112,
+      "storage_path": "nextjs-frontend/public/assets/default-site-banner.png",
+      "public_url": "https://propertybikri.com/assets/default-site-banner.png",
+      "r2_key": "property-images/112/default-site-banner.png",
+      "status": "missing_from_source"
+    }
+  ],
+  "unlinked_attached_items": [
+    {
+      "listing_id": 48,
+      "rel_path": "48/pb-demo-uttara-apartment-06-1.jpg",
+      "r2_key": "property-images/48/pb-demo-uttara-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 48,
+      "rel_path": "48/pb-demo-uttara-apartment-06-2.jpg",
+      "r2_key": "property-images/48/pb-demo-uttara-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 48,
+      "rel_path": "48/pb-demo-uttara-apartment-06-3.jpg",
+      "r2_key": "property-images/48/pb-demo-uttara-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 13,
+      "rel_path": "13/pb-demo-gulshan-apartment-01-2.jpg",
+      "r2_key": "property-images/13/pb-demo-gulshan-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 13,
+      "rel_path": "13/pb-demo-gulshan-apartment-01-3.jpg",
+      "r2_key": "property-images/13/pb-demo-gulshan-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 13,
+      "rel_path": "13/pb-demo-gulshan-apartment-01-1.jpg",
+      "r2_key": "property-images/13/pb-demo-gulshan-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 81,
+      "rel_path": "81/pb-demo-mirpur-apartment-09-1.jpg",
+      "r2_key": "property-images/81/pb-demo-mirpur-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 81,
+      "rel_path": "81/pb-demo-mirpur-apartment-09-3.jpg",
+      "r2_key": "property-images/81/pb-demo-mirpur-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 81,
+      "rel_path": "81/pb-demo-mirpur-apartment-09-2.jpg",
+      "r2_key": "property-images/81/pb-demo-mirpur-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 85,
+      "rel_path": "85/pb-demo-mohammadpur-apartment-03-3.jpg",
+      "r2_key": "property-images/85/pb-demo-mohammadpur-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 85,
+      "rel_path": "85/pb-demo-mohammadpur-apartment-03-1.jpg",
+      "r2_key": "property-images/85/pb-demo-mohammadpur-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 85,
+      "rel_path": "85/pb-demo-mohammadpur-apartment-03-2.jpg",
+      "r2_key": "property-images/85/pb-demo-mohammadpur-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 37,
+      "rel_path": "37/pb-demo-bashundhara-apartment-05-2.jpg",
+      "r2_key": "property-images/37/pb-demo-bashundhara-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 37,
+      "rel_path": "37/pb-demo-bashundhara-apartment-05-3.jpg",
+      "r2_key": "property-images/37/pb-demo-bashundhara-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 37,
+      "rel_path": "37/pb-demo-bashundhara-apartment-05-1.jpg",
+      "r2_key": "property-images/37/pb-demo-bashundhara-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 75,
+      "rel_path": "75/pb-demo-mirpur-apartment-03-2.jpg",
+      "r2_key": "property-images/75/pb-demo-mirpur-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 75,
+      "rel_path": "75/pb-demo-mirpur-apartment-03-3.jpg",
+      "r2_key": "property-images/75/pb-demo-mirpur-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 75,
+      "rel_path": "75/pb-demo-mirpur-apartment-03-1.jpg",
+      "r2_key": "property-images/75/pb-demo-mirpur-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 112,
+      "rel_path": "112/pb-demo-purbachal-apartment-10-2.jpg",
+      "r2_key": "property-images/112/pb-demo-purbachal-apartment-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 112,
+      "rel_path": "112/pb-demo-purbachal-apartment-10-1.jpg",
+      "r2_key": "property-images/112/pb-demo-purbachal-apartment-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 112,
+      "rel_path": "112/pb-demo-purbachal-apartment-10-3.jpg",
+      "r2_key": "property-images/112/pb-demo-purbachal-apartment-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 84,
+      "rel_path": "84/pb-demo-mohammadpur-apartment-02-1.jpg",
+      "r2_key": "property-images/84/pb-demo-mohammadpur-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 84,
+      "rel_path": "84/pb-demo-mohammadpur-apartment-02-3.jpg",
+      "r2_key": "property-images/84/pb-demo-mohammadpur-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 84,
+      "rel_path": "84/pb-demo-mohammadpur-apartment-02-2.jpg",
+      "r2_key": "property-images/84/pb-demo-mohammadpur-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 59,
+      "rel_path": "59/pb-demo-dhanmondi-apartment-07-1.jpg",
+      "r2_key": "property-images/59/pb-demo-dhanmondi-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 59,
+      "rel_path": "59/pb-demo-dhanmondi-apartment-07-2.jpg",
+      "r2_key": "property-images/59/pb-demo-dhanmondi-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 59,
+      "rel_path": "59/pb-demo-dhanmondi-apartment-07-3.jpg",
+      "r2_key": "property-images/59/pb-demo-dhanmondi-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 21,
+      "rel_path": "21/pb-demo-gulshan-apartment-09-2.jpg",
+      "r2_key": "property-images/21/pb-demo-gulshan-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 21,
+      "rel_path": "21/pb-demo-gulshan-apartment-09-3.jpg",
+      "r2_key": "property-images/21/pb-demo-gulshan-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 21,
+      "rel_path": "21/pb-demo-gulshan-apartment-09-1.jpg",
+      "r2_key": "property-images/21/pb-demo-gulshan-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 74,
+      "rel_path": "74/pb-demo-mirpur-apartment-02-1.jpg",
+      "r2_key": "property-images/74/pb-demo-mirpur-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 74,
+      "rel_path": "74/pb-demo-mirpur-apartment-02-2.jpg",
+      "r2_key": "property-images/74/pb-demo-mirpur-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 74,
+      "rel_path": "74/pb-demo-mirpur-apartment-02-3.jpg",
+      "r2_key": "property-images/74/pb-demo-mirpur-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 40,
+      "rel_path": "40/pb-demo-bashundhara-land-08-3.jpg",
+      "r2_key": "property-images/40/pb-demo-bashundhara-land-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 40,
+      "rel_path": "40/pb-demo-bashundhara-land-08-2.jpg",
+      "r2_key": "property-images/40/pb-demo-bashundhara-land-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 40,
+      "rel_path": "40/pb-demo-bashundhara-land-08-1.jpg",
+      "r2_key": "property-images/40/pb-demo-bashundhara-land-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 15,
+      "rel_path": "15/pb-demo-gulshan-apartment-03-1.jpg",
+      "r2_key": "property-images/15/pb-demo-gulshan-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 15,
+      "rel_path": "15/pb-demo-gulshan-apartment-03-3.jpg",
+      "r2_key": "property-images/15/pb-demo-gulshan-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 15,
+      "rel_path": "15/pb-demo-gulshan-apartment-03-2.jpg",
+      "r2_key": "property-images/15/pb-demo-gulshan-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 55,
+      "rel_path": "55/pb-demo-dhanmondi-apartment-03-2.jpg",
+      "r2_key": "property-images/55/pb-demo-dhanmondi-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 55,
+      "rel_path": "55/pb-demo-dhanmondi-apartment-03-1.jpg",
+      "r2_key": "property-images/55/pb-demo-dhanmondi-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 55,
+      "rel_path": "55/pb-demo-dhanmondi-apartment-03-3.jpg",
+      "r2_key": "property-images/55/pb-demo-dhanmondi-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 106,
+      "rel_path": "106/pb-demo-purbachal-land-04-1.jpg",
+      "r2_key": "property-images/106/pb-demo-purbachal-land-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 106,
+      "rel_path": "106/pb-demo-purbachal-land-04-2.jpg",
+      "r2_key": "property-images/106/pb-demo-purbachal-land-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 106,
+      "rel_path": "106/pb-demo-purbachal-land-04-3.jpg",
+      "r2_key": "property-images/106/pb-demo-purbachal-land-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 110,
+      "rel_path": "110/pb-demo-purbachal-apartment-08-2.jpg",
+      "r2_key": "property-images/110/pb-demo-purbachal-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 110,
+      "rel_path": "110/pb-demo-purbachal-apartment-08-3.jpg",
+      "r2_key": "property-images/110/pb-demo-purbachal-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 110,
+      "rel_path": "110/pb-demo-purbachal-apartment-08-1.jpg",
+      "r2_key": "property-images/110/pb-demo-purbachal-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 67,
+      "rel_path": "67/pb-demo-baridhara-apartment-05-3.jpg",
+      "r2_key": "property-images/67/pb-demo-baridhara-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 67,
+      "rel_path": "67/pb-demo-baridhara-apartment-05-2.jpg",
+      "r2_key": "property-images/67/pb-demo-baridhara-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 67,
+      "rel_path": "67/pb-demo-baridhara-apartment-05-1.jpg",
+      "r2_key": "property-images/67/pb-demo-baridhara-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 70,
+      "rel_path": "70/pb-demo-baridhara-apartment-08-1.jpg",
+      "r2_key": "property-images/70/pb-demo-baridhara-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 70,
+      "rel_path": "70/pb-demo-baridhara-apartment-08-3.jpg",
+      "r2_key": "property-images/70/pb-demo-baridhara-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 70,
+      "rel_path": "70/pb-demo-baridhara-apartment-08-2.jpg",
+      "r2_key": "property-images/70/pb-demo-baridhara-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 41,
+      "rel_path": "41/pb-demo-bashundhara-land-09-3.jpg",
+      "r2_key": "property-images/41/pb-demo-bashundhara-land-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 41,
+      "rel_path": "41/pb-demo-bashundhara-land-09-2.jpg",
+      "r2_key": "property-images/41/pb-demo-bashundhara-land-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 41,
+      "rel_path": "41/pb-demo-bashundhara-land-09-1.jpg",
+      "r2_key": "property-images/41/pb-demo-bashundhara-land-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 93,
+      "rel_path": "93/pb-demo-badda-apartment-01-3.jpg",
+      "r2_key": "property-images/93/pb-demo-badda-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 93,
+      "rel_path": "93/pb-demo-badda-apartment-01-1.jpg",
+      "r2_key": "property-images/93/pb-demo-badda-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 93,
+      "rel_path": "93/pb-demo-badda-apartment-01-2.jpg",
+      "r2_key": "property-images/93/pb-demo-badda-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 36,
+      "rel_path": "36/pb-demo-bashundhara-apartment-04-1.jpg",
+      "r2_key": "property-images/36/pb-demo-bashundhara-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 36,
+      "rel_path": "36/pb-demo-bashundhara-apartment-04-2.jpg",
+      "r2_key": "property-images/36/pb-demo-bashundhara-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 36,
+      "rel_path": "36/pb-demo-bashundhara-apartment-04-3.jpg",
+      "r2_key": "property-images/36/pb-demo-bashundhara-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 101,
+      "rel_path": "101/pb-demo-badda-apartment-09-3.jpg",
+      "r2_key": "property-images/101/pb-demo-badda-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 101,
+      "rel_path": "101/pb-demo-badda-apartment-09-2.jpg",
+      "r2_key": "property-images/101/pb-demo-badda-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 101,
+      "rel_path": "101/pb-demo-badda-apartment-09-1.jpg",
+      "r2_key": "property-images/101/pb-demo-badda-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 111,
+      "rel_path": "111/pb-demo-purbachal-apartment-09-1.jpg",
+      "r2_key": "property-images/111/pb-demo-purbachal-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 111,
+      "rel_path": "111/pb-demo-purbachal-apartment-09-2.jpg",
+      "r2_key": "property-images/111/pb-demo-purbachal-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 111,
+      "rel_path": "111/pb-demo-purbachal-apartment-09-3.jpg",
+      "r2_key": "property-images/111/pb-demo-purbachal-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 95,
+      "rel_path": "95/pb-demo-badda-apartment-03-2.jpg",
+      "r2_key": "property-images/95/pb-demo-badda-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 95,
+      "rel_path": "95/pb-demo-badda-apartment-03-3.jpg",
+      "r2_key": "property-images/95/pb-demo-badda-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 95,
+      "rel_path": "95/pb-demo-badda-apartment-03-1.jpg",
+      "r2_key": "property-images/95/pb-demo-badda-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 44,
+      "rel_path": "44/pb-demo-uttara-apartment-02-1.jpg",
+      "r2_key": "property-images/44/pb-demo-uttara-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 44,
+      "rel_path": "44/pb-demo-uttara-apartment-02-3.jpg",
+      "r2_key": "property-images/44/pb-demo-uttara-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 44,
+      "rel_path": "44/pb-demo-uttara-apartment-02-2.jpg",
+      "r2_key": "property-images/44/pb-demo-uttara-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 72,
+      "rel_path": "72/pb-demo-baridhara-apartment-10-2.jpg",
+      "r2_key": "property-images/72/pb-demo-baridhara-apartment-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 72,
+      "rel_path": "72/pb-demo-baridhara-apartment-10-3.jpg",
+      "r2_key": "property-images/72/pb-demo-baridhara-apartment-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 72,
+      "rel_path": "72/pb-demo-baridhara-apartment-10-1.jpg",
+      "r2_key": "property-images/72/pb-demo-baridhara-apartment-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 58,
+      "rel_path": "58/pb-demo-dhanmondi-apartment-06-1.jpg",
+      "r2_key": "property-images/58/pb-demo-dhanmondi-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 58,
+      "rel_path": "58/pb-demo-dhanmondi-apartment-06-2.jpg",
+      "r2_key": "property-images/58/pb-demo-dhanmondi-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 58,
+      "rel_path": "58/pb-demo-dhanmondi-apartment-06-3.jpg",
+      "r2_key": "property-images/58/pb-demo-dhanmondi-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 16,
+      "rel_path": "16/pb-demo-gulshan-apartment-04-3.jpg",
+      "r2_key": "property-images/16/pb-demo-gulshan-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 16,
+      "rel_path": "16/pb-demo-gulshan-apartment-04-2.jpg",
+      "r2_key": "property-images/16/pb-demo-gulshan-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 16,
+      "rel_path": "16/pb-demo-gulshan-apartment-04-1.jpg",
+      "r2_key": "property-images/16/pb-demo-gulshan-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 56,
+      "rel_path": "56/pb-demo-dhanmondi-apartment-04-1.jpg",
+      "r2_key": "property-images/56/pb-demo-dhanmondi-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 56,
+      "rel_path": "56/pb-demo-dhanmondi-apartment-04-2.jpg",
+      "r2_key": "property-images/56/pb-demo-dhanmondi-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 56,
+      "rel_path": "56/pb-demo-dhanmondi-apartment-04-3.jpg",
+      "r2_key": "property-images/56/pb-demo-dhanmondi-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 92,
+      "rel_path": "92/pb-demo-mohammadpur-house-10-3.jpg",
+      "r2_key": "property-images/92/pb-demo-mohammadpur-house-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 92,
+      "rel_path": "92/pb-demo-mohammadpur-house-10-2.jpg",
+      "r2_key": "property-images/92/pb-demo-mohammadpur-house-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 92,
+      "rel_path": "92/pb-demo-mohammadpur-house-10-1.jpg",
+      "r2_key": "property-images/92/pb-demo-mohammadpur-house-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 14,
+      "rel_path": "14/pb-demo-gulshan-apartment-02-2.jpg",
+      "r2_key": "property-images/14/pb-demo-gulshan-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 14,
+      "rel_path": "14/pb-demo-gulshan-apartment-02-3.jpg",
+      "r2_key": "property-images/14/pb-demo-gulshan-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 14,
+      "rel_path": "14/pb-demo-gulshan-apartment-02-1.jpg",
+      "r2_key": "property-images/14/pb-demo-gulshan-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 20,
+      "rel_path": "20/pb-demo-gulshan-apartment-08-2.jpg",
+      "r2_key": "property-images/20/pb-demo-gulshan-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 20,
+      "rel_path": "20/pb-demo-gulshan-apartment-08-1.jpg",
+      "r2_key": "property-images/20/pb-demo-gulshan-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 20,
+      "rel_path": "20/pb-demo-gulshan-apartment-08-3.jpg",
+      "r2_key": "property-images/20/pb-demo-gulshan-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 99,
+      "rel_path": "99/pb-demo-badda-apartment-07-3.jpg",
+      "r2_key": "property-images/99/pb-demo-badda-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 99,
+      "rel_path": "99/pb-demo-badda-apartment-07-2.jpg",
+      "r2_key": "property-images/99/pb-demo-badda-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 99,
+      "rel_path": "99/pb-demo-badda-apartment-07-1.jpg",
+      "r2_key": "property-images/99/pb-demo-badda-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 50,
+      "rel_path": "50/pb-demo-uttara-apartment-08-2.jpg",
+      "r2_key": "property-images/50/pb-demo-uttara-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 50,
+      "rel_path": "50/pb-demo-uttara-apartment-08-1.jpg",
+      "r2_key": "property-images/50/pb-demo-uttara-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 50,
+      "rel_path": "50/pb-demo-uttara-apartment-08-3.jpg",
+      "r2_key": "property-images/50/pb-demo-uttara-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 34,
+      "rel_path": "34/pb-demo-bashundhara-apartment-02-1.jpg",
+      "r2_key": "property-images/34/pb-demo-bashundhara-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 34,
+      "rel_path": "34/pb-demo-bashundhara-apartment-02-3.jpg",
+      "r2_key": "property-images/34/pb-demo-bashundhara-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 34,
+      "rel_path": "34/pb-demo-bashundhara-apartment-02-2.jpg",
+      "r2_key": "property-images/34/pb-demo-bashundhara-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 71,
+      "rel_path": "71/pb-demo-baridhara-apartment-09-3.jpg",
+      "r2_key": "property-images/71/pb-demo-baridhara-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 71,
+      "rel_path": "71/pb-demo-baridhara-apartment-09-1.jpg",
+      "r2_key": "property-images/71/pb-demo-baridhara-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 71,
+      "rel_path": "71/pb-demo-baridhara-apartment-09-2.jpg",
+      "r2_key": "property-images/71/pb-demo-baridhara-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 43,
+      "rel_path": "43/pb-demo-uttara-apartment-01-1.jpg",
+      "r2_key": "property-images/43/pb-demo-uttara-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 43,
+      "rel_path": "43/pb-demo-uttara-apartment-01-2.jpg",
+      "r2_key": "property-images/43/pb-demo-uttara-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 43,
+      "rel_path": "43/pb-demo-uttara-apartment-01-3.jpg",
+      "r2_key": "property-images/43/pb-demo-uttara-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 30,
+      "rel_path": "30/pb-demo-banani-apartment-08-2.jpg",
+      "r2_key": "property-images/30/pb-demo-banani-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 30,
+      "rel_path": "30/pb-demo-banani-apartment-08-1.jpg",
+      "r2_key": "property-images/30/pb-demo-banani-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 30,
+      "rel_path": "30/pb-demo-banani-apartment-08-3.jpg",
+      "r2_key": "property-images/30/pb-demo-banani-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 66,
+      "rel_path": "66/pb-demo-baridhara-house-04-3.jpg",
+      "r2_key": "property-images/66/pb-demo-baridhara-house-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 66,
+      "rel_path": "66/pb-demo-baridhara-house-04-1.jpg",
+      "r2_key": "property-images/66/pb-demo-baridhara-house-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 66,
+      "rel_path": "66/pb-demo-baridhara-house-04-2.jpg",
+      "r2_key": "property-images/66/pb-demo-baridhara-house-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 83,
+      "rel_path": "83/pb-demo-mohammadpur-apartment-01-1.jpg",
+      "r2_key": "property-images/83/pb-demo-mohammadpur-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 83,
+      "rel_path": "83/pb-demo-mohammadpur-apartment-01-3.jpg",
+      "r2_key": "property-images/83/pb-demo-mohammadpur-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 83,
+      "rel_path": "83/pb-demo-mohammadpur-apartment-01-2.jpg",
+      "r2_key": "property-images/83/pb-demo-mohammadpur-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 76,
+      "rel_path": "76/pb-demo-mirpur-apartment-04-3.jpg",
+      "r2_key": "property-images/76/pb-demo-mirpur-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 76,
+      "rel_path": "76/pb-demo-mirpur-apartment-04-2.jpg",
+      "r2_key": "property-images/76/pb-demo-mirpur-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 76,
+      "rel_path": "76/pb-demo-mirpur-apartment-04-1.jpg",
+      "r2_key": "property-images/76/pb-demo-mirpur-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 90,
+      "rel_path": "90/pb-demo-mohammadpur-apartment-08-1.jpg",
+      "r2_key": "property-images/90/pb-demo-mohammadpur-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 90,
+      "rel_path": "90/pb-demo-mohammadpur-apartment-08-3.jpg",
+      "r2_key": "property-images/90/pb-demo-mohammadpur-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 90,
+      "rel_path": "90/pb-demo-mohammadpur-apartment-08-2.jpg",
+      "r2_key": "property-images/90/pb-demo-mohammadpur-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 26,
+      "rel_path": "26/pb-demo-banani-apartment-04-2.jpg",
+      "r2_key": "property-images/26/pb-demo-banani-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 26,
+      "rel_path": "26/pb-demo-banani-apartment-04-1.jpg",
+      "r2_key": "property-images/26/pb-demo-banani-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 26,
+      "rel_path": "26/pb-demo-banani-apartment-04-3.jpg",
+      "r2_key": "property-images/26/pb-demo-banani-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 60,
+      "rel_path": "60/pb-demo-dhanmondi-apartment-08-1.jpg",
+      "r2_key": "property-images/60/pb-demo-dhanmondi-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 60,
+      "rel_path": "60/pb-demo-dhanmondi-apartment-08-2.jpg",
+      "r2_key": "property-images/60/pb-demo-dhanmondi-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 60,
+      "rel_path": "60/pb-demo-dhanmondi-apartment-08-3.jpg",
+      "r2_key": "property-images/60/pb-demo-dhanmondi-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 17,
+      "rel_path": "17/pb-demo-gulshan-apartment-05-3.jpg",
+      "r2_key": "property-images/17/pb-demo-gulshan-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 17,
+      "rel_path": "17/pb-demo-gulshan-apartment-05-1.jpg",
+      "r2_key": "property-images/17/pb-demo-gulshan-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 17,
+      "rel_path": "17/pb-demo-gulshan-apartment-05-2.jpg",
+      "r2_key": "property-images/17/pb-demo-gulshan-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 51,
+      "rel_path": "51/pb-demo-uttara-apartment-09-1.jpg",
+      "r2_key": "property-images/51/pb-demo-uttara-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 51,
+      "rel_path": "51/pb-demo-uttara-apartment-09-2.jpg",
+      "r2_key": "property-images/51/pb-demo-uttara-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 51,
+      "rel_path": "51/pb-demo-uttara-apartment-09-3.jpg",
+      "r2_key": "property-images/51/pb-demo-uttara-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 108,
+      "rel_path": "108/pb-demo-purbachal-land-06-3.jpg",
+      "r2_key": "property-images/108/pb-demo-purbachal-land-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 108,
+      "rel_path": "108/pb-demo-purbachal-land-06-1.jpg",
+      "r2_key": "property-images/108/pb-demo-purbachal-land-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 108,
+      "rel_path": "108/pb-demo-purbachal-land-06-2.jpg",
+      "r2_key": "property-images/108/pb-demo-purbachal-land-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 87,
+      "rel_path": "87/pb-demo-mohammadpur-apartment-05-2.jpg",
+      "r2_key": "property-images/87/pb-demo-mohammadpur-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 87,
+      "rel_path": "87/pb-demo-mohammadpur-apartment-05-3.jpg",
+      "r2_key": "property-images/87/pb-demo-mohammadpur-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 87,
+      "rel_path": "87/pb-demo-mohammadpur-apartment-05-1.jpg",
+      "r2_key": "property-images/87/pb-demo-mohammadpur-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 63,
+      "rel_path": "63/pb-demo-baridhara-house-01-1.jpg",
+      "r2_key": "property-images/63/pb-demo-baridhara-house-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 63,
+      "rel_path": "63/pb-demo-baridhara-house-01-3.jpg",
+      "r2_key": "property-images/63/pb-demo-baridhara-house-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 63,
+      "rel_path": "63/pb-demo-baridhara-house-01-2.jpg",
+      "r2_key": "property-images/63/pb-demo-baridhara-house-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 52,
+      "rel_path": "52/pb-demo-uttara-house-10-1.jpg",
+      "r2_key": "property-images/52/pb-demo-uttara-house-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 52,
+      "rel_path": "52/pb-demo-uttara-house-10-3.jpg",
+      "r2_key": "property-images/52/pb-demo-uttara-house-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 52,
+      "rel_path": "52/pb-demo-uttara-house-10-2.jpg",
+      "r2_key": "property-images/52/pb-demo-uttara-house-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 47,
+      "rel_path": "47/pb-demo-uttara-apartment-05-1.jpg",
+      "r2_key": "property-images/47/pb-demo-uttara-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 47,
+      "rel_path": "47/pb-demo-uttara-apartment-05-3.jpg",
+      "r2_key": "property-images/47/pb-demo-uttara-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 47,
+      "rel_path": "47/pb-demo-uttara-apartment-05-2.jpg",
+      "r2_key": "property-images/47/pb-demo-uttara-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 53,
+      "rel_path": "53/pb-demo-dhanmondi-apartment-01-3.jpg",
+      "r2_key": "property-images/53/pb-demo-dhanmondi-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 53,
+      "rel_path": "53/pb-demo-dhanmondi-apartment-01-2.jpg",
+      "r2_key": "property-images/53/pb-demo-dhanmondi-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 53,
+      "rel_path": "53/pb-demo-dhanmondi-apartment-01-1.jpg",
+      "r2_key": "property-images/53/pb-demo-dhanmondi-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 19,
+      "rel_path": "19/pb-demo-gulshan-apartment-07-2.jpg",
+      "r2_key": "property-images/19/pb-demo-gulshan-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 19,
+      "rel_path": "19/pb-demo-gulshan-apartment-07-3.jpg",
+      "r2_key": "property-images/19/pb-demo-gulshan-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 19,
+      "rel_path": "19/pb-demo-gulshan-apartment-07-1.jpg",
+      "r2_key": "property-images/19/pb-demo-gulshan-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 42,
+      "rel_path": "42/pb-demo-bashundhara-apartment-10-1.jpg",
+      "r2_key": "property-images/42/pb-demo-bashundhara-apartment-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 42,
+      "rel_path": "42/pb-demo-bashundhara-apartment-10-2.jpg",
+      "r2_key": "property-images/42/pb-demo-bashundhara-apartment-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 42,
+      "rel_path": "42/pb-demo-bashundhara-apartment-10-3.jpg",
+      "r2_key": "property-images/42/pb-demo-bashundhara-apartment-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 39,
+      "rel_path": "39/pb-demo-bashundhara-apartment-07-2.jpg",
+      "r2_key": "property-images/39/pb-demo-bashundhara-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 39,
+      "rel_path": "39/pb-demo-bashundhara-apartment-07-1.jpg",
+      "r2_key": "property-images/39/pb-demo-bashundhara-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 39,
+      "rel_path": "39/pb-demo-bashundhara-apartment-07-3.jpg",
+      "r2_key": "property-images/39/pb-demo-bashundhara-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 89,
+      "rel_path": "89/pb-demo-mohammadpur-apartment-07-3.jpg",
+      "r2_key": "property-images/89/pb-demo-mohammadpur-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 89,
+      "rel_path": "89/pb-demo-mohammadpur-apartment-07-2.jpg",
+      "r2_key": "property-images/89/pb-demo-mohammadpur-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 89,
+      "rel_path": "89/pb-demo-mohammadpur-apartment-07-1.jpg",
+      "r2_key": "property-images/89/pb-demo-mohammadpur-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 97,
+      "rel_path": "97/pb-demo-badda-apartment-05-2.jpg",
+      "r2_key": "property-images/97/pb-demo-badda-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 97,
+      "rel_path": "97/pb-demo-badda-apartment-05-1.jpg",
+      "r2_key": "property-images/97/pb-demo-badda-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 97,
+      "rel_path": "97/pb-demo-badda-apartment-05-3.jpg",
+      "r2_key": "property-images/97/pb-demo-badda-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 69,
+      "rel_path": "69/pb-demo-baridhara-apartment-07-3.jpg",
+      "r2_key": "property-images/69/pb-demo-baridhara-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 69,
+      "rel_path": "69/pb-demo-baridhara-apartment-07-2.jpg",
+      "r2_key": "property-images/69/pb-demo-baridhara-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 69,
+      "rel_path": "69/pb-demo-baridhara-apartment-07-1.jpg",
+      "r2_key": "property-images/69/pb-demo-baridhara-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 33,
+      "rel_path": "33/pb-demo-bashundhara-apartment-01-1.jpg",
+      "r2_key": "property-images/33/pb-demo-bashundhara-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 33,
+      "rel_path": "33/pb-demo-bashundhara-apartment-01-2.jpg",
+      "r2_key": "property-images/33/pb-demo-bashundhara-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 33,
+      "rel_path": "33/pb-demo-bashundhara-apartment-01-3.jpg",
+      "r2_key": "property-images/33/pb-demo-bashundhara-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 73,
+      "rel_path": "73/pb-demo-mirpur-apartment-01-2.jpg",
+      "r2_key": "property-images/73/pb-demo-mirpur-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 73,
+      "rel_path": "73/pb-demo-mirpur-apartment-01-3.jpg",
+      "r2_key": "property-images/73/pb-demo-mirpur-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 73,
+      "rel_path": "73/pb-demo-mirpur-apartment-01-1.jpg",
+      "r2_key": "property-images/73/pb-demo-mirpur-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 25,
+      "rel_path": "25/pb-demo-banani-apartment-03-1.jpg",
+      "r2_key": "property-images/25/pb-demo-banani-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 25,
+      "rel_path": "25/pb-demo-banani-apartment-03-3.jpg",
+      "r2_key": "property-images/25/pb-demo-banani-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 25,
+      "rel_path": "25/pb-demo-banani-apartment-03-2.jpg",
+      "r2_key": "property-images/25/pb-demo-banani-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 29,
+      "rel_path": "29/pb-demo-banani-apartment-07-2.jpg",
+      "r2_key": "property-images/29/pb-demo-banani-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 29,
+      "rel_path": "29/pb-demo-banani-apartment-07-3.jpg",
+      "r2_key": "property-images/29/pb-demo-banani-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 29,
+      "rel_path": "29/pb-demo-banani-apartment-07-1.jpg",
+      "r2_key": "property-images/29/pb-demo-banani-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 80,
+      "rel_path": "80/pb-demo-mirpur-apartment-08-1.jpg",
+      "r2_key": "property-images/80/pb-demo-mirpur-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 80,
+      "rel_path": "80/pb-demo-mirpur-apartment-08-3.jpg",
+      "r2_key": "property-images/80/pb-demo-mirpur-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 80,
+      "rel_path": "80/pb-demo-mirpur-apartment-08-2.jpg",
+      "r2_key": "property-images/80/pb-demo-mirpur-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 107,
+      "rel_path": "107/pb-demo-purbachal-land-05-1.jpg",
+      "r2_key": "property-images/107/pb-demo-purbachal-land-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 107,
+      "rel_path": "107/pb-demo-purbachal-land-05-3.jpg",
+      "r2_key": "property-images/107/pb-demo-purbachal-land-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 107,
+      "rel_path": "107/pb-demo-purbachal-land-05-2.jpg",
+      "r2_key": "property-images/107/pb-demo-purbachal-land-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 23,
+      "rel_path": "23/pb-demo-banani-apartment-01-3.jpg",
+      "r2_key": "property-images/23/pb-demo-banani-apartment-01-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 23,
+      "rel_path": "23/pb-demo-banani-apartment-01-2.jpg",
+      "r2_key": "property-images/23/pb-demo-banani-apartment-01-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 23,
+      "rel_path": "23/pb-demo-banani-apartment-01-1.jpg",
+      "r2_key": "property-images/23/pb-demo-banani-apartment-01-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 105,
+      "rel_path": "105/pb-demo-purbachal-land-03-3.jpg",
+      "r2_key": "property-images/105/pb-demo-purbachal-land-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 105,
+      "rel_path": "105/pb-demo-purbachal-land-03-1.jpg",
+      "r2_key": "property-images/105/pb-demo-purbachal-land-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 105,
+      "rel_path": "105/pb-demo-purbachal-land-03-2.jpg",
+      "r2_key": "property-images/105/pb-demo-purbachal-land-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 57,
+      "rel_path": "57/pb-demo-dhanmondi-apartment-05-2.jpg",
+      "r2_key": "property-images/57/pb-demo-dhanmondi-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 57,
+      "rel_path": "57/pb-demo-dhanmondi-apartment-05-3.jpg",
+      "r2_key": "property-images/57/pb-demo-dhanmondi-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 57,
+      "rel_path": "57/pb-demo-dhanmondi-apartment-05-1.jpg",
+      "r2_key": "property-images/57/pb-demo-dhanmondi-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 109,
+      "rel_path": "109/pb-demo-purbachal-apartment-07-1.jpg",
+      "r2_key": "property-images/109/pb-demo-purbachal-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 109,
+      "rel_path": "109/pb-demo-purbachal-apartment-07-2.jpg",
+      "r2_key": "property-images/109/pb-demo-purbachal-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 109,
+      "rel_path": "109/pb-demo-purbachal-apartment-07-3.jpg",
+      "r2_key": "property-images/109/pb-demo-purbachal-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 35,
+      "rel_path": "35/pb-demo-bashundhara-apartment-03-1.jpg",
+      "r2_key": "property-images/35/pb-demo-bashundhara-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 35,
+      "rel_path": "35/pb-demo-bashundhara-apartment-03-2.jpg",
+      "r2_key": "property-images/35/pb-demo-bashundhara-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 35,
+      "rel_path": "35/pb-demo-bashundhara-apartment-03-3.jpg",
+      "r2_key": "property-images/35/pb-demo-bashundhara-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 86,
+      "rel_path": "86/pb-demo-mohammadpur-apartment-04-3.jpg",
+      "r2_key": "property-images/86/pb-demo-mohammadpur-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 86,
+      "rel_path": "86/pb-demo-mohammadpur-apartment-04-2.jpg",
+      "r2_key": "property-images/86/pb-demo-mohammadpur-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 86,
+      "rel_path": "86/pb-demo-mohammadpur-apartment-04-1.jpg",
+      "r2_key": "property-images/86/pb-demo-mohammadpur-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 102,
+      "rel_path": "102/pb-demo-badda-commercial-10-2.jpg",
+      "r2_key": "property-images/102/pb-demo-badda-commercial-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 102,
+      "rel_path": "102/pb-demo-badda-commercial-10-3.jpg",
+      "r2_key": "property-images/102/pb-demo-badda-commercial-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 102,
+      "rel_path": "102/pb-demo-badda-commercial-10-1.jpg",
+      "r2_key": "property-images/102/pb-demo-badda-commercial-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 28,
+      "rel_path": "28/pb-demo-banani-apartment-06-3.jpg",
+      "r2_key": "property-images/28/pb-demo-banani-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 28,
+      "rel_path": "28/pb-demo-banani-apartment-06-2.jpg",
+      "r2_key": "property-images/28/pb-demo-banani-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 28,
+      "rel_path": "28/pb-demo-banani-apartment-06-1.jpg",
+      "r2_key": "property-images/28/pb-demo-banani-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 54,
+      "rel_path": "54/pb-demo-dhanmondi-apartment-02-2.jpg",
+      "r2_key": "property-images/54/pb-demo-dhanmondi-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 54,
+      "rel_path": "54/pb-demo-dhanmondi-apartment-02-3.jpg",
+      "r2_key": "property-images/54/pb-demo-dhanmondi-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 54,
+      "rel_path": "54/pb-demo-dhanmondi-apartment-02-1.jpg",
+      "r2_key": "property-images/54/pb-demo-dhanmondi-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 49,
+      "rel_path": "49/pb-demo-uttara-apartment-07-2.jpg",
+      "r2_key": "property-images/49/pb-demo-uttara-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 49,
+      "rel_path": "49/pb-demo-uttara-apartment-07-1.jpg",
+      "r2_key": "property-images/49/pb-demo-uttara-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 49,
+      "rel_path": "49/pb-demo-uttara-apartment-07-3.jpg",
+      "r2_key": "property-images/49/pb-demo-uttara-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 32,
+      "rel_path": "32/pb-demo-banani-commercial-10-2.jpg",
+      "r2_key": "property-images/32/pb-demo-banani-commercial-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 32,
+      "rel_path": "32/pb-demo-banani-commercial-10-1.jpg",
+      "r2_key": "property-images/32/pb-demo-banani-commercial-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 32,
+      "rel_path": "32/pb-demo-banani-commercial-10-3.jpg",
+      "r2_key": "property-images/32/pb-demo-banani-commercial-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 61,
+      "rel_path": "61/pb-demo-dhanmondi-apartment-09-2.jpg",
+      "r2_key": "property-images/61/pb-demo-dhanmondi-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 61,
+      "rel_path": "61/pb-demo-dhanmondi-apartment-09-3.jpg",
+      "r2_key": "property-images/61/pb-demo-dhanmondi-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 61,
+      "rel_path": "61/pb-demo-dhanmondi-apartment-09-1.jpg",
+      "r2_key": "property-images/61/pb-demo-dhanmondi-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 65,
+      "rel_path": "65/pb-demo-baridhara-house-03-1.jpg",
+      "r2_key": "property-images/65/pb-demo-baridhara-house-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 65,
+      "rel_path": "65/pb-demo-baridhara-house-03-3.jpg",
+      "r2_key": "property-images/65/pb-demo-baridhara-house-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 65,
+      "rel_path": "65/pb-demo-baridhara-house-03-2.jpg",
+      "r2_key": "property-images/65/pb-demo-baridhara-house-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 91,
+      "rel_path": "91/pb-demo-mohammadpur-apartment-09-2.jpg",
+      "r2_key": "property-images/91/pb-demo-mohammadpur-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 91,
+      "rel_path": "91/pb-demo-mohammadpur-apartment-09-1.jpg",
+      "r2_key": "property-images/91/pb-demo-mohammadpur-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 91,
+      "rel_path": "91/pb-demo-mohammadpur-apartment-09-3.jpg",
+      "r2_key": "property-images/91/pb-demo-mohammadpur-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 45,
+      "rel_path": "45/pb-demo-uttara-apartment-03-3.jpg",
+      "r2_key": "property-images/45/pb-demo-uttara-apartment-03-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 45,
+      "rel_path": "45/pb-demo-uttara-apartment-03-2.jpg",
+      "r2_key": "property-images/45/pb-demo-uttara-apartment-03-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 45,
+      "rel_path": "45/pb-demo-uttara-apartment-03-1.jpg",
+      "r2_key": "property-images/45/pb-demo-uttara-apartment-03-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 64,
+      "rel_path": "64/pb-demo-baridhara-house-02-1.jpg",
+      "r2_key": "property-images/64/pb-demo-baridhara-house-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 64,
+      "rel_path": "64/pb-demo-baridhara-house-02-2.jpg",
+      "r2_key": "property-images/64/pb-demo-baridhara-house-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 64,
+      "rel_path": "64/pb-demo-baridhara-house-02-3.jpg",
+      "r2_key": "property-images/64/pb-demo-baridhara-house-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 78,
+      "rel_path": "78/pb-demo-mirpur-apartment-06-1.jpg",
+      "r2_key": "property-images/78/pb-demo-mirpur-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 78,
+      "rel_path": "78/pb-demo-mirpur-apartment-06-3.jpg",
+      "r2_key": "property-images/78/pb-demo-mirpur-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 78,
+      "rel_path": "78/pb-demo-mirpur-apartment-06-2.jpg",
+      "r2_key": "property-images/78/pb-demo-mirpur-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 46,
+      "rel_path": "46/pb-demo-uttara-apartment-04-1.jpg",
+      "r2_key": "property-images/46/pb-demo-uttara-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 46,
+      "rel_path": "46/pb-demo-uttara-apartment-04-2.jpg",
+      "r2_key": "property-images/46/pb-demo-uttara-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 46,
+      "rel_path": "46/pb-demo-uttara-apartment-04-3.jpg",
+      "r2_key": "property-images/46/pb-demo-uttara-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 62,
+      "rel_path": "62/pb-demo-dhanmondi-commercial-10-3.jpg",
+      "r2_key": "property-images/62/pb-demo-dhanmondi-commercial-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 62,
+      "rel_path": "62/pb-demo-dhanmondi-commercial-10-2.jpg",
+      "r2_key": "property-images/62/pb-demo-dhanmondi-commercial-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 62,
+      "rel_path": "62/pb-demo-dhanmondi-commercial-10-1.jpg",
+      "r2_key": "property-images/62/pb-demo-dhanmondi-commercial-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 22,
+      "rel_path": "22/pb-demo-gulshan-house-10-3.jpg",
+      "r2_key": "property-images/22/pb-demo-gulshan-house-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 22,
+      "rel_path": "22/pb-demo-gulshan-house-10-2.jpg",
+      "r2_key": "property-images/22/pb-demo-gulshan-house-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 22,
+      "rel_path": "22/pb-demo-gulshan-house-10-1.jpg",
+      "r2_key": "property-images/22/pb-demo-gulshan-house-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 96,
+      "rel_path": "96/pb-demo-badda-apartment-04-3.jpg",
+      "r2_key": "property-images/96/pb-demo-badda-apartment-04-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 96,
+      "rel_path": "96/pb-demo-badda-apartment-04-2.jpg",
+      "r2_key": "property-images/96/pb-demo-badda-apartment-04-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 96,
+      "rel_path": "96/pb-demo-badda-apartment-04-1.jpg",
+      "r2_key": "property-images/96/pb-demo-badda-apartment-04-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 68,
+      "rel_path": "68/pb-demo-baridhara-apartment-06-1.jpg",
+      "r2_key": "property-images/68/pb-demo-baridhara-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 68,
+      "rel_path": "68/pb-demo-baridhara-apartment-06-3.jpg",
+      "r2_key": "property-images/68/pb-demo-baridhara-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 68,
+      "rel_path": "68/pb-demo-baridhara-apartment-06-2.jpg",
+      "r2_key": "property-images/68/pb-demo-baridhara-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 77,
+      "rel_path": "77/pb-demo-mirpur-apartment-05-3.jpg",
+      "r2_key": "property-images/77/pb-demo-mirpur-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 77,
+      "rel_path": "77/pb-demo-mirpur-apartment-05-1.jpg",
+      "r2_key": "property-images/77/pb-demo-mirpur-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 77,
+      "rel_path": "77/pb-demo-mirpur-apartment-05-2.jpg",
+      "r2_key": "property-images/77/pb-demo-mirpur-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 24,
+      "rel_path": "24/pb-demo-banani-apartment-02-1.jpg",
+      "r2_key": "property-images/24/pb-demo-banani-apartment-02-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 24,
+      "rel_path": "24/pb-demo-banani-apartment-02-2.jpg",
+      "r2_key": "property-images/24/pb-demo-banani-apartment-02-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 24,
+      "rel_path": "24/pb-demo-banani-apartment-02-3.jpg",
+      "r2_key": "property-images/24/pb-demo-banani-apartment-02-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 38,
+      "rel_path": "38/pb-demo-bashundhara-apartment-06-2.jpg",
+      "r2_key": "property-images/38/pb-demo-bashundhara-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 38,
+      "rel_path": "38/pb-demo-bashundhara-apartment-06-1.jpg",
+      "r2_key": "property-images/38/pb-demo-bashundhara-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 38,
+      "rel_path": "38/pb-demo-bashundhara-apartment-06-3.jpg",
+      "r2_key": "property-images/38/pb-demo-bashundhara-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 27,
+      "rel_path": "27/pb-demo-banani-apartment-05-3.jpg",
+      "r2_key": "property-images/27/pb-demo-banani-apartment-05-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 27,
+      "rel_path": "27/pb-demo-banani-apartment-05-2.jpg",
+      "r2_key": "property-images/27/pb-demo-banani-apartment-05-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 27,
+      "rel_path": "27/pb-demo-banani-apartment-05-1.jpg",
+      "r2_key": "property-images/27/pb-demo-banani-apartment-05-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 98,
+      "rel_path": "98/pb-demo-badda-apartment-06-3.jpg",
+      "r2_key": "property-images/98/pb-demo-badda-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 98,
+      "rel_path": "98/pb-demo-badda-apartment-06-2.jpg",
+      "r2_key": "property-images/98/pb-demo-badda-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 98,
+      "rel_path": "98/pb-demo-badda-apartment-06-1.jpg",
+      "r2_key": "property-images/98/pb-demo-badda-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 82,
+      "rel_path": "82/pb-demo-mirpur-house-10-2.jpg",
+      "r2_key": "property-images/82/pb-demo-mirpur-house-10-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 82,
+      "rel_path": "82/pb-demo-mirpur-house-10-3.jpg",
+      "r2_key": "property-images/82/pb-demo-mirpur-house-10-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 82,
+      "rel_path": "82/pb-demo-mirpur-house-10-1.jpg",
+      "r2_key": "property-images/82/pb-demo-mirpur-house-10-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 31,
+      "rel_path": "31/pb-demo-banani-apartment-09-2.jpg",
+      "r2_key": "property-images/31/pb-demo-banani-apartment-09-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 31,
+      "rel_path": "31/pb-demo-banani-apartment-09-1.jpg",
+      "r2_key": "property-images/31/pb-demo-banani-apartment-09-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 31,
+      "rel_path": "31/pb-demo-banani-apartment-09-3.jpg",
+      "r2_key": "property-images/31/pb-demo-banani-apartment-09-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 100,
+      "rel_path": "100/pb-demo-badda-apartment-08-3.jpg",
+      "r2_key": "property-images/100/pb-demo-badda-apartment-08-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 100,
+      "rel_path": "100/pb-demo-badda-apartment-08-1.jpg",
+      "r2_key": "property-images/100/pb-demo-badda-apartment-08-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 100,
+      "rel_path": "100/pb-demo-badda-apartment-08-2.jpg",
+      "r2_key": "property-images/100/pb-demo-badda-apartment-08-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 79,
+      "rel_path": "79/pb-demo-mirpur-apartment-07-3.jpg",
+      "r2_key": "property-images/79/pb-demo-mirpur-apartment-07-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 79,
+      "rel_path": "79/pb-demo-mirpur-apartment-07-2.jpg",
+      "r2_key": "property-images/79/pb-demo-mirpur-apartment-07-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 79,
+      "rel_path": "79/pb-demo-mirpur-apartment-07-1.jpg",
+      "r2_key": "property-images/79/pb-demo-mirpur-apartment-07-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 18,
+      "rel_path": "18/pb-demo-gulshan-apartment-06-3.jpg",
+      "r2_key": "property-images/18/pb-demo-gulshan-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 18,
+      "rel_path": "18/pb-demo-gulshan-apartment-06-2.jpg",
+      "r2_key": "property-images/18/pb-demo-gulshan-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 18,
+      "rel_path": "18/pb-demo-gulshan-apartment-06-1.jpg",
+      "r2_key": "property-images/18/pb-demo-gulshan-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 88,
+      "rel_path": "88/pb-demo-mohammadpur-apartment-06-2.jpg",
+      "r2_key": "property-images/88/pb-demo-mohammadpur-apartment-06-2.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 88,
+      "rel_path": "88/pb-demo-mohammadpur-apartment-06-3.jpg",
+      "r2_key": "property-images/88/pb-demo-mohammadpur-apartment-06-3.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "disposition": "valid_listing_folder_extra"
+    },
+    {
+      "listing_id": 88,
+      "rel_path": "88/pb-demo-mohammadpur-apartment-06-1.jpg",
+      "r2_key": "property-images/88/pb-demo-mohammadpur-apartment-06-1.jpg",
+      "mime_type": "image/jpeg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "disposition": "valid_listing_folder_extra"
+    }
+  ],
+  "quarantine_items": [
+    {
+      "rel_path": "propertybikri-demo-call-for-details.png",
+      "size_bytes": 12652,
+      "sha256": "3e8e79d2a73f2d8152c3209c5bab35fe63e5fd51a0c170689dbb26abf4848179",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/propertybikri-demo-call-for-details.png"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_06.jpg",
+      "size_bytes": 187580,
+      "sha256": "8c8d41f712b4d94390a6264d10fa5dc0eda2f854b8b83d747df2e7c920c3c4a6",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_06.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_02.jpg",
+      "size_bytes": 219753,
+      "sha256": "9a131fd63dd8c03265ac543b2b6753e06d2d2c1df0d9dcb57b4d100fce577133",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_02.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_11.jpg",
+      "size_bytes": 271080,
+      "sha256": "7282f9537bbd1a17c14de296c0769a3811adf5e76168f358f83ccbeacf351ec1",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_11.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_07.jpg",
+      "size_bytes": 409873,
+      "sha256": "c7393be9c1095fa889b7531949a035b8045e84ffdb710532f5817a693c08c465",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_07.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_12.jpg",
+      "size_bytes": 229893,
+      "sha256": "1eb5f4807a0bfd30f3ce9797bb10280e58cdc5136a455e59a28c78668f0c857d",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_12.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_08.jpg",
+      "size_bytes": 459918,
+      "sha256": "61b2da5a206145173fb7c06e98bbad099b7c735d7b2a0b122734f1ec8be7852f",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_08.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_09.jpg",
+      "size_bytes": 316235,
+      "sha256": "884715880f74481e146f2afe09e309d244fdc1386804ca68de7f7387eb0281b2",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_09.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_01.jpg",
+      "size_bytes": 307063,
+      "sha256": "8d6b8927fc5fd13f2c538f74a7e6ee2ad417f81122087ce36345c92a73400b33",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_01.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_05.jpg",
+      "size_bytes": 251358,
+      "sha256": "d55364ad62cc3559ddbe42074b6607f0d68bde7ceba215cb4b29b198809d15aa",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_05.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_10.jpg",
+      "size_bytes": 203565,
+      "sha256": "8df179db0ff13cb541920649137885c6a53445b935883a6fb113008be6deb78d",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_10.jpg"
+    },
+    {
+      "rel_path": "_demo_seed_pool/demo_pool_03.jpg",
+      "size_bytes": 221098,
+      "sha256": "22569f6bbe6a5d737dfcd6cbd54642742a6e10865f6fc5654ebc4a24ed4a9d8b",
+      "reason": "orphan_no_valid_listing_folder",
+      "quarantine_key": "quarantine/demo_pool_03.jpg"
+    }
+  ]
+}

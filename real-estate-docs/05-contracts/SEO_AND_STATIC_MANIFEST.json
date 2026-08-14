@@ -1,0 +1,862 @@
+{
+  "generated_at": "2026-08-14T14:58:00Z",
+  "static_routes_count": 13,
+  "static_routes": [
+    {
+      "path": "/",
+      "name": "Homepage",
+      "title": "PropertyBikri | Real Estate in Bangladesh",
+      "type": "marketing_home"
+    },
+    {
+      "path": "/properties",
+      "name": "Property Search",
+      "title": "Search Properties for Sale and Rent | PropertyBikri",
+      "type": "search"
+    },
+    {
+      "path": "/post-property",
+      "name": "Post Property CTA",
+      "title": "Post Your Property Free | PropertyBikri",
+      "type": "conversion"
+    },
+    {
+      "path": "/about",
+      "name": "About Us",
+      "title": "About Us | PropertyBikri",
+      "type": "company"
+    },
+    {
+      "path": "/contact",
+      "name": "Contact",
+      "title": "Contact Us | PropertyBikri",
+      "type": "company"
+    },
+    {
+      "path": "/careers",
+      "name": "Careers",
+      "title": "Careers | PropertyBikri",
+      "type": "company"
+    },
+    {
+      "path": "/advertise",
+      "name": "Advertise",
+      "title": "Advertise with PropertyBikri",
+      "type": "marketing"
+    },
+    {
+      "path": "/privacy",
+      "name": "Privacy Policy",
+      "title": "Privacy Policy | PropertyBikri",
+      "type": "legal"
+    },
+    {
+      "path": "/terms",
+      "name": "Terms of Service",
+      "title": "Terms of Service | PropertyBikri",
+      "type": "legal"
+    },
+    {
+      "path": "/cookies",
+      "name": "Cookie Policy",
+      "title": "Cookie Policy | PropertyBikri",
+      "type": "legal"
+    },
+    {
+      "path": "/auth/login",
+      "name": "Login",
+      "title": "Login | PropertyBikri",
+      "type": "auth"
+    },
+    {
+      "path": "/auth/register",
+      "name": "Register",
+      "title": "Register | PropertyBikri",
+      "type": "auth"
+    },
+    {
+      "path": "/auth/reset",
+      "name": "Password Reset",
+      "title": "Reset Password | PropertyBikri",
+      "type": "auth"
+    }
+  ],
+  "seo_landing_pages_count": 90,
+  "seo_landing_pages": [
+    {
+      "slug": "properties-for-sale-in-dhaka",
+      "url": "/properties-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "property-for-sale-in-dhaka",
+      "url": "/property-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "flat-for-sale-in-dhaka",
+      "url": "/flat-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "apartment-for-sale-in-dhaka",
+      "url": "/apartment-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "house-for-sale-in-dhaka",
+      "url": "/house-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "land-for-sale-in-dhaka",
+      "url": "/land-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "plot-for-sale-in-dhaka",
+      "url": "/plot-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "commercial-property-for-sale-in-dhaka",
+      "url": "/commercial-property-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "office-space-for-sale-in-dhaka",
+      "url": "/office-space-for-sale-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "properties-for-rent-in-dhaka",
+      "url": "/properties-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "flat-for-rent-in-dhaka",
+      "url": "/flat-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "apartment-for-rent-in-dhaka",
+      "url": "/apartment-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "house-for-rent-in-dhaka",
+      "url": "/house-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "commercial-property-for-rent-in-dhaka",
+      "url": "/commercial-property-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "office-space-for-rent-in-dhaka",
+      "url": "/office-space-for-rent-in-dhaka",
+      "category": "core_dhaka",
+      "city": "Dhaka"
+    },
+    {
+      "slug": "flat-for-sale-in-gulshan",
+      "url": "/flat-for-sale-in-gulshan",
+      "category": "area_apartment_sale",
+      "area": "Gulshan",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-gulshan",
+      "url": "/apartment-for-sale-in-gulshan",
+      "category": "area_apartment_sale",
+      "area": "Gulshan",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-gulshan",
+      "url": "/house-for-sale-in-gulshan",
+      "category": "area_house_sale",
+      "area": "Gulshan",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-gulshan",
+      "url": "/land-for-sale-in-gulshan",
+      "category": "area_land_sale",
+      "area": "Gulshan",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-gulshan",
+      "url": "/flat-for-rent-in-gulshan",
+      "category": "area_apartment_rent",
+      "area": "Gulshan",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-banani",
+      "url": "/flat-for-sale-in-banani",
+      "category": "area_apartment_sale",
+      "area": "Banani",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-banani",
+      "url": "/apartment-for-sale-in-banani",
+      "category": "area_apartment_sale",
+      "area": "Banani",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-banani",
+      "url": "/house-for-sale-in-banani",
+      "category": "area_house_sale",
+      "area": "Banani",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-banani",
+      "url": "/land-for-sale-in-banani",
+      "category": "area_land_sale",
+      "area": "Banani",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-banani",
+      "url": "/flat-for-rent-in-banani",
+      "category": "area_apartment_rent",
+      "area": "Banani",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-bashundhara",
+      "url": "/flat-for-sale-in-bashundhara",
+      "category": "area_apartment_sale",
+      "area": "Bashundhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-bashundhara",
+      "url": "/apartment-for-sale-in-bashundhara",
+      "category": "area_apartment_sale",
+      "area": "Bashundhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-bashundhara",
+      "url": "/house-for-sale-in-bashundhara",
+      "category": "area_house_sale",
+      "area": "Bashundhara",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-bashundhara",
+      "url": "/land-for-sale-in-bashundhara",
+      "category": "area_land_sale",
+      "area": "Bashundhara",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-bashundhara",
+      "url": "/flat-for-rent-in-bashundhara",
+      "category": "area_apartment_rent",
+      "area": "Bashundhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-uttara",
+      "url": "/flat-for-sale-in-uttara",
+      "category": "area_apartment_sale",
+      "area": "Uttara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-uttara",
+      "url": "/apartment-for-sale-in-uttara",
+      "category": "area_apartment_sale",
+      "area": "Uttara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-uttara",
+      "url": "/house-for-sale-in-uttara",
+      "category": "area_house_sale",
+      "area": "Uttara",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-uttara",
+      "url": "/land-for-sale-in-uttara",
+      "category": "area_land_sale",
+      "area": "Uttara",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-uttara",
+      "url": "/flat-for-rent-in-uttara",
+      "category": "area_apartment_rent",
+      "area": "Uttara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-dhanmondi",
+      "url": "/flat-for-sale-in-dhanmondi",
+      "category": "area_apartment_sale",
+      "area": "Dhanmondi",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-dhanmondi",
+      "url": "/apartment-for-sale-in-dhanmondi",
+      "category": "area_apartment_sale",
+      "area": "Dhanmondi",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-dhanmondi",
+      "url": "/house-for-sale-in-dhanmondi",
+      "category": "area_house_sale",
+      "area": "Dhanmondi",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-dhanmondi",
+      "url": "/land-for-sale-in-dhanmondi",
+      "category": "area_land_sale",
+      "area": "Dhanmondi",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-dhanmondi",
+      "url": "/flat-for-rent-in-dhanmondi",
+      "category": "area_apartment_rent",
+      "area": "Dhanmondi",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-baridhara",
+      "url": "/flat-for-sale-in-baridhara",
+      "category": "area_apartment_sale",
+      "area": "Baridhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-baridhara",
+      "url": "/apartment-for-sale-in-baridhara",
+      "category": "area_apartment_sale",
+      "area": "Baridhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-baridhara",
+      "url": "/house-for-sale-in-baridhara",
+      "category": "area_house_sale",
+      "area": "Baridhara",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-baridhara",
+      "url": "/land-for-sale-in-baridhara",
+      "category": "area_land_sale",
+      "area": "Baridhara",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-baridhara",
+      "url": "/flat-for-rent-in-baridhara",
+      "category": "area_apartment_rent",
+      "area": "Baridhara",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-mirpur",
+      "url": "/flat-for-sale-in-mirpur",
+      "category": "area_apartment_sale",
+      "area": "Mirpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-mirpur",
+      "url": "/apartment-for-sale-in-mirpur",
+      "category": "area_apartment_sale",
+      "area": "Mirpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-mirpur",
+      "url": "/house-for-sale-in-mirpur",
+      "category": "area_house_sale",
+      "area": "Mirpur",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-mirpur",
+      "url": "/land-for-sale-in-mirpur",
+      "category": "area_land_sale",
+      "area": "Mirpur",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-mirpur",
+      "url": "/flat-for-rent-in-mirpur",
+      "category": "area_apartment_rent",
+      "area": "Mirpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-mohammadpur",
+      "url": "/flat-for-sale-in-mohammadpur",
+      "category": "area_apartment_sale",
+      "area": "Mohammadpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-mohammadpur",
+      "url": "/apartment-for-sale-in-mohammadpur",
+      "category": "area_apartment_sale",
+      "area": "Mohammadpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-mohammadpur",
+      "url": "/house-for-sale-in-mohammadpur",
+      "category": "area_house_sale",
+      "area": "Mohammadpur",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-mohammadpur",
+      "url": "/land-for-sale-in-mohammadpur",
+      "category": "area_land_sale",
+      "area": "Mohammadpur",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-mohammadpur",
+      "url": "/flat-for-rent-in-mohammadpur",
+      "category": "area_apartment_rent",
+      "area": "Mohammadpur",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-badda",
+      "url": "/flat-for-sale-in-badda",
+      "category": "area_apartment_sale",
+      "area": "Badda",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-badda",
+      "url": "/apartment-for-sale-in-badda",
+      "category": "area_apartment_sale",
+      "area": "Badda",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-badda",
+      "url": "/house-for-sale-in-badda",
+      "category": "area_house_sale",
+      "area": "Badda",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-badda",
+      "url": "/land-for-sale-in-badda",
+      "category": "area_land_sale",
+      "area": "Badda",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-badda",
+      "url": "/flat-for-rent-in-badda",
+      "category": "area_apartment_rent",
+      "area": "Badda",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-purbachal",
+      "url": "/flat-for-sale-in-purbachal",
+      "category": "area_apartment_sale",
+      "area": "Purbachal",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-purbachal",
+      "url": "/apartment-for-sale-in-purbachal",
+      "category": "area_apartment_sale",
+      "area": "Purbachal",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-purbachal",
+      "url": "/house-for-sale-in-purbachal",
+      "category": "area_house_sale",
+      "area": "Purbachal",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-purbachal",
+      "url": "/land-for-sale-in-purbachal",
+      "category": "area_land_sale",
+      "area": "Purbachal",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-purbachal",
+      "url": "/flat-for-rent-in-purbachal",
+      "category": "area_apartment_rent",
+      "area": "Purbachal",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-aftab-nagar",
+      "url": "/flat-for-sale-in-aftab-nagar",
+      "category": "area_apartment_sale",
+      "area": "Aftab Nagar",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-aftab-nagar",
+      "url": "/apartment-for-sale-in-aftab-nagar",
+      "category": "area_apartment_sale",
+      "area": "Aftab Nagar",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-aftab-nagar",
+      "url": "/house-for-sale-in-aftab-nagar",
+      "category": "area_house_sale",
+      "area": "Aftab Nagar",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-aftab-nagar",
+      "url": "/land-for-sale-in-aftab-nagar",
+      "category": "area_land_sale",
+      "area": "Aftab Nagar",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-aftab-nagar",
+      "url": "/flat-for-rent-in-aftab-nagar",
+      "category": "area_apartment_rent",
+      "area": "Aftab Nagar",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-khilkhet",
+      "url": "/flat-for-sale-in-khilkhet",
+      "category": "area_apartment_sale",
+      "area": "Khilkhet",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-khilkhet",
+      "url": "/apartment-for-sale-in-khilkhet",
+      "category": "area_apartment_sale",
+      "area": "Khilkhet",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-khilkhet",
+      "url": "/house-for-sale-in-khilkhet",
+      "category": "area_house_sale",
+      "area": "Khilkhet",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-khilkhet",
+      "url": "/land-for-sale-in-khilkhet",
+      "category": "area_land_sale",
+      "area": "Khilkhet",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-khilkhet",
+      "url": "/flat-for-rent-in-khilkhet",
+      "category": "area_apartment_rent",
+      "area": "Khilkhet",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-tejgaon",
+      "url": "/flat-for-sale-in-tejgaon",
+      "category": "area_apartment_sale",
+      "area": "Tejgaon",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-tejgaon",
+      "url": "/apartment-for-sale-in-tejgaon",
+      "category": "area_apartment_sale",
+      "area": "Tejgaon",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-tejgaon",
+      "url": "/house-for-sale-in-tejgaon",
+      "category": "area_house_sale",
+      "area": "Tejgaon",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-tejgaon",
+      "url": "/land-for-sale-in-tejgaon",
+      "category": "area_land_sale",
+      "area": "Tejgaon",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-tejgaon",
+      "url": "/flat-for-rent-in-tejgaon",
+      "category": "area_apartment_rent",
+      "area": "Tejgaon",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-rampura",
+      "url": "/flat-for-sale-in-rampura",
+      "category": "area_apartment_sale",
+      "area": "Rampura",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-rampura",
+      "url": "/apartment-for-sale-in-rampura",
+      "category": "area_apartment_sale",
+      "area": "Rampura",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-rampura",
+      "url": "/house-for-sale-in-rampura",
+      "category": "area_house_sale",
+      "area": "Rampura",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-rampura",
+      "url": "/land-for-sale-in-rampura",
+      "category": "area_land_sale",
+      "area": "Rampura",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-rampura",
+      "url": "/flat-for-rent-in-rampura",
+      "category": "area_apartment_rent",
+      "area": "Rampura",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    },
+    {
+      "slug": "flat-for-sale-in-wari",
+      "url": "/flat-for-sale-in-wari",
+      "category": "area_apartment_sale",
+      "area": "Wari",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "apartment-for-sale-in-wari",
+      "url": "/apartment-for-sale-in-wari",
+      "category": "area_apartment_sale",
+      "area": "Wari",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "sale"
+    },
+    {
+      "slug": "house-for-sale-in-wari",
+      "url": "/house-for-sale-in-wari",
+      "category": "area_house_sale",
+      "area": "Wari",
+      "city": "Dhaka",
+      "property_type": "house",
+      "purpose": "sale"
+    },
+    {
+      "slug": "land-for-sale-in-wari",
+      "url": "/land-for-sale-in-wari",
+      "category": "area_land_sale",
+      "area": "Wari",
+      "city": "Dhaka",
+      "property_type": "land",
+      "purpose": "sale"
+    },
+    {
+      "slug": "flat-for-rent-in-wari",
+      "url": "/flat-for-rent-in-wari",
+      "category": "area_apartment_rent",
+      "area": "Wari",
+      "city": "Dhaka",
+      "property_type": "apartment",
+      "purpose": "rent"
+    }
+  ],
+  "dynamic_feed_routes": [
+    {
+      "path": "/sitemap.xml",
+      "mime": "application/xml"
+    },
+    {
+      "path": "/robots.txt",
+      "mime": "text/plain"
+    }
+  ]
+}
